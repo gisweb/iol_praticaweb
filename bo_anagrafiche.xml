@@ -34,8 +34,7 @@
           <id type="Products.Archetypes.Field.StringField">anagrafiche</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.customscripts.getElencoAnagrafica(context)
-]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.customscripts.getElencoAnagrafica(context)]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

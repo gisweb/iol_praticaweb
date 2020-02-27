@@ -5,7 +5,13 @@
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
-      <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setItem('Form','frm_presentata')]]></onSaveDocument>
+      <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setItem('Form','frm_presentata')
+nProtocollo=context.getItem('numero_protocollo')
+dProtocollo=context.getItem('data_protocollo')
+context.setItem('anno_protocollo',int(DateToString(dProtocollo,format='%Y')))
+context.setItem('data_protocollo_testo',DateToString(dProtocollo,format="%Y/%m/%d %H:%M"))
+context.setItem('numero_protocollo_testo','Anno %s n. % 6d' %(DateToString(dProtocollo,format='%Y'),int(nProtocollo)))    
+#context.getParentDatabase().getIndex().indexDocument(context)]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

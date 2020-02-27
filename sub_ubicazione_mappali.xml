@@ -209,7 +209,8 @@ return layersSettings["layersList"]</string></value>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[rows = context.getItem('elenco_nct',[])
 val=[]
 for row in rows:
-    val.append(row[1])
+    if row[1] not in val:
+        val.append(row[1])
 
 return val]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
@@ -217,7 +218,7 @@ return val]]></Formula>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <IndexType type="Products.Archetypes.Field.StringField">KeywordIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
         <element id="mappale_search" title="mappale_search" type="PlominoField">
@@ -227,7 +228,8 @@ return val]]></Formula>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[rows = context.getItem('elenco_nct',[])
 val=[]
 for row in rows:
-    val.append(row[2])
+    if row[2] not in val:
+        val.append(row[2])
     
 return val]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
@@ -235,7 +237,7 @@ return val]]></Formula>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">ZCTextIndex</IndexType>
+          <IndexType type="Products.Archetypes.Field.StringField">KeywordIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
         <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">

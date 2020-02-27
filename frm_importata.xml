@@ -14,7 +14,8 @@
 <div class="v-content well"><fieldset class="scheduler-border" title="Richiedente">
 <legend class="scheduler-border">DATI DELLA PRATICA</legend>
 <p><span class="plominoSubformClass">base_sub_protocollo</span></p>
-<p><span class="plominoSubformClass">sub_dati_pratica</span></p>
+<p><span class="plominoSubformClass">base_sub_pe</span></p>
+<p><span class="plominoSubformClass">base_sub_info_procedimento</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">UBICAZIONE DELL'INTERVENTO</legend> <span class="plominoSubformClass">sub_ubicazione</span>
