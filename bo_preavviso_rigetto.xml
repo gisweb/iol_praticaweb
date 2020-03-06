@@ -279,10 +279,14 @@ except:
           <id type="Products.Archetypes.Field.StringField">btn_invia_comunicazione</id>
           <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[context.doAction('preavviso_rigetto')
-context.setItem('data_comunicazione_preavviso_rigetto',Now())
-context.setItem('data_preavviso_rigetto',Now())
-return context.absolute_url()]]></Content>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
+#Prima protocollo il documento e invio la comunicazione poi effettuo l'azione
+invia = db.resources.customscripts.InviaComunicazione(context,'preavviso_rigetto')
+if invia > 0:
+    context.doAction('preavviso_rigetto')
+
+return context.absolute_url()
+]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.isEditMode() or context.getItem('data_comunicazione_preavviso_rigetto')!='' or context.getItem('allegato_comunicazione_preavviso_rigetto',{})=={}
 except:

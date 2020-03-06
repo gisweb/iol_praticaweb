@@ -279,9 +279,12 @@ except:
           <id type="Products.Archetypes.Field.StringField">btn_invia_comunicazione</id>
           <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[context.doAction('avvio_procedimento')
-context.setItem('data_comunicazione_avvio_procedimento',Now())
-context.setItem('data_avvio_procedimento',Now())
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
+#Prima protocollo il documento e invio la comunicazione poi effettuo l'azione
+invia = db.resources.customscripts.InviaComunicazione(context,'avvio_procedimento')
+if invia > 0:
+    context.doAction('avvio_procedimento')
+
 return context.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.isEditMode() or context.getItem('data_comunicazione_avvio_procedimento')!='' or context.getItem('allegato_comunicazione_avvio_procedimento',{})=={}

@@ -464,6 +464,19 @@ return context.getItem('iol_tipo_app')]]></Formula>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
+        <element id="sorteggioxxxxxxxxx" title="sorteggio" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">sorteggioxxxxxxxxx</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
       </elements>
     </element>
   </design>

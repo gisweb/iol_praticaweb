@@ -25,6 +25,7 @@ orderDG(context,'elenco_importi_aggiuntivi_dg','elenco_importi_index')]]></onSav
 <p><span class="plominoLabelClass">elenco_pagamenti_dg</span><span class="plominoFieldClass">elenco_pagamenti_dg</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_edit</span></p>
 <p><span class="plominoLabelClass">pagopa_note</span><span class="plominoFieldClass">pagopa_note</span></p>
+<p><span class="plominoSubformClass">base_sub_pagopa_bolli</span></p>
 <span class="plominoFieldClass">page_refresh</span>
 </div>
 <p><span class="plominoHidewhenClass">end:hw_no_pagopa</span></p>

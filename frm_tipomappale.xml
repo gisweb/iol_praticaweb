@@ -1,6 +1,6 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="frm_tipomappale" title="Deposito Tipi Mappale" type="PlominoForm">
+    <element id="frm_tipomappale" title="Deposito Tipo Mappale" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_tipomappale</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setDocumentReaders(['sue_readers'])]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
@@ -49,7 +49,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">descrizione_intervento</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">COMPUTEDONSAVE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[s = asUnicode('Deposito dichiarazione conformità impianti')
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[s = asUnicode('Deposito tipo mappale')
 if context.getItem('titolo_esistente_protocollo',''):
     protocollo = context.getItem('titolo_esistente_protocollo','')
     anno_prot = context.getItem('titolo_esistente_anno','')

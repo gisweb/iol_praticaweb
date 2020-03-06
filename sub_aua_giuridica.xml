@@ -430,7 +430,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[return context.isValidPiva('giuridica_fisica_piva')]]></ValidationFormula>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[#return context.isValidPiva('giuridica_fisica_piva')]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>

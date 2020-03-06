@@ -9,7 +9,12 @@
 if 'btn_next' in context.REQUEST.keys():
     return context.toNextForm()
 elif 'btn_save' in context.REQUEST.keys():
-    context.setItem('Form','frm_presentata')]]></onSaveDocument>
+    context.setItem('Form','frm_presentata')
+    
+#se condizionata non piu sorteggiabile    
+if '3' in context.getItem('atti_assenso_opt'):
+    context.removeItem('iol_sorteggio')
+    ]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

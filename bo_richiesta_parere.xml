@@ -320,18 +320,18 @@ except:
           <id type="Products.Archetypes.Field.StringField">btn_invia_comunicazione</id>
           <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
-parentDoc.doAction('richiedi_parere')
-context.setItem('data_comunicazione_richiesta_parere',Now())
-#Allineo i readers
-settings = context.getParentDatabase().resources.customscripts.getDocSettings()
-readers = [str(context.getItem('destinatario_parere')),str(settings.getItem('grp_istruttori')),'gw_istruttori']
-context.setItem('Plomino_Readers',readers)  
-##potrebbe servire mettere l'ente come autor per far modificare il doc
-#context.setItem('Plomino_Authors',[str(settings.getItem('grp_istruttori')),'gw_istruttori'])
-context.getParentDatabase().getIndex().indexDocument(context)
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('parent_document'))
 
-return parentDoc.absolute_url()]]></Content>
+#Prima protocollo il documento poi effettuo l'azione
+invia = db.resources.customscripts.InviaComunicazione(context,'richiesta_parere',parentDoc)
+if invia > 0:
+    parentDoc.doAction('richiedi_parere')
+#Allineo i readers
+context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
+context.getParentDatabase().getIndex().indexDocument(context)
+return parentDoc.absolute_url()
+]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.isEditMode() or plominoDocument.getItem('data_comunicazione_richiesta_parere')!='' or context.getItem('allegato_comunicazione_richiesta_parere',{})=={}
 except:

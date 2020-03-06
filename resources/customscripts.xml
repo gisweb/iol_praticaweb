@@ -380,6 +380,10 @@ else:
     
 for res in context.aq_parent.zsql.ElencoParticelle(sezione=context.REQUEST.get('sezione',''),foglio=context.REQUEST.get('foglio',''),cod_cat=comune).dictionaries():
     ret.append(res)
+    
+if 'tipomappale' in context.REQUEST.get('ACTUAL_URL'):    
+    ret.append({'geom':'','id':'STRAD','ord':1,'text':'STRAD'})        
+    
 return json_dumps({"success":1, "results":ret})
 ]]></resource>
       <resource id="getElencoVie" title="" type="Script (Python)"><![CDATA[## Script (Python) "getElencoVie"
@@ -1094,6 +1098,7 @@ else:
 ##title=
 ##
 from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
 
 if isinstance(doc, basestring):
     doc = context.getDocument(doc)
@@ -1116,7 +1121,19 @@ if not doc.getItem('data_presentazione'):
     doc.setItem('data_presentazione_testo',DateToString(Now(),format="%Y/%m/%d %H:%M"))
     context.sendMail(doc=doc,azione='presentazione-ok')
 
- 
+if doc.getItem('iol_tipo_app','') in ['integrazione','finelavori','iniziolavori','pagamento']:
+    parentDoc = context.getDocument(doc.getItem('titolo_esistente_id',''))
+    setIolEvent(parentDoc,evento="Presentazione %s per la pratica %s" %(doc.getItem('iol_tipo_app',''),parentDoc.getItem('numero_pratica')),notifica=[parentDoc.getItem('istruttore')])
+    
+else:
+    setIolEvent(
+        doc,
+        scadenza='Assegnazione e Comunicazione Responsabile Procedimento',
+        dal=DateToString(Now(),format="%d/%m/%Y"),
+        al=DateToString(Now()+10,format="%d/%m/%Y"),
+        reference='avvio_procedimento'
+    )
+    
 db=context.getParentDatabase()
 #se c'e' protocollazione automatica protocollo
 if db.resources.config().get("wsprotocollo"):
@@ -1140,15 +1157,16 @@ if db.resources.config().get("pgreplica"):
 ##parameters=doc=None
 ##title=
 ##
-from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+from Products.CMFPlomino.PlominoUtils import StringToDate,Now,DateToString,asUnicode
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
 
 if isinstance(doc, basestring):
     doc = context.getDocument(doc)
 
-db=context.getParentDatabase()
-doc.setItem('data_comunicazione_avvio_procedimento',Now())
-doc.setWfActivity(activity="Comunicazione avvio del procedimento")
-context.Protocollazione(doc=doc)
+#Setto Attivita'
+#doc.setWfActivity(activity="Comunicazione avvio del procedimento")
+setIolEvent(doc,evento='Comunicazione Avvio Procedimento',reference='avvio_procedimento')
+#Invio PEC
 context.sendMail(doc=doc,azione='avvio-procedimento')
 ]]></resource>
       <resource id="ImpostaTitolo" title="" type="Script (Python)"><![CDATA[## Script (Python) "ImpostaTitolo"
@@ -1243,7 +1261,7 @@ def setIndiciProtocollo():
     nProtocollo=doc.getItem('numero_protocollo')
     dProtocollo=doc.getItem('data_protocollo')
     doc.setItem('anno_protocollo',int(DateToString(dProtocollo,format='%Y')))
-    doc.setItem('data_protocollo_testo',DateToString(Now(),format="%Y/%m/%d %H:%M"))
+    doc.setItem('data_protocollo_testo',DateToString(dProtocollo,format="%Y/%m/%d %H:%M"))
     doc.setItem('numero_protocollo_testo','Anno %s n. % 6d' %(DateToString(dProtocollo,format='%Y'),int(nProtocollo)))    
     doc.save(onSaveEvent=False)
     doc.commitTransaction()
@@ -1504,10 +1522,13 @@ return html
 ##parameters=doc=None
 ##title=
 ##
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
+
 if isinstance(doc, basestring):
     doc = context.getDocument(doc)
 
-doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'), notifyTo=[doc.getItem('istruttore')],priority=1)
+#doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'), notifyTo=[doc.getItem('istruttore')],priority=1)
+setIolEvent(doc,evento="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'),notifica=[doc.getItem('istruttore')])
 ]]></resource>
       <resource id="sendMailJ" title="" type="Script (Python)"><![CDATA[## Script (Python) "sendMailJ"
 ##bind container=container
@@ -1686,10 +1707,15 @@ return '<div class="alert alert-%s"><h5>%s<a target="blank_" href="%s">%s</a> </
 ##parameters=doc=None
 ##title=
 ##
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
+
 if isinstance(doc, basestring):
     doc = context.getDocument(doc)
 
-doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'), notifyTo=[doc.getItem('istruttore')],priority=1)
+#doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'), notifyTo=[doc.getItem('istruttore')],priority=1)
+setIolEvent(doc,evento="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'),notifica=[doc.getItem('istruttore')])
+#setIolEvent(doc,evento="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'))
 ]]></resource>
       <resource id="PreavvisoRigetto" title="" type="Script (Python)"><![CDATA[## Script (Python) "PreavvisoRigetto"
 ##bind container=container
@@ -1700,8 +1726,16 @@ doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nom
 ##parameters=doc=None
 ##title=
 ##
-db=doc.getParentDatabase()
-db.resources.customscripts.sendMail(doc=doc,azione='preavviso-rigetto')
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+#Setto Attivita'
+#doc.setWfActivity(activity="Comunicazione Preavviso di Rigetto")
+setIolEvent(doc,evento='Comunicazione Preavviso di Rigetto')
+#Invio PEC
+context.sendMail(doc=doc,azione='preavviso-rigetto')
 ]]></resource>
       <resource id="RichiestaIntegrazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "RichiestaIntegrazione"
 ##bind container=container
@@ -1712,8 +1746,23 @@ db.resources.customscripts.sendMail(doc=doc,azione='preavviso-rigetto')
 ##parameters=doc=None
 ##title=
 ##
-db=doc.getParentDatabase()
-db.resources.customscripts.sendMail(doc=doc,azione='richiesta-integrazione-ok')
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+    
+#Setto Attivita'
+#doc.setWfActivity(activity="Richiesta di Integrazioni")
+setIolEvent(
+    doc,
+    scadenza="Integrazione dell'istanza",
+    dal=DateToString(Now(),format="%d/%m/%Y"),
+    al=DateToString(Now()+15,format="%d/%m/%Y"),
+    reference='integrazione'
+)
+#Invio PEC
+context.sendMail(doc=doc,azione='richiesta-integrazione-ok')
 ]]></resource>
       <resource id="Rigetto" title="" type="Script (Python)"><![CDATA[## Script (Python) "Rigetto"
 ##bind container=container
@@ -1724,8 +1773,16 @@ db.resources.customscripts.sendMail(doc=doc,azione='richiesta-integrazione-ok')
 ##parameters=doc=None
 ##title=
 ##
-db=doc.getParentDatabase()
-db.resources.customscripts.sendMail(doc=doc,azione='rigetto')
+from iol.document.plomino_utils import setIolEvent,rmIolEvent
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+#Setto Attivita'
+#doc.setWfActivity(activity="Comunicazione di Rigetto")
+setIolEvent(doc,evento='Comunicazione di Rigetto')
+#Invio PEC
+context.sendMail(doc=doc,azione='rigetto')
 ]]></resource>
       <resource id="RilascioTitolo" title="" type="Script (Python)"><![CDATA[## Script (Python) "RilascioTitolo"
 ##bind container=container
@@ -1736,8 +1793,18 @@ db.resources.customscripts.sendMail(doc=doc,azione='rigetto')
 ##parameters=doc=None
 ##title=
 ##
-db=doc.getParentDatabase()
-db.resources.customscripts.sendMail(doc=doc,azione='titolo-ok')
+from iol.document.plomino_utils import setIolEvent
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+#Setto Attivita'
+#doc.setWfActivity(activity="Rilascio Titolo")
+setIolEvent(doc,evento='Rilascio Titolo')
+#Comunicazione Inizio Lavori
+#setIolEvent(doc,evento='Rilascio Titolo')
+#Invio PEC
+context.sendMail(doc=doc,azione='titolo-ok')
 ]]></resource>
       <resource id="SetImportiPresentazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "SetImportiPresentazione"
 ##bind container=container
@@ -1886,32 +1953,37 @@ else:
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=doc=None
+##parameters=doc=None, step='', parentDoc=None
 ##title=
 ##
 from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads 
 
+db=context.getParentDatabase()
 
 if isinstance(doc, basestring):
     doc = context.getDocument(doc)
-
-
-db=context.getParentDatabase()
-
+    
+if not parentDoc:
+    parentDoc = doc
+elif isinstance(parentDoc,basestring):
+    parentDoc = context.getDocument(parentDoc)
+    
 #Protocollazione In Uscita
 
 #Recupero la Browser View
 view = doc.restrictedTraverse('protocollazione')
 
 #Recupero la configurazione del protocollo
-config = db.resources.config_protocollo()
+config = db.resources.config_protocollo(parentDoc)
+
+# A seconda di cosa sto protocollando agisco in maniera differente
 #Documenti da Protocollare
-fld_docprincipale = "allegato_comunicazione_avvio_procedimento"
-fld_allegati = ""
+fld_docprincipale = config["step"][step]['doc_principale']
+fld_allegati = config["step"][step]['altri_allegati']
 #Soggetti della protocollazione
 #In questo caso la comunicazione va inviata ai soli interessati della pratica
 #La getElencoSoggettiPec restituisce una lista di etichette dei soggetti della pratica a cui inviare la comunicazione (es. richiedente, progettista etc.)
-soggetti = db.resources.customscripts.getElencoSoggettiPec(doc)
+soggetti = db.resources.customscripts.getElencoSoggettiPec(parentDoc)
 
 #Informazioni dell'Amministrazione
 ente = config["ente"]
@@ -1922,12 +1994,12 @@ data = dict()
 data["soggetti"] = []
 data["allegati"] = []
 #Oggetto della Protocollazione
-data["oggetto"] = "Comunicazione Avvio del Procedimento della pratica %s" %doc.getItem('numero_pratica','')
+data["oggetto"] = config["step"][step]['oggetto']
 #Amministrazione usata sia in Entrata che in Uscita
 data["ente"] = ente
 #Recupero i soggetti della Protocollazione
 for k in soggetti:
-    s = db.resources.customscripts.getSoggettoPec(doc,k)
+    s = db.resources.customscripts.getSoggettoPec(parentDoc,k)
     data["soggetti"].append(s)
     elenco_soggetti.append("%s %s" %(s["cognome"],s["nome"]))
 
@@ -1935,6 +2007,9 @@ data['elenco_soggetti'] = ', '.join(elenco_soggetti)
 
 #Recupero le informazioni sugli allegati da protocollare
 #la getDocumenti va sostituita magari con la  getAttachmentInfo o cose simili
+    
+    
+    
 data["documento_principale"] = view.getDocumenti(fld_docprincipale)[0]
 if fld_allegati:
     allegati = view.getDocumenti(fld_allegati)
@@ -1949,7 +2024,7 @@ if fld_allegati:
 
 #Protocollazione
 
-flusso = 'U'
+flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
@@ -1959,14 +2034,9 @@ res = json_loads(res)
 #Se successo inserisco informazioni su Protocollo
 if res["success"]==1:    
     protocollo = res["NumeroProtocollo"]
-    anno = DateToString(Now(),'%Y')
-    doc.setItem('protocollo_avvio_procedimento',protocollo)
-    doc.setItem('data_avvio_procedimento',Now())
-    #doc.setItem('anno_protocollo_uscita',anno)
-    doc.setItem('data_comunicazione_avvio_procedimento',Now())
-    doc.setWfActivity(activity="Comunicazione avvio del procedimento")
-    #Da sostituire con Pec da SicraWeb
-    context.sendMail(doc=doc,azione='avvio-procedimento')
+    return protocollo
+else:
+    return -1
 ]]></resource>
       <resource id="SerializeTitolo" title="" type="Script (Python)"><![CDATA[## Script (Python) "SerializeTitolo"
 ##bind container=container
@@ -2155,13 +2225,13 @@ if not 'titolo_esistente_id' in idx.indexes():
 brains = idx.dbsearch(dict(titolo_esistente_id=doc.getId()),sortindex="data_protocollo",reverse=1)
 results = [brain.getObject() for brain in brains]
 
-
+content = "" 
 html=''
 elenco=[]
 dzRuoli = dict(progettista='Progettista',direttore='Direttore Lavori',progettista_strutt='Progettista Opere Strutturali',direttore_strutt='Direttore Lavori Opere Strutturali',esecutore='Ditta Esecutrice dei Lavori',resp_sicurezza='Responsabile alla Sicurezza',collaudatore='Collaudatore',tecnico='Altro Tecnico')
 
 keys=['progettista','direttore','progettista_strutt','direttore_strutt','esecutore','resp_sicurezza','collaudatore','tecnico']
-        
+       
 #cerco prima i nominativi sui documenti figli
 for key in keys:
     
@@ -2173,7 +2243,7 @@ for key in keys:
             ##### SETTO L'INDICE DI RICERCA QUI PER LE PROVE (DA SETTARE IN INVIO?)#########
             doc.setItem(key+'_search',childDoc.getItem(key+'_search'))
             
-            renderForm=db.getForm('base_sub_'+key)
+            renderForm=db.getForm('sub_'+key)
             sostituito=''
             if childDoc.getItem(key + '_comunicazione_opt')=='3':
                 sostituito = '<p><span class="label">In sostituzione di %s</span></p>' %childDoc.getItem(key + '_sostituito')
@@ -2181,15 +2251,15 @@ for key in keys:
             if key=='esecutore':
                 content=content + "<h5>RICORDA DI AGGIUNGERE I RENDER DELLE ALTRE DITTE</h5>" 
             if content:
-                html=html + '<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=base_sub_%s"> %s -- comunicazione prot. %s del %s  <i class="icon-edit"></i></a></legend><div class="v-content well">%s%s</div></fieldset>'%(childDoc.absolute_url(),key,dzRuoli[key],childDoc.getItem('numero_protocollo'),childDoc.getItem('data_protocollo_testo'),sostituito,content)
+                html=html + '<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=sub_%s"> %s -- comunicazione prot. %s del %s  <i class="icon-edit"></i></a></legend><div class="v-content well">%s%s</div></fieldset>'%(childDoc.absolute_url(),key,dzRuoli[key],childDoc.getItem('numero_protocollo'),childDoc.getItem('data_protocollo_testo'),sostituito,content)
                 
     #cerco i nominativi sul documento padre
     if not key in elenco and doc.getItem(key + '_cf'):
         elenco.append(key)
-        renderForm=db.getForm('base_sub_'+key)
+        renderForm=db.getForm('sub_'+key)
         content=content + renderForm.displayDocument(doc)
         if content:
-            html=html + '<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=base_sub_%s"> %s  <i class="icon-edit"></i></a></legend><div class="v-content well">%s</div></fieldset>'%(doc.absolute_url(),key,dzRuoli[key],content)
+            html=html + '<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=sub_%s"> %s  <i class="icon-edit"></i></a></legend><div class="v-content well">%s</div></fieldset>'%(doc.absolute_url(),key,dzRuoli[key],content)
     
 
     
@@ -2515,6 +2585,149 @@ if res["success"]==1:
     doc.setItem('numero_protocollo_uscita',protocollo)
     doc.setItem('data_protocollo_uscita',Now())
     doc.setItem('anno_protocollo_uscita',anno)
+]]></resource>
+      <resource id="xxxProtocollazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "xxxProtocollazione"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None, step=''
+##title=
+##
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads 
+
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+
+db=context.getParentDatabase()
+
+#Protocollazione In Uscita
+
+#Recupero la Browser View
+view = doc.restrictedTraverse('protocollazione')
+
+#Recupero la configurazione del protocollo
+config = db.resources.config_protocollo(doc)
+
+# A seconda di cosa sto protocollando agisco in maniera differente
+#Documenti da Protocollare
+fld_docprincipale = config["step"][step]['doc_principale']
+fld_allegati = config["step"][step]['altri_allegati']
+#Soggetti della protocollazione
+#In questo caso la comunicazione va inviata ai soli interessati della pratica
+#La getElencoSoggettiPec restituisce una lista di etichette dei soggetti della pratica a cui inviare la comunicazione (es. richiedente, progettista etc.)
+soggetti = db.resources.customscripts.getElencoSoggettiPec(doc)
+
+#Informazioni dell'Amministrazione
+ente = config["ente"]
+
+elenco_soggetti = list()
+#Inizializzo l'oggetto data necessario alla protocollazione
+data = dict()
+data["soggetti"] = []
+data["allegati"] = []
+#Oggetto della Protocollazione
+data["oggetto"] = config["step"][step]['oggetto']
+#Amministrazione usata sia in Entrata che in Uscita
+data["ente"] = ente
+#Recupero i soggetti della Protocollazione
+for k in soggetti:
+    s = db.resources.customscripts.getSoggettoPec(doc,k)
+    data["soggetti"].append(s)
+    elenco_soggetti.append("%s %s" %(s["cognome"],s["nome"]))
+
+data['elenco_soggetti'] = ', '.join(elenco_soggetti)
+return view.getDocumenti(fld_docprincipale)
+#Recupero le informazioni sugli allegati da protocollare
+#la getDocumenti va sostituita magari con la  getAttachmentInfo o cose simili
+data["documento_principale"] = view.getDocumenti(fld_docprincipale)[0]
+if fld_allegati:
+    allegati = view.getDocumenti(fld_allegati)
+    for a in allegati:
+        data["allegati"].append(a)
+
+#Se la pratica e' collegata ad un'altra inserisco i riferimenti del protocollo genitore
+#Utile per raggruppare i protocolli sul sistema del protocollo
+#if doc.getItem('titolo_esistente_protocollo'):
+#    data["protocollo_origine"] = doc.getItem('numero_protocollo','')
+#    data["anno_protocollo_origine"] = doc.getItem('anno_protocollo','')
+
+#Protocollazione
+
+flusso = 'U'
+#Se inserisco il terzo parametro 'testxml' non protocolla 
+#testxml = 1 restituisce XML
+#testxml = 2 protocolla con un random
+res = view.protocolla_comunicazione(flusso,data,2)
+#Recupero il risultato
+res = json_loads(res)
+#Se successo inserisco informazioni su Protocollo
+if res["success"]==1:    
+    protocollo = res["NumeroProtocollo"]
+    return protocollo
+else:
+    return -1
+]]></resource>
+      <resource id="getElencoEventi" title="" type="Script (Python)"><![CDATA[## Script (Python) "getElencoEventi"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None
+##title=
+##
+from Products.CMFPlomino.PlominoUtils import json_dumps,DateToString
+
+#if isinstance(doc, basestring):
+#    doc = context.getDocument("04373-2019-pdc")
+    
+ret=[]   
+for res in context.aq_parent.zsql.ElencoEventi(documento="02516-2018-scia2").dictionaries():
+    ret.append(dict(evento=res["descrizione"],start=DateToString(res["data_fine"])))
+
+
+
+return json_dumps({"success":1, "results":ret})
+]]></resource>
+      <resource id="InviaComunicazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "InviaComunicazione"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None,step='',parentDoc=None
+##title=
+##
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+db=context.getParentDatabase()
+#Se e' gia' stata protocollata la comunicazione skip
+if doc.getItem('protocollo_%s' %step):
+    protocollo = 0
+else:    
+    protocollo = context.Protocollazione(doc=doc,step=step,parentDoc=parentDoc)
+    
+if protocollo > 0:
+    #Setto informazioni di Protocollazione
+    doc.setItem('protocollo_%s' %step,protocollo)
+    doc.setItem('data_protocollo_%s' %step,Now())
+    doc.setItem('data_comunicazione_%s' %step,Now())
+    return protocollo
+elif protocollo == 0:
+    return 0
+else:
+    doc.plone_utils.addPortalMessage('''Attenzione si sono riscontrati errori durante la protocollazione automatica''' ,'error')
+    msg='''Errore in fase di protocollazione automatica. Il servizio di assistenza ha gia' preso in carico la segnalazione.'''
+    doc.setItem('ws_response_message',"<div class='alert alert-error'><h5>%s</h5></div>" %msg)
+    context.sendMail(doc=doc,azione='protocollazione-ko')
+    return -1
 ]]></resource>
     </resource>
   </design>

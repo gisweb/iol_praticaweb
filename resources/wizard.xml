@@ -92,7 +92,9 @@ menus['back'] = [
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Oneri", "frm": "bo_oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
-    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}                              
+    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Eventi e Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}                              
+
 ]
 
 return menus
@@ -163,7 +165,8 @@ menus['back'] = [
     {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
     {"label": "Asseverata", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Vincoli", "frm": "bo_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
-    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}   
+    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Eventi e Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
 ]
 
 
@@ -235,7 +238,8 @@ menus['back'] = [
     {"label": "Inizio / Fine lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
     {"label": "Asseverata", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Vincoli", "frm": "bo_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
-    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}   
+    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Eventi e Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
 ]
 
 
@@ -276,7 +280,8 @@ menus['back'] = [
     {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
     {"label": "Asseverata", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Vincoli", "frm": "bo_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
-    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}   
+    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Eventi e Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
 ]
 
 
@@ -969,6 +974,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Richiedente", "frm": "frm_tipomappale", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Progettista", "frm": "frm_progettista", "title": "Localizzazione Intervento"}, 
     {"label": "Ubicazione", "frm": "frm_ubicazione_tipomappale", "title": "Localizzazione Intervento"}, 
     {"label": "Allegati", "frm": "frm_tipomappale_allegati", "title": "Documentazione allegata"}, 
     {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}

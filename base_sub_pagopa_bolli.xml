@@ -1,0 +1,109 @@
+<plominodatabase id="iol_praticaweb">
+  <design>
+    <element id="base_sub_pagopa_bolli" title="base_sub_pagopa_bolli" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">base_sub_pagopa_bolli</id>
+      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
+      <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
+      <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
+      <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('ricevuta_pagamento_bollo_titolo',{})!={}:
+    context.removeItem('pagopa_locked')
+context.setItem('Form','frm_presentata')]]></onSaveDocument>
+      <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
+      <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
+      <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
+      <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
+<div class="iol-toolbar"></div>
+<p><span class="plominoHidewhenClass">start:hw_no_bollo_titolo</span></p>
+<div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">Bolli</legend>
+<div class="alert alert-info">Il bollo non può essere pagato utilizzando la piattaforma PagoPa</div>
+<span class="plominoLabelClass">ricevuta_pagamento_bollo_titolo</span><span class="plominoFieldClass">ricevuta_pagamento_bollo_titolo</span>
+<p><span class="plominoHidewhenClass">start:hw_no_dichiarazione_bollo</span></p>
+<p><a href="modelli/praticaweb/autorizzazione/marca-da-bollo" target="_blank" title="Dichiarazione sostitutiva di annullo per n. ???????????????? marche da bollo da 16 euro ciascuna da compilare e allegare"><span class="label"><img src="pdf.png"> Dichiarazione sostitutiva di annullo per n. 2 marche da bollo da 16 euro ciascuna da compilare e allegare </span></a></p>
+<p><span class="plominoHidewhenClass">end:hw_no_dichiarazione_bollo</span></p>
+<span class="plominoActionClass">btn_allega_bollo</span>
+</fieldset></div>
+<p><span class="plominoHidewhenClass">end:hw_no_bollo_titolo</span></p>
+]]></FormLayout>
+      <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
+      <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
+      <DynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</DynamicDocumentTitle>
+      <StoreDynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</StoreDynamicDocumentTitle>
+      <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentId>
+      <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
+      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">True</HideDefaultActions>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
+      <isSearchForm type="Products.Archetypes.Field.BooleanField">False</isSearchForm>
+      <isPage type="Products.Archetypes.Field.BooleanField">False</isPage>
+      <SearchView type="Products.Archetypes.Field.StringField"/>
+      <SearchFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></SearchFormula>
+      <Position type="Products.Archetypes.Field.IntegerField"/>
+      <ResourcesJS type="Products.Archetypes.Field.TextField"><![CDATA[]]></ResourcesJS>
+      <ResourcesCSS type="Products.Archetypes.Field.TextField"><![CDATA[++resource++iol.document/css/bootstrap.min.css
+++resource++iol.document/css/bootstrap-accessibile.min.css
+++resource++iol.document/css/bootstrap-responsive.min.css
+++resource++iol.document/css/iol.css
+resources/iol-custom.css]]></ResourcesCSS>
+      <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="hw_no_bollo_titolo" title="hw_no_bollo_titolo" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_bollo_titolo</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return False
+
+pagamento_bollo = context.getParentDatabase().resources.config().get('paga_bollo',['pdc','paesaggistica-accertamento','paesaggistica-ordinaria','paesaggistica-semplificata','idrogeologico-aut','dsi'])
+if pagamento_bollo == 'PagoPa':
+    return True
+else:
+    return context.getItem('iol_tipo_app','pdc') not in pagamento_bollo or context.getItem('allegato_allafirma_titolo',{})=={}]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
+        </element>
+        <element id="ricevuta_pagamento_bollo_titolo" title="Ricevuta versamento bolli per il rilascio del titolo" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">ricevuta_pagamento_bollo_titolo</id>
+          <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldRead</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldEdit</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-plugin = "iolUploadFile" data-plugin-options={"emptyMessage":"NoFiles","maxsize":"7","filetype":["jpg","png","pdf","p7m"]}''']]></HTMLAttributesFormula>
+        </element>
+        <element id="hw_no_dichiarazione_bollo" title="hw_no_dichiarazione_bollo" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_dichiarazione_bollo</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return not context.getParentDatabase().resources.config().get('dichiarazione_sostituiva_bollo')]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
+        </element>
+        <element id="btn_allega_bollo" title="Inserisci / modifica l'allegato &gt;&gt;" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_allega_bollo</id>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA["%s/EditDocument?openwithform=base_sub_pagopa_bolli" %context.absolute_url()]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
+    return context.getItem('allegato_comunicazione_titolo',{})!={}
+except:
+    return False]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
+        </element>
+        <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_save</id>
+          <ActionType type="Products.Archetypes.Field.StringField">SAVE</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return not context.isEditMode()]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
+        </element>
+        <element id="btn_cancel" title="Annulla" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_cancel</id>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.absolute_url()]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return not context.isEditMode()]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
+        </element>
+      </elements>
+    </element>
+  </design>
+</plominodatabase>

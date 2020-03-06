@@ -1,7 +1,7 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="bo_tecnici" title="bo_tecnici" type="PlominoForm">
-      <id type="Products.Archetypes.Field.StringField">bo_tecnici</id>
+    <element id="bo_tecnici_variazioni" title="bo_tecnici_variazioni" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">bo_tecnici_variazioni</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
@@ -11,15 +11,6 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<p><span class="plominoFieldClass">progettista</span></p>
-<p><span class="plominoFieldClass">direttore</span></p>
-<p><span class="plominoFieldClass">progettista_strutt</span></p>
-<p><span class="plominoFieldClass">direttore_strutt</span></p>
-<p><span class="plominoFieldClass">altri_tecnici</span></p>
-<p><span class="plominoFieldClass">collaudatore</span></p>
-<p><span class="plominoFieldClass">sicurezza</span></p>
-<p><span class="plominoFieldClass">esecutore</span></p>
-<p><span class="plominoFieldClass">child_documents</span></p>
 <p><span class="plominoFieldClass">elenco_tecnici</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
