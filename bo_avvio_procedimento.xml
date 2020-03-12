@@ -111,7 +111,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 </param>
 </params>
         </element>
-        <element id="data_avvio_procedimento" title="Data preavviso rigetto" type="PlominoField">
+        <element id="data_avvio_procedimento" title="Data Avvio Procedimento" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">data_avvio_procedimento</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATETIME</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -181,7 +181,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 </param>
 </params>
         </element>
-        <element id="allegato_documento_avvio_procedimento" title="Documento preavviso rigetto" type="PlominoField">
+        <element id="allegato_documento_avvio_procedimento" title="Documento Avvio del Procedimento" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">allegato_documento_avvio_procedimento</id>
           <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -309,7 +309,7 @@ except:
 elif context.getItem('allegato_comunicazione_avvio_procedimento',{})=={}:
     return '''<div class="alert alert-info">Dopo aver fatto firmare digitalmente il documento, allegare il p7m nel campo “Comunicazione firmata” e salvare.</div>'''
 elif context.getItem('data_comunicazione_avvio_procedimento')!='':
-    msg = '''Comunicazione di preavviso di rigetto dell'istanza inviata in data ''' +  DateToString(context.getItem('data_comunicazione_avvio_procedimento'),format="%d/%m/%Y %H:%M")
+    msg = '''Comunicazione di avvio procedimento dell'istanza inviata in data ''' +  DateToString(context.getItem('data_comunicazione_avvio_procedimento'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_avvio_procedimento'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_avvio_procedimento'))
     return '''<div class="alert alert-success"><strong>%s</strong></div>''' %msg
@@ -361,7 +361,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 </param>
 </params>
         </element>
-        <element id="protocollo_avvio_procedimento" title="Protocollo preavviso rigetto" type="PlominoField">
+        <element id="protocollo_avvio_procedimento" title="Protocollo avvio procedimento" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">protocollo_avvio_procedimento</id>
           <FieldType type="Products.Archetypes.Field.StringField">NUMBER</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -374,7 +374,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
-        <element id="data_protocollo_avvio_procedimento" title="Data protocollo preavviso rigetto" type="PlominoField">
+        <element id="data_protocollo_avvio_procedimento" title="Data protocollo avvio procedimento" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">data_protocollo_avvio_procedimento</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATETIME</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>

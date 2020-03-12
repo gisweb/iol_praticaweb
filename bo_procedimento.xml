@@ -12,22 +12,40 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">info_procedimento</span></p>
 <p><span class="plominoFieldClass">pagamenti</span></p>
-<!-- RIFERIMENTI per integrazioni ecc --><p><span class="plominoFieldClass">riferimenti_pratica</span></p>
-<!-- DATE per integrazioni ecc --><p><span class="plominoFieldClass">riferimenti_comunicazione</span></p>
-<!--RILASCIO TITOLO --><p><span class="plominoFieldClass">rilascio_titolo</span></p>
-<!-- ISTRUTTORIA --><p><span class="plominoFieldClass">istruttoria</span></p>
-<!-- READERS  --><p><span class="plominoFieldClass">utenti_readers</span></p>
-<!-- RESPONSABILE DEL PROCEDIMENTO  --><p><span class="plominoFieldClass">assegnazione_responsabile</span></p>
-<!-- AVVIO DEL PROCEDIMENTO  --><p><span class="plominoFieldClass">avvio_procedimento</span></p>
-<!-- ASSEGNAZIONE E AVVIO DEL PROCEDIMENTO  --><p> </p>
-<!--<p><span class="plominoFieldClass">assegnazione_avvio_procedimento</span></p>--><p> </p>
-<!-- ELENCO INTEGRAZIONI --><p><span class="plominoFieldClass">elenco_integrazioni</span></p>
-<!-- ELENCO PARERI --><p><span class="plominoFieldClass">elenco_pareri</span></p>
-<!-- ELENCO COMMISSIONI --><p><span class="plominoFieldClass">elenco_commissioni</span></p>
-<!--PREAVVISO DI RIGETTO --><p><span class="plominoFieldClass">preavviso_rigetto</span></p>
-<!--RIGETTO --><p><span class="plominoFieldClass">rigetto</span></p>
-<!--PRATICHE COLLEGATE --><p><span class="plominoFieldClass">pratiche_collegate</span></p>
-<!--EMAIL PEC --><p><span class="plominoLabelClass">iol_check_email</span><span class="plominoFieldClass">iol_check_email</span></p>
+<!-- RIFERIMENTI per integrazioni ecc -->
+<p><span class="plominoFieldClass">riferimenti_pratica</span></p>
+<!-- DATE per integrazioni ecc -->
+<p><span class="plominoFieldClass">riferimenti_comunicazione</span></p>
+<!--RILASCIO TITOLO -->
+<p><span class="plominoFieldClass">rilascio_titolo</span></p>
+<!-- ISTRUTTORIA -->
+<p><span class="plominoFieldClass">istruttoria</span></p>
+<!-- READERS  -->
+<p><span class="plominoFieldClass">utenti_readers</span></p>
+<!-- RESPONSABILE DEL PROCEDIMENTO  -->
+<p><span class="plominoFieldClass">assegnazione_responsabile</span></p>
+<!-- AVVIO DEL PROCEDIMENTO  -->
+<p><span class="plominoFieldClass">avvio_procedimento</span></p>
+<!-- ASSEGNAZIONE E AVVIO DEL PROCEDIMENTO  -->
+<p> </p>
+<!--<p><span class="plominoFieldClass">assegnazione_avvio_procedimento</span></p>-->
+<p> </p>
+<!-- ELENCO INTEGRAZIONI -->
+<p><span class="plominoFieldClass">elenco_richieste_pagamento</span></p>
+<!-- ELENCO INTEGRAZIONI -->
+<p><span class="plominoFieldClass">elenco_integrazioni</span></p>
+<!-- ELENCO PARERI -->
+<p><span class="plominoFieldClass">elenco_pareri</span></p>
+<!-- ELENCO COMMISSIONI -->
+<p><span class="plominoFieldClass">elenco_commissioni</span></p>
+<!--PREAVVISO DI RIGETTO -->
+<p><span class="plominoFieldClass">preavviso_rigetto</span></p>
+<!--RIGETTO -->
+<p><span class="plominoFieldClass">rigetto</span></p>
+<!--PRATICHE COLLEGATE -->
+<p><span class="plominoFieldClass">pratiche_collegate</span></p>
+<!--EMAIL PEC -->
+<p><span class="plominoLabelClass">iol_check_email</span><span class="plominoFieldClass">iol_check_email</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -325,10 +343,23 @@ if not context.getParentDatabase().resources.customscripts.getPagoPaEnabled(cont
 
 renderForm=db.getForm('base_sub_pagopa')
 content=asUnicode(renderForm.displayDocument(context))
+
+#aggiungo i doc di pagamenti inviati 
+pagamenti=''
+idx = db.getIndex()
+brains = idx.dbsearch(dict(numero_pratica=context.getItem('numero_pratica'),Form='frm_invio_pagamento'),sortindex="data_pratica")
+for brain in brains:
+    doc=brain.getObject()
+    pagamenti = pagamenti + '<p><h5><a target="_blank" href="%s"> %s </a></h5></p>'%(doc.absolute_url(),doc.getId())
+if pagamenti:
+    pagamenti='<fieldset class="scheduler-border"><legend class="scheduler-border"> Pagamenti inviati </legend>%s</fieldset>'%(pagamenti)
+
 html=''
 if content:
-    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=base_sub_pagopa"> Importi e pagamenti <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
+    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=base_sub_pagopa"> Importi e pagamenti <i class="icon-edit"></i></a></legend> %s %s </fieldset>'%(context.absolute_url(),content,pagamenti)
 
+
+       
 return html]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
@@ -530,7 +561,7 @@ return iolGetMail(context)# + iolGetMail(context,config='config_mailhost_old')]]
           <id type="Products.Archetypes.Field.StringField">riferimenti_pratica</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('titolo_esistente_id'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('iol_tipo_app') in ['iniziolavori','finelavori','integrazione']:
     return ''
 
 db=context.getParentDatabase()
@@ -560,6 +591,36 @@ try:
 except:
     content=''
 return content]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_richieste_pagamento" title="Ordinativi di incasso" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_richieste_pagamento</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+db=context.getParentDatabase()
+idx = db.getIndex()
+if not 'parent_document' in idx.indexes():
+    return []
+
+#la ricerca deve restituire i documenti dei quali l'utente corrente è author
+brains = idx.dbsearch(dict(parent_document=context.getId(),Form='bo_richiesta_pagamento'))  
+html=''
+for brain in brains:
+    doc=brain.getObject()
+    renderForm=db.getForm('bo_richiesta_pagamento')
+    content=asUnicode(renderForm.displayDocument(doc))    
+    if content:
+        html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument"> Ordinativo di pagamento <i class="icon-edit"></i></a></legend>%s</fieldset>'%(doc.absolute_url(),content)
+
+    
+return html]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

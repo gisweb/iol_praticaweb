@@ -346,7 +346,7 @@ else:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>["Presentata|presentata","Assegnata in istruttoria|istruttoria","Istruttoria completata|istruttoria_ok","Attesa pagamento|attesa_pagamento_presentazione"]</string></value>
+<value><string>["Presentata|presentata","Assegnata in istruttoria|istruttoria","Istruttoria completata|istruttoria_ok","Attesa documentazione integrativa|attesa_integrazione","Autorizzata|autorizzata","Preavviso di rigetto|istruttoria_ko","Rigettata|rigettata","Attesa firma preavviso rigetto|attesa_firma_preavviso_rigetto","Attesa firma rigetto|attesa_firma_rigetto","Attesa firma autorizzazione|attesa_firma_titolo","Attesa pagamento autorizzazione|attesa_pagamento_titolo","Attesa pagamento presentazione|attesa_pagamento_presentazione","Compilazione|compilazione"]</string></value>
 </member>
 </struct></value>
 <value><struct>

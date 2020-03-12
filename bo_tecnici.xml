@@ -19,8 +19,6 @@
 <p><span class="plominoFieldClass">collaudatore</span></p>
 <p><span class="plominoFieldClass">sicurezza</span></p>
 <p><span class="plominoFieldClass">esecutore</span></p>
-<p><span class="plominoFieldClass">child_documents</span></p>
-<p><span class="plominoFieldClass">elenco_tecnici</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>

@@ -379,7 +379,9 @@ except:
           <id type="Products.Archetypes.Field.StringField">info_sorteggio</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('sorteggio')=='X':
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return ''
+
+if context.getItem('sorteggio')=='X':
     return "<h5>Pratica non soggetta a sorteggio</h5>"
 elif context.getItem('sorteggio')=='N':
     return "<h5>Pratica non sorteggiata</h5>"

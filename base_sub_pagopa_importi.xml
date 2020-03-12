@@ -164,7 +164,10 @@ if conf.get(context.getItem('iol_tipo_app')) and conf.get(context.getItem('iol_t
         </element>
         <element id="hw_no_pagopa" title="hw_no_pagopa" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_pagopa</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return not context.getParentDatabase().resources.customscripts.getPagoPaEnabled(context)]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return False
+
+return not context.getParentDatabase().resources.customscripts.getPagoPaEnabled(context)]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
         </element>
         <element id="immobile_volumetria_msg" title="immobile_volumetria_msg" type="PlominoField">
