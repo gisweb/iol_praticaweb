@@ -38,7 +38,10 @@
           <id type="Products.Archetypes.Field.StringField">display_document</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+db=context.getParentDatabase()
 frm = 'sub_completa_' + context.getItem('iol_tipo_app')
 renderForm=db.getForm(frm)
 if renderForm:
@@ -71,6 +74,9 @@ else:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+if not context.isDocument():
+    return
+
 db=context.getParentDatabase()
 renderForm=db.getForm('bo_readers')
 content=renderForm.displayDocument(context)

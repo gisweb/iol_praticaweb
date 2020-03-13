@@ -285,8 +285,7 @@ invia = db.resources.customscripts.InviaComunicazione(context,'preavviso_rigetto
 if invia > 0:
     context.doAction('preavviso_rigetto')
 
-return context.absolute_url()
-]]></Content>
+return context.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.isEditMode() or context.getItem('data_comunicazione_preavviso_rigetto')!='' or context.getItem('allegato_comunicazione_preavviso_rigetto',{})=={}
 except:

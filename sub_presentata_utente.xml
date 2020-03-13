@@ -12,22 +12,14 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">ws_response_message</span></p>
 <p><span class="plominoFieldClass">iol_workflow_title</span></p>
-<!--PAGAMENTI-->
-<p><span class="plominoFieldClass">pagamenti</span></p>
-<!-- AUTORIZZAZIONE -->
-<p><span class="plominoFieldClass">autorizzazione</span></p>
-<!-- EVENTUALE AVVISO DI RIGETTO -->
-<p><span class="plominoFieldClass">avviso_rigetto</span></p>
-<!-- EVENTUALE RIGETTO -->
-<p><span class="plominoFieldClass">rigetto</span></p>
-<!-- VISTA PRATICA -->
-<p><span class="plominoFieldClass">display_document</span></p>
-<!-- INTEGRAZIONI -->
-<p><span class="plominoFieldClass">elenco_integrazioni</span></p>
-<!-- PRATICHE COLLEGATE -->
-<div class="v-content well">
-<p><span class="plominoFieldClass">pratiche_collegate</span></p>
-</div>
+<!--PAGAMENTI--><p><span class="plominoFieldClass">pagamenti</span></p>
+<!-- AUTORIZZAZIONE --><p><span class="plominoFieldClass">autorizzazione</span></p>
+<!-- EVENTUALE AVVISO DI RIGETTO --><p><span class="plominoFieldClass">avviso_rigetto</span></p>
+<!-- EVENTUALE RIGETTO --><p><span class="plominoFieldClass">rigetto</span></p>
+<!-- VISTA PRATICA --><p><span class="plominoFieldClass">display_document</span></p>
+<p><span class="plominoFieldClass">child_documents</span></p>
+<!-- INTEGRAZIONI --><p><span class="plominoFieldClass">elenco_integrazioni</span></p>
+<!-- PRATICHE COLLEGATE --><div class="v-content well"><p><span class="plominoFieldClass">pratiche_collegate</span></p></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -55,7 +47,10 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">display_document</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return 
+
+db=context.getParentDatabase()
 tipo_app = context.getItem('iol_tipo_app')
 renderForm=db.getForm('sub_completa_' + tipo_app)
 if renderForm:
@@ -104,6 +99,8 @@ else:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+if not context.isDocument():
+    return
 db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'parent_document' in idx.indexes():
@@ -132,7 +129,10 @@ return content]]></Formula>
           <id type="Products.Archetypes.Field.StringField">avviso_rigetto</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('data_avviso_rigetto'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+if not context.getItem('data_avviso_rigetto'):
     return ''
 db=context.getParentDatabase()
 renderForm=db.getForm('sub_avviso_rigetto')
@@ -149,7 +149,9 @@ return renderForm.displayDocument(context)]]></Formula>
           <id type="Products.Archetypes.Field.StringField">rigetto</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('data_rigetto'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+if not context.getItem('data_rigetto'):
     return ''
 db=context.getParentDatabase()
 renderForm=db.getForm('sub_rigetto')
@@ -180,6 +182,9 @@ return renderForm.displayDocument(context)]]></Formula>
           <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+if not context.isDocument():
+    return
+
 db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'parent_document' in idx.indexes():
@@ -227,6 +232,9 @@ return html]]></Formula>
           <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+if not context.isDocument():
+    return
+
 db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'parent_document' in idx.indexes():
@@ -273,7 +281,9 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">pagamenti</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+db=context.getParentDatabase()
 renderForm=db.getForm('base_sub_pagopa')
 return asUnicode(renderForm.displayDocument(context))]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
@@ -288,7 +298,10 @@ return asUnicode(renderForm.displayDocument(context))]]></Formula>
           <id type="Products.Archetypes.Field.StringField">autorizzazione</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#se non ce titolo non mostro
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+#se non ce titolo non mostro
 if not context.getItem('data_titolo'):
     return ''
 
@@ -325,7 +338,10 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">protocollo</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+db=context.getParentDatabase()
 renderForm=db.getForm('base_sub_protocollo')
 return renderForm.displayDocument(context)]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
@@ -357,8 +373,7 @@ return renderForm.displayDocument(context)]]></Formula>
     info = context.getwfInfo()
     return '''<div class = "alert alert-info"><h5>%s</h5></div>''' %info["state_title"]
 except:
-   return ''
-]]></Formula>
+    return '']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -371,7 +386,9 @@ except:
           <id type="Products.Archetypes.Field.StringField">rilascio_titolo</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('data_rilascio_titolo'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+if not context.getItem('data_rilascio_titolo'):
     return ''
 db=context.getParentDatabase()
 renderForm=db.getForm('bo_rilascio_titolo')
@@ -394,7 +411,9 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">copy_of_rigetto</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('oggetto_rigetto'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+if not context.getItem('oggetto_rigetto'):
     return ''
 db=context.getParentDatabase()
 renderForm=db.getForm('bo_rigetto')
@@ -417,7 +436,9 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">preavviso_rigetto</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('data_preavviso_rigetto'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+if not context.getItem('data_preavviso_rigetto'):
     return ''
 db=context.getParentDatabase()
 renderForm=db.getForm('sub_preavviso_rigetto')
@@ -434,7 +455,10 @@ return renderForm.displayDocument(context)]]></Formula>
           <id type="Products.Archetypes.Field.StringField">allegati_istanza</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('iol_pe'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+if context.getItem('iol_pe'):
     return 
 
 
@@ -459,7 +483,10 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">allegati_pe</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.getItem('iol_pe'):
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+if not context.getItem('iol_pe'):
     return 
 
 db=context.getParentDatabase()
@@ -483,7 +510,10 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">child_documents</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
 db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'numero_pratica' in idx.indexes():

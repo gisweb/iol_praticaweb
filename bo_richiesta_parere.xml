@@ -330,8 +330,7 @@ if invia > 0:
 #Allineo i readers
 context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
 context.getParentDatabase().getIndex().indexDocument(context)
-return parentDoc.absolute_url()
-]]></Content>
+return parentDoc.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.isEditMode() or plominoDocument.getItem('data_comunicazione_richiesta_parere')!='' or context.getItem('allegato_comunicazione_richiesta_parere',{})=={}
 except:

@@ -16,11 +16,7 @@ setIolEvent(context,
 context.setItem('Form','frm_presentata')
 context.removeItem('NOTIFICA_OGGETTO')
 context.removeItem('NOTIFICA_UTENTE')
-context.removeItem('NOTIFICA_PRIORITA')
-
-
-
-]]></onSaveDocument>
+context.removeItem('NOTIFICA_PRIORITA')]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
