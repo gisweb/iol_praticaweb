@@ -171,10 +171,10 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
         </element>
         <element id="notifica" title="Notificato a" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">notifica</id>
-          <FieldType type="Products.Archetypes.Field.StringField">NAME</FieldType>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
@@ -186,14 +186,25 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <value><array><data>
 <value><struct>
 <member>
-<name>restricttogroup</name>
-<value><string>sue_istruttori</string></value>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
 <member>
-<name>type</name>
-<value><string>MULTI</string></value>
+<name>selectionlistformula</name>
+<value><string>from iol.document.plomino_utils import elencoUtentiGruppi
+settings = context.getParentDatabase().resources.customscripts.getDocSettings()
+grp = settings.getItem('grp_istruttori')
+if grp:
+    return ['|'] + elencoUtentiGruppi(context,groups=[grp])
+else:
+    return []</string></value>
 </member>
 </struct></value>
 </data></array></value>
@@ -251,10 +262,10 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
         </element>
         <element id="userid" title="Utente" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">userid</id>
-          <FieldType type="Products.Archetypes.Field.StringField">NAME</FieldType>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.getCurrentUser().getId()]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
@@ -264,6 +275,29 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <params>
 <param>
 <value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>from iol.document.plomino_utils import elencoUtentiGruppi
+settings = context.getParentDatabase().resources.customscripts.getDocSettings()
+grp = settings.getItem('grp_istruttori')
+if grp:
+    return ['|'] + elencoUtentiGruppi(context,groups=[grp])
+else:
+    return []</string></value>
+</member>
+</struct></value>
 <value><struct>
 <member>
 <name>separator</name>

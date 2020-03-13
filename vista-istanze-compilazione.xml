@@ -79,7 +79,7 @@
           <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
-        <element id="direttore" title="Direttore" type="PlominoColumn">
+        <element id="direttore" title="Direttore Lavori" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">direttore</id>
           <SelectedField type="Products.Archetypes.Field.StringField">base_sub_ricerca/direttore_search</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>

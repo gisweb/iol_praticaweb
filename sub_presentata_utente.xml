@@ -12,17 +12,22 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">ws_response_message</span></p>
 <p><span class="plominoFieldClass">iol_workflow_title</span></p>
-<!--PAGAMENTI--><p><span class="plominoFieldClass">pagamenti</span></p>
-<!-- AUTORIZZAZIONE --><p><span class="plominoFieldClass">autorizzazione</span></p>
-<!-- EVENTUALE AVVISO DI RIGETTO --><p><span class="plominoFieldClass">avviso_rigetto</span></p>
-<!-- EVENTUALE RIGETTO --><p><span class="plominoFieldClass">rigetto</span></p>
-<!-- VISTA PRATICA --><p><span class="plominoFieldClass">display_document</span></p>
-<h4 class="alert-info">QUADRO RIEPILOGATIVO DELLA DOCUMENTAZIONE PRODOTTA</h4>
-<p><span class="plominoFieldClass">allegati_istanza</span></p>
-<p><span class="plominoFieldClass">allegati_pe</span></p>
-<p><span class="plominoFieldClass">child_documents</span></p>
-<!-- INTEGRAZIONI --><p><span class="plominoFieldClass">elenco_integrazioni</span></p>
-<!-- PRATICHE COLLEGATE --><div class="v-content well"><p><span class="plominoFieldClass">pratiche_collegate</span></p></div>
+<!--PAGAMENTI-->
+<p><span class="plominoFieldClass">pagamenti</span></p>
+<!-- AUTORIZZAZIONE -->
+<p><span class="plominoFieldClass">autorizzazione</span></p>
+<!-- EVENTUALE AVVISO DI RIGETTO -->
+<p><span class="plominoFieldClass">avviso_rigetto</span></p>
+<!-- EVENTUALE RIGETTO -->
+<p><span class="plominoFieldClass">rigetto</span></p>
+<!-- VISTA PRATICA -->
+<p><span class="plominoFieldClass">display_document</span></p>
+<!-- INTEGRAZIONI -->
+<p><span class="plominoFieldClass">elenco_integrazioni</span></p>
+<!-- PRATICHE COLLEGATE -->
+<div class="v-content well">
+<p><span class="plominoFieldClass">pratiche_collegate</span></p>
+</div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -348,8 +353,12 @@ return renderForm.displayDocument(context)]]></Formula>
           <id type="Products.Archetypes.Field.StringField">iol_workflow_title</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[info = context.getwfInfo()
-return '''<div class = "alert alert-info"><h5>%s</h5></div>''' %info["state_title"]]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[try:
+    info = context.getwfInfo()
+    return '''<div class = "alert alert-info"><h5>%s</h5></div>''' %info["state_title"]
+except:
+   return ''
+]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

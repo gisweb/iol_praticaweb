@@ -26,7 +26,7 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">DATI ANAGRAFICI DEL RICHIEDENTE</legend>
 <p><span class="plominoSubformClass">base_sub_fisica</span></p>
-<p><span class="plominoSubformClass">base_sub_fisica_domitaglioalberiio</span></p>
+<p><span class="plominoSubformClass">base_sub_fisica_domicilio</span></p>
 <p><span class="plominoSubformClass">base_sub_giuridica</span></p>
 <p><span class="plominoSubformClass">sub_condominio</span></p>
 <p><span class="plominoSubformClass">sub_comproprietari</span></p>
@@ -34,23 +34,15 @@
 </fieldset></div>
 <p><span class="plominoSubformClass">sub_firma_digitale</span></p>
 <p><span class="plominoSubformClass">sub_consenso_pec</span></p>
-<p><span class="plominoSubformClass">sub_titolarita_intervento</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">UBICAZIONE DELL'INTERVENTO</legend> <span class="plominoSubformClass">sub_ubicazione</span>
 </fieldset></div>
-<p><span class="plominoSubformClass">sub_parti_comuni</span></p>
-<p><span class="plominoSubformClass">sub_immobile_destinazione</span></p>
-<p><span class="plominoSubformClass">sub_intervento_taglioalberi</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Progettista</legend>
 <p><span class="plominoSubformClass">sub_progettista</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Esecuzione delle opere</legend> <span class="plominoSubformClass">sub_esecutore</span>
-</fieldset></div>
-<div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">TUTELA DELLA SALUTE E DELLA SICUREZZA NEI LUOGHI DI LAVORO</legend>
-<p><span class="plominoSubformClass">sub_sicurezza</span></p>
 </fieldset></div>
 <div class="v-content well"><span class="plominoSubformClass">base_sub_stampa</span></div>
 ]]></FormLayout>

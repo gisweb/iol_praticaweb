@@ -28,7 +28,7 @@ if db.getDocument(docId):
 <span class="plominoLabelClass">grp_istruttori</span><span class="plominoFieldClass">grp_istruttori</span>
 </div>
 <div class="span3">
-<span class="plominoLabelClass">grp_readers</span><span class="plominoFieldClass">grp_readers</span>
+<span class="plominoLabelClass">grp_rup</span><span class="plominoFieldClass">grp_rup</span>
 </div>
 <div class="span3">
 <span class="plominoLabelClass">grp_pareri</span><span class="plominoFieldClass">grp_pareri</span>
@@ -61,7 +61,7 @@ if db.getDocument(docId):
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="grp_richiedenti" title="Gruppo degli utenti richiedenti" type="PlominoField">
+        <element id="grp_richiedenti" title="Richiedenti" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">grp_richiedenti</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -111,8 +111,58 @@ return elencoGruppi(context)+['Utente non registrato|Anonymous']</string></value
 </param>
 </params>
         </element>
-        <element id="grp_istruttori" title="Gruppo degli utenti istruttori" type="PlominoField">
+        <element id="grp_istruttori" title="Istruttori" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">grp_istruttori</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlist</name>
+<value><array><data>
+</data></array></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>from iol.document.plomino_utils import elencoGruppi
+return elencoGruppi(context)</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>SELECT</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="grp_rup" title="RUP" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">grp_rup</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
@@ -211,7 +261,7 @@ return elencoGruppi(context)</string></value>
 </param>
 </params>
         </element>
-        <element id="grp_pareri" title="Gruppo enti pareri" type="PlominoField">
+        <element id="grp_pareri" title="Enti pareri" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">grp_pareri</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
