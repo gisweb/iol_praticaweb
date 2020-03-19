@@ -72,7 +72,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">ZCTextIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return "readonly data-tool=ricerca-docid data-provider=%s" % context.getParentDatabase().resources.customscripts.getProvider()]]></HTMLAttributesFormula>
         </element>

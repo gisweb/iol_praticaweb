@@ -245,7 +245,7 @@ if not 'parent_document' in idx.indexes():
     return ''
 
 #la ricerca deve restituire i documenti dei queli l'utente corrente è author
-brains = idx.dbsearch(dict(parent_document=context.getId(),Form=['bo_richiesta_parere','bo_parere_risposta']))  
+brains = idx.dbsearch(dict(parent_document=context.getId(),Form=['bo_richiesta_parere','bo_parere_risposta']),sortindex='id')  
 html=''
 
 for brain in brains:

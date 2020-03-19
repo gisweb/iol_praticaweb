@@ -10,7 +10,7 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[<div class="v-content well">
-		  <fieldset class="scheduler-border">
+          <fieldset class="scheduler-border">
 <legend class="scheduler-border">OPERE SU PARTI COMUNI O MODIFICHE ESTERNE</legend>
 <div>
 <span class="plominoLabelClass">parti_comuni_opt</span><span class="plominoFieldClass">parti_comuni_opt</span>

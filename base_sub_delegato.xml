@@ -136,11 +136,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -446,11 +446,11 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>

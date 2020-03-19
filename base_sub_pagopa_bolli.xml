@@ -17,8 +17,7 @@ context.setItem('Form','frm_presentata')]]></onSaveDocument>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Bolli</legend>
 <div class="alert alert-info">Il bollo non può essere pagato utilizzando la piattaforma PagoPa</div>
-<span class="plominoLabelClass">ricevuta_pagamento_bollo_titolo</span><span class="plominoFieldClass">ricevuta_pagamento_bollo_titolo</span>
-<p><span class="plominoHidewhenClass">start:hw_no_dichiarazione_bollo</span></p>
+<span class="plominoLabelClass">ricevuta_pagamento_bollo_titolo</span><span class="plominoFieldClass">ricevuta_pagamento_bollo_titolo</span><p><span class="plominoHidewhenClass">start:hw_no_dichiarazione_bollo</span></p>
 <p><a href="modelli/praticaweb/autorizzazione/marca-da-bollo" target="_blank" title="Dichiarazione sostitutiva di annullo per n. ???????????????? marche da bollo da 16 euro ciascuna da compilare e allegare"><span class="label"><img src="pdf.png"> Dichiarazione sostitutiva di annullo per n. 2 marche da bollo da 16 euro ciascuna da compilare e allegare </span></a></p>
 <p><span class="plominoHidewhenClass">end:hw_no_dichiarazione_bollo</span></p>
 <span class="plominoActionClass">btn_allega_bollo</span>

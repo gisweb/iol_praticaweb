@@ -18,8 +18,7 @@ elif 'btn_save' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">base_sub_info_allegati</span></p>
 <p><span class="plominoSubformClass">sub_allegati_diritti_segreteria</span></p>
 <p><span class="plominoSubformClass">sub_allegati_doc_identita</span></p>
-<p><span class="plominoSubformClass">sub_allegati_sicurezza</span></p>
-<p><span class="plominoSubformClass">sub_allegati_attiassenso</span></p>
+<p><span class="plominoSubformClass">sub_allegati_taglioalberi</span></p>
 <p><span class="plominoSubformClass">sub_allegati_altro</span></p>
 <p><span class="plominoSubformClass">sub_sending_message</span></p>
 ]]></FormLayout>

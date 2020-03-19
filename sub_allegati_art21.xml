@@ -118,9 +118,9 @@ data-tooltip = "firmato digitalmente max 7Mb"
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''
-			  data-plugin = "iolUploadFile" 
-			  data-plugin-options='{"emptyMessage":"NoFiles","maxsize":"7","filetype":["p7m"]}'
-			  data-tooltip="da allegare solo nel caso che la competenza al rilascio sia regionale come ad esempio in ambito demaniale diversamente citare solo gli estremi"
+              data-plugin = "iolUploadFile" 
+              data-plugin-options='{"emptyMessage":"NoFiles","maxsize":"7","filetype":["p7m"]}'
+              data-tooltip="da allegare solo nel caso che la competenza al rilascio sia regionale come ad esempio in ambito demaniale diversamente citare solo gli estremi"
          ''']]></HTMLAttributesFormula>
         </element>
         <element id="hw_no_allegato_vincolo_paesaggistico" title="hw_no_allegato_vincolo_paesaggistico" type="PlominoHidewhen">

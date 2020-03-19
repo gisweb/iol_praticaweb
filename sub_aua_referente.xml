@@ -132,11 +132,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -167,7 +167,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">ZCTextIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['uppercase=1']]></HTMLAttributesFormula>
           <params>
@@ -219,7 +219,7 @@ data-plugin = "iolCodicefiscale" data-plugin-options='{"service":"get_codice_fis
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['uppercase=1']]></HTMLAttributesFormula>
           <params>

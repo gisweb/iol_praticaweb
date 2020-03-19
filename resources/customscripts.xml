@@ -113,6 +113,7 @@ if protocollo > 0:
     doc.setItem('protocollo_%s' %step,protocollo)
     doc.setItem('data_protocollo_%s' %step,Now())
     doc.setItem('data_comunicazione_%s' %step,Now())
+    doc.commitTransaction()
     return protocollo
 elif protocollo == 0:
     return 0
@@ -121,6 +122,7 @@ else:
     msg='''Errore in fase di protocollazione automatica. Il servizio di assistenza ha gia' preso in carico la segnalazione.'''
     doc.setItem('ws_response_message',"<div class='alert alert-error'><h5>%s</h5></div>" %msg)
     context.sendMail(doc=doc,azione='protocollazione-ko')
+    doc.commitTransaction()
     return -1
 ]]></resource>
       <resource id="InviaPagamento" title="" type="Script (Python)"><![CDATA[## Script (Python) "InviaPagamento"
@@ -315,10 +317,10 @@ def setClones():
         context.aq_parent.setClonePaesaggistica(doc)
     
     if "setCloneDsi" in context.aq_parent and \
-        (doc.getItem('conglomerato_opt') == '2') or \
+        ((doc.getItem('conglomerato_opt') == '2') or \
         (doc.getItem('conglomerato_opt') == '3' and doc.getItem('denuncia_art65_opt')=='1') or \
         (doc.getItem('interventi_strutturali_opt') == '3' and doc.getItem('documentazione_dsi_opt')=='1') or \
-        (doc.getItem('interventi_strutturali_opt') == '4'):
+        (doc.getItem('interventi_strutturali_opt') == '4')):
         context.aq_parent.setCloneDsi(doc)
         
     if "setCloneIdrogeologico" in context.aq_parent and doc.getItem('vincolo_idrogeologico_opt') == '3':
@@ -389,7 +391,9 @@ else:
 ##parameters=doc=None, step='', parentDoc=None
 ##title=
 ##
-from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads 
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads , asList
+from iol.document.plomino_utils import getMailAddress
+
 
 db=context.getParentDatabase()
 
@@ -434,10 +438,37 @@ data["oggetto"] = config["step"][step]['oggetto']
 #Amministrazione usata sia in Entrata che in Uscita
 data["ente"] = ente
 #Recupero i soggetti della Protocollazione
-for k in soggetti:
-    s = db.resources.customscripts.getSoggettoPec(parentDoc,k)
-    data["soggetti"].append(s)
-    elenco_soggetti.append("%s %s" %(s["cognome"],s["nome"]))
+
+if step=='richiesta_parere':
+    mailList = list()
+    destinatari = asList(doc.getItem('parere_ente_opt',[]))
+    e = dict()
+    for d in destinatari:
+        denominazione = doc.getUserGroupFullName(d)
+        try:
+            tmp = getMailAddress(doc,dict(),d)
+            mailList+=tmp
+            mail = tmp[0]
+        except:
+            mail = ''
+        e = {
+            "codfis": "",
+            "nome": "",
+            "cognome": "",
+            "denominazione": denominazione,
+            "mail": mail,
+            "indirizzo": "",
+            "comune": "",
+            "cap": "",
+            "provincia": "",
+        }
+        data['soggetti'].append(e)
+        elenco_soggetti.append(denominazione)
+else:
+    for k in soggetti:
+        s = db.resources.customscripts.getSoggettoPec(parentDoc,k)
+        data["soggetti"].append(s)
+        elenco_soggetti.append("%s %s" %(s["cognome"],s["nome"]))
 
 data['elenco_soggetti'] = ', '.join(elenco_soggetti)
 
@@ -464,7 +495,7 @@ flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,0)
+res = view.protocolla_comunicazione(flusso,data,2)
 #Recupero il risultato
 res = json_loads(res)
 #Se successo inserisco informazioni su Protocollo
@@ -520,6 +551,8 @@ if isinstance(doc, basestring):
 setIolEvent(doc,evento='Comunicazione di Rigetto')
 #Invio PEC
 context.sendMail(doc=doc,azione='rigetto')
+doc.removeItem('iol_integrabile')
+context.getIndex().indexDocument(doc)
 ]]></resource>
       <resource id="RilascioTitolo" title="" type="Script (Python)"><![CDATA[## Script (Python) "RilascioTitolo"
 ##bind container=container
@@ -1200,7 +1233,7 @@ if not doc.isDocument():
     
 html=''
 #la ricerca deve restituire i documenti dei quelli l'utente corrente  author
-brains = idx.dbsearch(dict(numero_pratica=doc.getItem('numero_pratica')),sortindex="data_protocollo")
+brains = idx.dbsearch(dict(numero_pratica=doc.getItem('numero_pratica','xxxxx')),sortindex="data_protocollo")
 for brain in brains:
     if brain.id!=doc.getId():
         dc=brain.getObject()
@@ -2032,6 +2065,8 @@ if isinstance(doc, basestring):
 
 if context.aq_parent.config().get('comune_default')=='E463':
     context.sendMailJ(doc=doc,azione=azione,form=form)
+elif context.aq_parent.config().get('mail_provider','') == 'test':
+    pass    
 elif context.aq_parent.config().get('mail_provider','') == 'sicraweb' and not azione in ['presentazione-ok','presentazione-ko','protocollazione-ok','protocollazione-ko']:
     #da sostituire con sendMailSicraWeb
     #form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
@@ -2225,8 +2260,9 @@ for message in messages:
 ##parameters=doc=None,azione='presentazione-ok'
 ##title=
 ##
-from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, asUnicode
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, asUnicode,asList
 from gisweb.sicrawebprotocollo.plomino_utils import get_email_settings,invia_comunicazione
+from iol.document.plomino_utils import getMailAddress
 
 #Come recupero anno e protocollo?
 
@@ -2257,15 +2293,28 @@ elif azione == 'richiesta-parere-ok':
     anno = DateToString(doc.getItem('data_protocollo_richiesta_parere'),'%Y')    
 else:
     return -1
+
+
 mail_settings = get_email_settings(parentDoc,azione)
-mail = mail_settings["destinatarimail"].split(';')
 mail_sent = list()
 data = dict()
 data['soggetti'] = list()
+
+#Da rivedere
+if azione == 'richiesta-parere-ok':
+    mailList = doc.getItem('parere_ente_opt',[])
+    mail = list()
+    for m in mailList:
+        mail += getMailAddress(doc,dict,m)
+else:
+    mail = mail_settings["destinatarimail"].split(';')
+
 for m in mail:
     if not m in mail_sent:
         data["soggetti"].append(dict(mail=m))
         mail_sent.append(m)
+        
+        
 data["ente"] = ente
 data["anno_protocollo"] = anno
 data["numero_protocollo"] = protocollo
@@ -2802,6 +2851,89 @@ if res["success"]==1:
     doc.setItem('numero_protocollo_uscita',protocollo)
     doc.setItem('data_protocollo_uscita',Now())
     doc.setItem('anno_protocollo_uscita',anno)
+]]></resource>
+      <resource id="sendMailTest" title="" type="Script (Python)"><![CDATA[## Script (Python) "sendMailTest"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None,azione='presentazione-ok'
+##title=
+##
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, asUnicode
+from gisweb.sicrawebprotocollo.plomino_utils import get_email_settings,invia_comunicazione
+
+#Come recupero anno e protocollo?
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+parentDoc = doc.getItem('parent_document')    
+    
+if not parentDoc:
+    parentDoc = doc
+elif isinstance(parentDoc,basestring):
+    parentDoc = context.getDocument(parentDoc)
+    
+config = context.getParentDatabase().resources.config_protocollo(parentDoc)
+ente = config["ente"]
+
+if azione == 'avvio-procedimento':
+    protocollo = doc.getItem('protocollo_avvio_procedimento',0)
+    anno = DateToString(doc.getItem('data_protocollo_avvio_procedimento'),'%Y')
+elif azione == 'richiesta-integrazione-ok':
+    protocollo = doc.getItem('protocollo_richiesta_integrazione',0)
+    anno = DateToString(doc.getItem('data_protocollo_richiesta_integrazione'),'%Y')
+elif azione == 'rilascio_titolo':
+    protocollo = doc.getItem('protocollo_rilascio_titolo',0)
+    anno = DateToString(doc.getItem('data_protocollo_rilascio_titolo'),'%Y')
+elif azione == 'richiesta-parere-ok':
+    protocollo = doc.getItem('protocollo_richiesta_parere',0)
+    anno = DateToString(doc.getItem('data_protocollo_richiesta_parere'),'%Y')    
+else:
+    return -1
+
+
+mail_settings = get_email_settings(parentDoc,azione)
+mail_sent = list()
+data = dict()
+data['soggetti'] = list()
+
+#Da rivedere
+if azione == 'richiesta-parere-ok':
+    mailList = doc.getItem('destinatario_parere',[])
+    mail = list()
+    for m in mailList:
+        grp = context.getParentDatabase().aq_parent.acl_users.getGroupById(m)
+        mail.append(grp.getProperty('email'))
+else:
+    mail = mail_settings["destinatarimail"].split(';')
+
+for m in mail:
+    if not m in mail_sent:
+        data["soggetti"].append(dict(mail=m))
+        mail_sent.append(m)
+        
+        
+data["ente"] = ente
+data["anno_protocollo"] = anno
+data["numero_protocollo"] = protocollo
+data["oggetto"] = mail_settings["mail_object"]
+data["testo"] = ""
+
+res = invia_comunicazione(doc,data)
+pec = parentDoc.getItem('pec_inviate',[])
+if res['success']==1:
+    idCom = res['idComunicazione']
+     
+else:
+    idCom = -1
+    
+pec.append([idCom, protocollo, anno, data['oggetto'], mail_sent,'', ''])    
+parentDoc.setItem('pec_inviate',pec)    
+
+return idCom
 ]]></resource>
     </resource>
   </design>

@@ -56,6 +56,9 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
+'alengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
+'aaSorting': [[ 7, "asc" ]],
+'sPaginationType': 'full_numbers',
 'bLengthChange': true,
 'bProcessing': true,
 'bServerSide': true,
@@ -63,18 +66,20 @@ resources/iol-custom.css]]></ResourcesCSS>
 'bSort': true,
 'bInfo': true,
 'bAutoWidth': false,
-    
+'IOL-SEARCH-TABLE':true, //Serve solo ad indicare la tabella target delle ricerche
 'aoColumnDefs': [
 {
     "mRender": function ( data, type, row ) {
                              
-        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title=""&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
+        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
     },
    "bVisible":true,
+   "bSortable":false,
    "aTargets": [0]
  
-}            
-                 
+},
+{ "aTargets": [ 2, 8 ], "bSortable": false }  ,       
+{ "aTargets": [ 1 ], "bVisible": false }                       
 ]</string></value>
 </member>
 </struct></value>

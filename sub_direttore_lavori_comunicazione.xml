@@ -10,7 +10,7 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[<div class="v-content well">
-		  <fieldset class="scheduler-border">
+          <fieldset class="scheduler-border">
 <legend class="scheduler-border required">Direttore Lavori Architettonici</legend>
 <div><span class="plominoFieldClass">direttore_lavori_opt</span></div>
 <p><span class="plominoHidewhenClass">start:hw_no_dir_lavori</span></p>

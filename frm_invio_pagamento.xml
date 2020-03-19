@@ -31,9 +31,7 @@ context.setItem('anno_protocollo',int(DateToString(dProtocollo,format='%Y')))
 context.setItem('data_protocollo_testo',DateToString(dProtocollo,format="%Y/%m/%d %H:%M"))
 context.setItem('numero_protocollo_testo','Anno %s n. % 6d' %(DateToString(dProtocollo,format='%Y'),int(nProtocollo)))  
 context.setItem('numero_pratica',context.getItem('titolo_esistente_numero'))
-context.doAction('init_bo')
-    
-]]></onSaveDocument>
+context.doAction('init_bo')]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

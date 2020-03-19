@@ -27,6 +27,8 @@ if 'btn_next' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">sub_comproprietari</span></p>
 <p><span class="plominoSubformClass">base_sub_delegato</span></p>
 </fieldset></div>
+<p><span class="plominoSubformClass">sub_firma_digitale</span></p>
+<p><span class="plominoSubformClass">sub_consenso_pec</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[context.getParentDatabase().resources.customscripts.getDocumentTitle(context)]]></DocumentTitle>
@@ -87,7 +89,7 @@ else:
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>

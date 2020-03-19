@@ -72,7 +72,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return "readonly data-tool=ricerca-docid data-provider=%s" % context.getParentDatabase().resources.customscripts.getProvider()]]></HTMLAttributesFormula>
         </element>
@@ -85,7 +85,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-NUMBERFieldEdit</FieldEditTemplate>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-tool=ricerca-protocollo''']]></HTMLAttributesFormula>
         </element>
@@ -98,7 +98,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''readonly data-tool=ricerca-numero''']]></HTMLAttributesFormula>
         </element>
@@ -124,7 +124,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-NUMBERFieldEdit</FieldEditTemplate>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-tool=ricerca-anno''']]></HTMLAttributesFormula>
         </element>
@@ -137,7 +137,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-tool=ricerca-cf uppercase''']]></HTMLAttributesFormula>
         </element>
@@ -168,7 +168,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''readonly data-tool=ricerca-data''']]></HTMLAttributesFormula>
           <params>

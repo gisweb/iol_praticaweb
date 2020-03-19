@@ -17,7 +17,7 @@ if context.getItem('direttore_opt')=='2':
     
 if context.getItem('direttore_strutt_opt')=='2':
     context.getParentDatabase().resources.customscripts.setCopiaTecnico(
-        context,'progettista_strutt','direttore_strutt')  ]]></onSaveDocument>
+        context,'progettista_strutt','direttore_strutt')]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

@@ -10,7 +10,7 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[<div class="v-content well">
-		  <fieldset class="scheduler-border">
+          <fieldset class="scheduler-border">
 <legend class="scheduler-border">Bene in area protetta</legend>
 <div>
 <span class="plominoLabelClass">area_protetta_opt</span><span class="plominoFieldClass">area_protetta_opt</span>

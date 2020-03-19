@@ -2,7 +2,7 @@
   <design>
     <element id="sub_completa_taglioalberi" title="sub_completa_taglioalberi" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_completa_taglioalberi</id>
-      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setItem('Plomino_Readers',[context.getCurrentUserId(),'[Praticaweb Readers]'])]]></onCreateDocument>
+      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
       <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSaveDocument>
@@ -37,13 +37,7 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">UBICAZIONE DELL'INTERVENTO</legend> <span class="plominoSubformClass">sub_ubicazione</span>
 </fieldset></div>
-<div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Progettista</legend>
-<p><span class="plominoSubformClass">sub_progettista</span></p>
-</fieldset></div>
-<div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Esecuzione delle opere</legend> <span class="plominoSubformClass">sub_esecutore</span>
-</fieldset></div>
+<p><span class="plominoSubformClass">sub_intervento_taglioalberi</span></p>
 <div class="v-content well"><span class="plominoSubformClass">base_sub_stampa</span></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

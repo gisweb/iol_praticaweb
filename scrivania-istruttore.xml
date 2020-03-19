@@ -80,15 +80,15 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 2, 8 ], "bSortable": false }         
-                 
+{ "aTargets": [ 2, 8 ], "bSortable": false }  ,       
+{ "aTargets": [ 1 ], "bVisible": false }                       
 ]</string></value>
 </member>
 </struct></value>
 <value><struct>
 <member>
 <name>labelcolumn</name>
-<value><string>sportello</string></value>
+<value><string>identificativo</string></value>
 </member>
 </struct></value>
 <value><struct>

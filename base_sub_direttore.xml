@@ -160,11 +160,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -305,11 +305,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -877,11 +877,11 @@ data-plugin = "iolCodicefiscale" data-plugin-options='{"service":"get_codice_fis
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -984,11 +984,11 @@ data-plugin = "iolCodicefiscale" data-plugin-options='{"service":"get_codice_fis
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>

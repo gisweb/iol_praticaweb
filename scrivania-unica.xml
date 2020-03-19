@@ -1,7 +1,7 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="scrivania-utente" title="LE MIE PRATICHE" type="PlominoForm">
-      <id type="Products.Archetypes.Field.StringField">scrivania-utente</id>
+    <element id="scrivania-unica" title="SCRIVANIA UNICA" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">scrivania-unica</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
@@ -11,15 +11,6 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-control-buttons"><span class="plominoActionClass">btn_chiudi</span></div>
-<p><span class="plominoFieldClass">avviso_associa_pratica</span></p>
-<fieldset class="scheduler-border">
-<legend class="scheduler-border">ISTANZE IN COMPILAZIONE</legend>
-<p><span class="plominoFieldClass">istanze_in_compilazione</span></p>
-</fieldset>
-<fieldset class="scheduler-border">
-<legend class="scheduler-border">ISTANZE IN ATTESA DI PROTOCOLLAZIONE</legend>
-<p><span class="plominoFieldClass">istanze_da_protocollare</span></p>
-</fieldset>
 <fieldset class="scheduler-border">
 <legend class="scheduler-border">ISTANZE PRESENTATE</legend>
 <p><span class="plominoSubformClass">base_sub_ricerca</span></p>
@@ -47,73 +38,6 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="istanze_in_compilazione" title="Istanze In compilazione" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">istanze_in_compilazione</id>
-          <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField">DOCLINKFieldSearch</FieldEditTemplate>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'bLengthChange': true,
-'bProcessing': true,
-'bServerSide': true,
-'bFilter': false,
-'aaSorting': [[ 8, "asc" ]],
-'bSort': true,
-'bInfo': true,
-'bAutoWidth': false,
-    
-'aoColumnDefs': [
-{
-    "mRender": function ( data, type, row ) {
-                             
-        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
-    },
-   "bVisible":true,
-   "bSortable":false,
-   "aTargets": [0]
- 
-},
-{ "aTargets": [ 3 ], "bSortable": false }         
-
-                 
-]</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>labelcolumn</name>
-<value><string>identificativo</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>sourceview</name>
-<value><string>vista-istanze-in-compilazione</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>widget</name>
-<value><string>DYNAMICTABLE</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
         <element id="istanze_presentate" title="Istanze Presentate" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">istanze_presentate</id>
           <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
@@ -156,7 +80,84 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 2,8 ], "bSortable": false }         
+{ "aTargets": [ 2, 8 ], "bSortable": false }         
+                 
+]</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>labelcolumn</name>
+<value><string>identificativo</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>sourceview</name>
+<value><string>vista-istanze-da-assegnare</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>DYNAMICTABLE</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="btn_chiudi" title="Chiudi" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_chiudi</id>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.absolute_url()]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
+        </element>
+        <element id="istanze_presentate_cdu" title="Istanze Presentate" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">istanze_presentate_cdu</id>
+          <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">DOCLINKFieldSearch</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-tool=view-details']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'alengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
+'aaSorting': [[ 7, "asc" ]],
+'sPaginationType': 'full_numbers',
+'bLengthChange': true,
+'bProcessing': true,
+'bServerSide': true,
+'bFilter': false,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false,
+'IOL-SEARCH-TABLE':true, //Serve solo ad indicare la tabella target delle ricerche
+    
+'aoColumnDefs': [
+{
+    "mRender": function ( data, type, row ) {
+                             
+        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
+    },
+   "bVisible":true,
+   "bSortable":false,
+   "aTargets": [0]
+ 
+},
+{ "aTargets": [ 2, 8 ], "bSortable": false }         
                  
 ]</string></value>
 </member>
@@ -182,98 +183,6 @@ resources/iol-custom.css]]></ResourcesCSS>
 </data></array></value>
 </param>
 </params>
-        </element>
-        <element id="istanze_da_protocollare" title="Istanze da protocollare" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">istanze_da_protocollare</id>
-          <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField">DOCLINKFieldSearch</FieldEditTemplate>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'alengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
-'aaSorting': [[ 7, "asc" ]],
-'sPaginationType': 'full_numbers',
-'bLengthChange': true,
-'bProcessing': true,
-'bServerSide': true,
-'bFilter': false,
-'bSort': true,
-'bInfo': true,
-'bAutoWidth': false,
-'IOL-SEARCH-TABLE':true, //Serve solo ad indicare la tabella target delle ricerche
-'aoColumnDefs': [
-{
-    "mRender": function ( data, type, row ) {
-                             
-        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
-    },
-   "bVisible":true,
-   "bSortable":false,
-   "aTargets": [0]
- 
-},
-{ "aTargets": [ 2, 8 ], "bSortable": false }  ,       
-{ "aTargets": [ 1 ], "bVisible": false }                       
-]</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>labelcolumn</name>
-<value><string>identificativo</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>sourceview</name>
-<value><string>vista-istanze-da-protocollare</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>widget</name>
-<value><string>DYNAMICTABLE</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
-        <element id="btn_chiudi" title="Chiudi" type="PlominoAction">
-          <id type="Products.Archetypes.Field.StringField">btn_chiudi</id>
-          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
-          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().absolute_url()]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[]]></Hidewhen>
-          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
-        </element>
-        <element id="avviso_associa_pratica" title="avviso_associa_pratica" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">avviso_associa_pratica</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[msg='''Per attivare le pratiche importate vai qui: <a href="../frm_associa_pratica">Associa pratica</a>'''
-
-if context.getParentDatabase().resources.config().get('associa_pratica'):
-    return msg]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

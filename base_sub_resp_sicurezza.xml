@@ -128,11 +128,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -438,11 +438,11 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -665,7 +665,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">ZCTextIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return '''data-base-url = %s
 data-plugin='iolAutocompleteSoggetti' 

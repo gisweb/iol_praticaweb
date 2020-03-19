@@ -13,8 +13,7 @@ elif 'btn_save' in context.REQUEST.keys():
     
 #se condizionata non piu sorteggiabile    
 if '3' in context.getItem('atti_assenso_opt'):
-    context.removeItem('iol_sorteggio')
-    ]]></onSaveDocument>
+    context.removeItem('iol_sorteggio')]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

@@ -72,7 +72,7 @@ else:
           <id type="Products.Archetypes.Field.StringField">hw_no_bollo</id>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[pagamento_bollo = context.getParentDatabase().resources.config().get('paga_bollo',['pdc','paesaggistica-accertamento','paesaggistica-ordinaria','paesaggistica-semplificata','idrogeologico-aut','dsi'])
 if pagamento_bollo == 'PagoPa':
-    return True
+    return Truee
 else:
     return context.getItem('iol_tipo_app','pdc') not in pagamento_bollo]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>

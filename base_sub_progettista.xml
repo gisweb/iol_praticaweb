@@ -160,11 +160,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -305,11 +305,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -843,11 +843,11 @@ data-plugin = "iolCodicefiscale" data-plugin-options='{"service":"get_codice_fis
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -932,11 +932,11 @@ data-plugin = "iolCodicefiscale" data-plugin-options='{"service":"get_codice_fis
 <member>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
-			'bLengthChange': true,
-			'bFilter': true,
-			'bSort': true,
-			'bInfo': true,
-			'bAutoWidth': false</string></value>
+            'bLengthChange': true,
+            'bFilter': true,
+            'bSort': true,
+            'bInfo': true,
+            'bAutoWidth': false</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -1123,7 +1123,7 @@ return "%s %s %s %s" %(context.getItem('fisica_cognome',''),context.getItem('pro
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">True</ToBeIndexed>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">ZCTextIndex</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>

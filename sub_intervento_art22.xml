@@ -11,7 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[<div class="v-content well">
 
-		  <fieldset class="scheduler-border">
+          <fieldset class="scheduler-border">
 <legend class="scheduler-border">OPERE INTERNE</legend>
 <div>
 <span class="plominoLabelClass">comunicazione_opt</span><span class="plominoFieldClass">comunicazione_opt</span>

@@ -1120,8 +1120,8 @@ menus=dict()
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_taglioalberi", "title": "Dati anagrafici dei richiedenti"}, 
     {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
-    {"label": "Tecnici", "frm": "frm_cil_tecnici", "title": "Tecnici incaricati"}, 
-    {"label": "Allegati", "frm": "frm_cil_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Intervento", "frm": "frm_taglioalberi_intervento", "title": "Tecnici incaricati"}, 
+    {"label": "Allegati", "frm": "frm_taglioalberi_allegati", "title": "Documentazione allegata"}, 
     {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
 
@@ -1270,6 +1270,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_art35", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento - Mappa"}, 
     {"label": "Allegati", "frm": "frm_art35_allegati", "title": "Documentazione allegata"}, 
     {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
@@ -1277,6 +1278,7 @@ menus['front'] = [
 menus['back'] = [
     {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}, 
 ]
 
