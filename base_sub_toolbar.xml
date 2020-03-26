@@ -83,9 +83,9 @@ except:
         </element>
         <element id="btn_close" title="Chiudi" type="PlominoAction">
           <id type="Products.Archetypes.Field.StringField">btn_close</id>
-          <ActionType type="Products.Archetypes.Field.StringField">CLOSE</ActionType>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[]]></Content>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
     return context.getwfVariables(varId='wf_presentata')
 except:

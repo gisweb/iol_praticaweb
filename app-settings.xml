@@ -39,6 +39,10 @@ if db.getDocument(docId):
 <legend class="scheduler-border">IMPOSTAZIONE MESSAGGI DI POSTA</legend>
 <div><span class="plominoFieldClass">mail_settings</span></div>
 </fieldset>
+<fieldset class="scheduler-border">
+<legend class="scheduler-border">IMPOSTAZIONE MESSAGGI DI POSTA NEW</legend>
+<div><span class="plominoFieldClass">mail_settings_new</span></div>
+</fieldset>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -351,6 +355,73 @@ return elencoGruppi(context)</string></value>
     { "sTitle": "AZIONE" },
     { "sTitle": "A" },
     { "sTitle": "CC"}
+],
+"bPaginate": false,
+"bLengthChange": false,
+"bFilter": false,
+"bSort": false,
+"bInfo": false,
+"bAutoWidth": false,
+"plominoDialogOptions": {
+        "width": 800,
+        "height": 800
+    }
+</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>REGULAR</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="mail_settings_new" title="mail_settings_new" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">mail_settings_new</id>
+          <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>associated_form</name>
+<value><string>dlg_mail_settings_new</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>associated_form_rendering</name>
+<value><string>MODAL</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>field_mapping</name>
+<value><string>azione,oggetto,destinatari_a,destinatari_cc,protocollo_opt,pec_opt,testo,allegato_principale,allegati</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>jssettings</name>
+<value><string>"aoColumns": [
+    { "sWidth": "20px", "sTitle": "AZIONE" },
+    { "sWidth": "200px", "sTitle": "OGGETTO" },
+    { "sWidth": "20px", "sTitle": "A"},   
+    { "sTitle": "CC"},
+    { "sTitle": "PROT."},
+    { "sTitle": "PEC"}
 ],
 "bPaginate": false,
 "bLengthChange": false,

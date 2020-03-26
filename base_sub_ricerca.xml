@@ -341,7 +341,13 @@ else:
           <id type="Products.Archetypes.Field.StringField">iol_workflow_status</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[settings = context.getParentDatabase().resources.customscripts.getDocSettings()
+grp_rup = settings.getItem('grp_rup')
+try:
+    if grp_rup in context.getCurrentUserGroups():
+        return 'presentata'
+except:
+    pass]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldInLineEdit</FieldEditTemplate>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -682,7 +688,7 @@ else:
 if 'config_pratica_importata' in context.getParentDatabase().resources:
     return context.getParentDatabase().resources['config_pratica_importata']()
 else:
-    return ['Manca elenco pratica importata in config']</string></value>
+    return ['','Manca elenco pratica importata in config']</string></value>
 </member>
 </struct></value>
 <value><struct>

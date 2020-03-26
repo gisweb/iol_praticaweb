@@ -2,16 +2,14 @@
   <design>
     <element id="bo_richiesta_parere" title="Richiesta di parere" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_richiesta_parere</id>
-      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
-if parentDoc:
-    context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))]]></onCreateDocument>
+      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
       <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
 if not parentDoc:
     context.plone_utils.addPortalMessage('Non esiste il documento padre','error')
     return 
-
+ 
 if 'btn_stampa_comunicazione' in context.REQUEST.keys():
     if context.getItem('allegato_documento_richiesta_parere',{})=={}:
         context.getParentDatabase().resources.customscripts.stampaModulo(context,
@@ -21,7 +19,7 @@ if 'btn_stampa_comunicazione' in context.REQUEST.keys():
             app=context.getParentDatabase().getId().replace('iol_',''),
             grp='richiesta-parere',
             pdf=0,
-            field='allegato_documento_richiesta_parere')
+            field='allegato_documento_richiesta_parere')     
     return "%s/EditDocument" %context.absolute_url()
 
 else:
@@ -34,6 +32,7 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <div class="iol-toolbar"></div>
 <div class="v-content well">
 <p><span class="plominoLabelClass">parere_ente_opt</span><span class="plominoFieldClass">parere_ente_opt</span></p>
+<p><span class="plominoLabelClass">parere_interno_opt</span><span class="plominoFieldClass">parere_interno_opt</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_parere_ente_altro</span></p>
 <div class="row-fluid">
 <div class="span6">
@@ -44,9 +43,9 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 </div>
 </div>
 <p><span class="plominoHidewhenClass">end:hw_no_parere_ente_altro</span></p>
-<div>
-<span class="plominoLabelClass">oggetto_richiesta_parere</span><span class="plominoFieldClass">oggetto_richiesta_parere</span>
-</div>
+<p><span class="plominoLabelClass">oggetto_richiesta_parere</span><span class="plominoFieldClass">oggetto_richiesta_parere</span></p>
+<p><span class="plominoLabelClass">altri_destinatari_richiesta_parere</span><span class="plominoFieldClass">altri_destinatari_richiesta_parere</span></p>
+<hr>
 <span class="plominoHidewhenClass">start:hw_no_edit</span><div class="row-fluid">
 <div class="span8">
 <span class="plominoLabelClass">modello_stampa_richiesta_parere</span><span class="plominoFieldClass">modello_stampa_richiesta_parere</span>
@@ -68,21 +67,23 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <span class="plominoLabelClass">allegato_comunicazione_richiesta_parere</span><span class="plominoFieldClass">allegato_comunicazione_richiesta_parere</span>
 </div>
 </div>
-<div>
-<span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span><div class="row-fluid"><div class="span3">
+<p><span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span></p>
+<div class="row-fluid"><div class="span3">
 <span class="plominoLabelClass">data_comunicazione_richiesta_parere</span><span class="plominoFieldClass">data_comunicazione_richiesta_parere</span>
 </div></div>
-<span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span>
-</div>
-<p><span class="plominoActionClass">btn_invia_comunicazione</span></p>
-<p> </p>
+<p><span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span></p>
+<p><span class="plominoActionClass">btn_invia_esterni</span></p>
+<p><span class="plominoActionClass">btn_invia_interni</span></p>
+<p><span class="plominoActionClass">btn_risposta_parere</span></p>
 <p><span class="plominoHidewhenClass">end:hw_new_comunicazione</span></p>
+<hr>
+<p><span class="plominoFieldClass">parere_risposte_elenco</span></p>
 </div>
 <p><span class="plominoFieldClass">parent_document</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
-      <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA['Richiesta parere %s' %context.getItem('parent_document')]]></DocumentTitle>
-      <DynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</DynamicDocumentTitle>
+      <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA['Richiesta parere o verifica']]></DocumentTitle>
+      <DynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">True</DynamicDocumentTitle>
       <StoreDynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</StoreDynamicDocumentTitle>
       <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA['%s-p' %context.getItem('parent_document')]]></DocumentId>
       <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
@@ -316,27 +317,6 @@ except:
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[context.isNewDocument() or not context.isEditMode()]]></Hidewhen>
           <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
         </element>
-        <element id="btn_invia_comunicazione" title="Invia la comunicazione &gt;&gt;" type="PlominoAction">
-          <id type="Products.Archetypes.Field.StringField">btn_invia_comunicazione</id>
-          <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
-          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('parent_document'))
-
-#Prima protocollo il documento poi effettuo l'azione
-invia = db.resources.customscripts.InviaComunicazione(context,'richiesta_parere',parentDoc)
-if invia > 0:
-    parentDoc.doAction('richiedi_parere')
-#Allineo i readers
-context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
-context.getParentDatabase().getIndex().indexDocument(context)
-return parentDoc.absolute_url()]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
-    return context.isEditMode() or plominoDocument.getItem('data_comunicazione_richiesta_parere')!='' or context.getItem('allegato_comunicazione_richiesta_parere',{})=={}
-except:
-    return True]]></Hidewhen>
-          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
-        </element>
         <element id="btn_stampa_comunicazione" title="&gt;&gt; Crea il documento" type="PlominoAction">
           <id type="Products.Archetypes.Field.StringField">btn_stampa_comunicazione</id>
           <ActionType type="Products.Archetypes.Field.StringField">SAVE</ActionType>
@@ -373,14 +353,14 @@ except:
 </param>
 </params>
         </element>
-        <element id="parere_ente_opt" title="Parere / accertamento richiesto a Ente / Ufficio" type="PlominoField">
+        <element id="parere_ente_opt" title="Parere / accertamento richiesto a Ente esterno (via PEC)" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">parere_ente_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
@@ -403,12 +383,51 @@ except:
 <member>
 <name>selectionlistformula</name>
 <value><string>from iol.document.plomino_utils import elencoUtentiGruppi
-settings = context.getParentDatabase().resources.customscripts.getDocSettings()
-grp = settings.getItem('grp_pareri')
-if grp:
-    return elencoUtentiGruppi(context,groups=[grp])
-else:
-    return []</string></value>
+return elencoUtentiGruppi(context,groups=['ENTI_PARERI'])</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>MULTISELECT</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="parere_interno_opt" title="Parere / accertamento richiesto a Ufficio interno (via email)" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">parere_interno_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>from iol.document.plomino_utils import elencoUtentiGruppi
+return elencoUtentiGruppi(context,groups=['INTERNI_PARERI'])
+</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -508,7 +527,7 @@ else:
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('parere_ente_opt')=='altro':
     return context.getItem('parere_ente_altro_email')
 else:
-    return "'".join(context.getItem('parere_ente_opt'))]]></Formula>
+    return ",".join(context.getItem('parere_ente_opt'))]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -619,33 +638,6 @@ data-plugin = "iolUploadFile" data-plugin-options='{"emptyMessage":"Nessun file"
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
-        <element id="copy_of_allegato_allafirma_richiesta_parere" title="Comunicazione da firmare" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">copy_of_allegato_allafirma_richiesta_parere</id>
-          <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTIconFieldRead</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldEdit</FieldEditTemplate>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return'''
-data-plugin = "iolUploadFile" data-plugin-options='{"emptyMessage":"Nessun file","maxsize":"3","filetype":["pdf"]}'
-''']]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>type</name>
-<value><string>SINGLE</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
         <element id="data_protocollo_richiesta_parere" title="Data protocollo comunicazione" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">data_protocollo_richiesta_parere</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATETIME</FieldType>
@@ -678,6 +670,158 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 </data></array></value>
 </param>
 </params>
+        </element>
+        <element id="altri_destinatari_richiesta_parere" title="Altri destinatari" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">altri_destinatari_richiesta_parere</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>parent_document=context.getItem('parent_document') or context.REQUEST.URL.split('/')[-3]
+return context.getParentDatabase().resources.customscripts.getAltriDestinatari(parent_document)
+</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>CHECKBOX</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="btn_invia_esterni" title="Invia la comunicazione a enti esterni&gt;&gt;" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_invia_esterni</id>
+          <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('parent_document'))
+
+#Prima protocollo il documento poi effettuo l'azione
+invia = db.resources.customscripts.InviaComunicazione(context,'richiesta_parere',parentDoc)
+if invia > 0:
+    parentDoc.doAction('richiedi_parere')
+#Allineo i readers
+context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
+##potrebbe servire mettere l'ente come autor per far modificare il doc
+context.setItem('Plomino_Authors',readers)
+context.getParentDatabase().getIndex().indexDocument(context)
+return parentDoc.absolute_url()]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
+    ### se devo inviare solo ad interni nascondo
+    if context.getItem('parere_ente_opt',[])==[]:
+        return True    
+    else:
+        return context.isEditMode() or plominoDocument.getItem('data_comunicazione_richiesta_parere')!='' or context.getItem('allegato_comunicazione_richiesta_parere',{})=={}
+except:
+    return True]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
+        </element>
+        <element id="btn_invia_interni" title="Invia la comunicazione a uffici interni &gt;&gt;" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_invia_interni</id>
+          <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
+parentDoc.doAction('richiedi_parere')
+
+context.setItem('data_comunicazione_richiesta_parere',Now())
+
+#Allineo gli utenti
+settings = context.getParentDatabase().resources.customscripts.getDocSettings()
+users = context.getItem('parere_ente_opt',[]) + context.getItem('parere_ufficio_opt',[]) + [str(settings.getItem('grp_istruttori')),'gw_istruttori']
+
+context.setItem('Plomino_Readers',users)  
+#enti come autor per far modificare il doc
+context.setItem('Plomino_Authors',users)
+
+## invio la mail di notifica ai destinatari
+parentDoc.iolSendMail(config='config_mailhost_nopec', azione='richiedi_parere', parentDoc=context)
+
+## indicizzo
+context.getParentDatabase().getIndex().indexDocument(context)
+
+return parentDoc.absolute_url()]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
+    ### se devo inviare anche ad esterni devo allegare il doc firmato digitalmente
+    if context.getItem('parere_ente_opt',[])!=[]:
+        return True
+    else:
+        return context.isEditMode() or context.getItem('data_comunicazione_richiesta_parerexxx')!=''
+except:
+    return True]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
+        </element>
+        <element id="btn_risposta_parere" title="Inserisci parere acquisito &gt;&gt;" type="PlominoAction">
+          <id type="Products.Archetypes.Field.StringField">btn_risposta_parere</id>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
+          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+url=db.getForm('bo_risposta_parere').absolute_url()
+return "%s?parent_document=%s" %(url,context.getId())]]></Content>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return context.isEditMode()]]></Hidewhen>
+          <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
+        </element>
+        <element id="parere_risposte_elenco" title="Elenco pareri acquisiti" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">parere_risposte_elenco</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[from iol.document.plomino_utils import getSelectionValue
+
+db=context.getParentDatabase()
+idx = db.getIndex()
+if not 'parent_document' in idx.indexes():
+    return ''
+
+if context.isEditMode():
+    return ''
+
+
+brains = idx.dbsearch(dict(parent_document=context.getId(),Form=['bo_risposta_parere']),sortindex='id')  
+html=''
+
+for brain in brains:
+    doc=brain.getObject()
+    editForm = 'bo_risposta_parere'
+    ente = getSelectionValue(doc,'parere_risposta_opt',editForm)
+    renderForm=db.getForm(editForm)
+    content=asUnicode(renderForm.displayDocument(doc))
+    if content:
+        html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=%s"> Parere acquisito da %s <i class="icon-edit"></i></a></legend>%s</fieldset>'%(doc.absolute_url(),editForm,ente,content)
+
+    
+return html]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

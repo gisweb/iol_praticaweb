@@ -522,6 +522,39 @@ return html]]></Formula>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
+        <element id="elenco_risposte" title="Elenco pareri acquisiti" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_risposte</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[from iol.document.plomino_utils import getSelectionValue
+
+db=context.getParentDatabase()
+idx = db.getIndex()
+if not 'parent_document' in idx.indexes():
+    return ''
+
+brains = idx.dbsearch(dict(parent_document=context.getId(),Form=['bo_risposta_parere']),sortindex='id')  
+html=''
+
+for brain in brains:
+    doc=brain.getObject()
+    editForm = 'bo_risposta_parere'
+    ente = getSelectionValue(doc,'parere_risposta_opt',editForm)
+    renderForm=db.getForm(editForm)
+    content=asUnicode(renderForm.displayDocument(doc))
+    if content:
+        html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=%s"> Parere acquisito da %s <i class="icon-edit"></i></a></legend>%s</fieldset>'%(doc.absolute_url(),editForm,ente,content)
+
+    
+return html]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
       </elements>
     </element>
   </design>

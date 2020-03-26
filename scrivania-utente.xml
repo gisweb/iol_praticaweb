@@ -17,6 +17,10 @@
 <p><span class="plominoFieldClass">istanze_in_compilazione</span></p>
 </fieldset>
 <fieldset class="scheduler-border">
+<legend class="scheduler-border">ISTANZE IN ATTESA DI PAGAMENTO</legend>
+<p><span class="plominoFieldClass">istanze_in_attesa_pagamento</span></p>
+</fieldset>
+<fieldset class="scheduler-border">
 <legend class="scheduler-border">ISTANZE IN ATTESA DI PROTOCOLLAZIONE</legend>
 <p><span class="plominoFieldClass">istanze_da_protocollare</span></p>
 </fieldset>
@@ -86,7 +90,7 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 3 ], "bSortable": false }         
+{ "aTargets": [ 4,5,6,7 ], "bSortable": false }         
 
                  
 ]</string></value>
@@ -156,7 +160,7 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 2,8 ], "bSortable": false }         
+{ "aTargets": [ 4,5,6,7 ], "bSortable": false }         
                  
 ]</string></value>
 </member>
@@ -201,32 +205,15 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'alengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
-'aaSorting': [[ 7, "asc" ]],
-'sPaginationType': 'full_numbers',
-'bLengthChange': true,
+<value><string>'bPaginate': false,
+'bLengthChange': false,
 'bProcessing': true,
 'bServerSide': true,
 'bFilter': false,
 'bSort': true,
 'bInfo': true,
-'bAutoWidth': false,
-'IOL-SEARCH-TABLE':true, //Serve solo ad indicare la tabella target delle ricerche
-'aoColumnDefs': [
-{
-    "mRender": function ( data, type, row ) {
-                             
-        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
-    },
-   "bVisible":true,
-   "bSortable":false,
-   "aTargets": [0]
- 
-},
-{ "aTargets": [ 2, 8 ], "bSortable": false }  ,       
-{ "aTargets": [ 1 ], "bVisible": false }                       
-]</string></value>
+'bAutoWidth': false          
+                 </string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -239,6 +226,72 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>sourceview</name>
 <value><string>vista-istanze-da-protocollare</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>DYNAMICTABLE</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="istanze_in_attesa_pagamento" title="Istanze in attesa di pagamento" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">istanze_in_attesa_pagamento</id>
+          <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">DOCLINKFieldSearch</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': false,
+'bLengthChange': false,
+'bProcessing': true,
+'bServerSide': true,
+'bFilter': false,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false,
+    
+'aoColumnDefs': [
+{
+    "mRender": function ( data, type, row ) {
+                             
+        return '&lt;a href="../'+data+'"&gt;&lt;i class="icon-search linkable" title="Apri la pratica"&gt;&lt;/i&gt;&lt;/a&gt;';                                                              
+    },
+   "bVisible":true,
+   "bSortable":false,
+   "aTargets": [0]
+ 
+},
+{ "aTargets": [ 4,5,6,7 ], "bSortable": false }         
+
+                 
+]</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>labelcolumn</name>
+<value><string>identificativo</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>sourceview</name>
+<value><string>vista-istanze-attesa-pagamento</string></value>
 </member>
 </struct></value>
 <value><struct>

@@ -82,7 +82,7 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 3 ], "bSortable": false }         
+{ "aTargets": [ 4,5,6,7 ], "bSortable": false }         
                  
 ]</string></value>
 </member>

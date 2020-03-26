@@ -45,9 +45,20 @@ resources/iol-custom.css]]></ResourcesCSS>
       <elements>
         <element id="btn_close" title="Chiudi" type="PlominoAction">
           <id type="Products.Archetypes.Field.StringField">btn_close</id>
-          <ActionType type="Products.Archetypes.Field.StringField">CLOSE</ActionType>
+          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[]]></Content>
+          <Content type="Products.Archetypes.Field.TextField"><![CDATA[if context.hasCurrentUserRight('PlominoEditor'):
+    frm='scrivania-istruttore'
+else:
+    frm='scrivania-utente'
+
+db = context.getParentDatabase()
+frm = db.getForm(frm)
+
+if frm:
+    return frm.absolute_url()
+else:
+    return db.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[]]></Hidewhen>
           <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
         </element>
