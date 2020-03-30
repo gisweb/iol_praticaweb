@@ -24,23 +24,23 @@ if context.getItem('direttore_strutt_opt')=='2':
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoSubformClass">base_sub_toolbar</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Progettista delle opere architettoniche</legend> <span class="plominoSubformClass">base_sub_progettista</span>
+<legend class="scheduler-border">Progettista</legend> <span class="plominoSubformClass">base_sub_progettista</span>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Direttore dei lavori delle opere architettoniche</legend> <span class="plominoSubformClass">sub_direttore</span>
+<legend class="scheduler-border">Direttore Lavori</legend> <span class="plominoSubformClass">sub_direttore</span>
 </fieldset></div>
 <p><span class="plominoHidewhenClass">start:hw_no_tecnici_strutturale</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Progettista delle opere strutturali</legend>
+<legend class="scheduler-border">Progettista Opere Strutturali</legend>
 <p><span class="plominoSubformClass">sub_progettista_strutt</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">Direttore dei lavori delle opere strutturali</legend>
+<legend class="scheduler-border">Direttore Lavori Opere Strutturali</legend>
 <p><span class="plominoSubformClass">sub_direttore_strutt</span></p>
 </fieldset></div>
 <p><span class="plominoHidewhenClass">end:hw_no_tecnici_strutturale</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border required">Altri Tecnici incaricati</legend>
+<legend class="scheduler-border required">Altri Tecnici Incaricati</legend>
 <p><span class="plominoSubformClass">sub_altri_tecnici</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">

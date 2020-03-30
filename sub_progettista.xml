@@ -39,14 +39,14 @@ resources/iol-custom.css]]></ResourcesCSS>
       <elements>
         <element id="hw_no_progettista" title="hw_no_progettista" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_progettista</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_opt','')!='2']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_opt','2')!='2']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="progettista_opt" title="Progettista delle opere" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">progettista_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return '2']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>

@@ -36,10 +36,9 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <div>
 <span class="plominoLabelClass">oggetto_richiesta_integrazione</span><span class="plominoFieldClass">oggetto_richiesta_integrazione</span>
 </div>
-<p><span class="plominoLabelClass">altri_destinatari_richiesta_integrazione</span><span class="plominoFieldClass">altri_destinatari_richiesta_integrazione</span></p>
+<p><span class="plominoLabelClass">destinatari_richiesta_integrazione</span><span class="plominoFieldClass">destinatari_richiesta_integrazione</span></p>
 <hr>
-<span class="plominoHidewhenClass">start:hw_no_edit</span>
-<div class="row-fluid">
+<span class="plominoHidewhenClass">start:hw_no_edit</span><div class="row-fluid">
 <div class="span8">
 <span class="plominoLabelClass">modello_stampa_richiesta_integrazione</span><span class="plominoFieldClass">modello_stampa_richiesta_integrazione</span>
 </div>
@@ -47,29 +46,23 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <br><span class="plominoActionClass">btn_stampa_comunicazione</span>
 </div>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_edit</span>
-<p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
+<span class="plominoHidewhenClass">end:hw_no_edit</span><p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
 <p><span class="plominoFieldClass">istruzioni_richiesta_integrazione</span></p>
 <div class="row-fluid">
-<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_integrazione</span>
-<div class="span4">
+<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_integrazione</span><div class="span4">
 <span class="plominoLabelClass">allegato_documento_richiesta_integrazione</span><span class="plominoFieldClass">allegato_documento_richiesta_integrazione</span>
 </div>
 <div class="span4">
 <span class="plominoLabelClass">allegato_allafirma_richiesta_integrazione</span><span class="plominoFieldClass">allegato_allafirma_richiesta_integrazione</span>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_integrazione</span>
-<div class="span4">
+<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_integrazione</span><div class="span4">
 <span class="plominoLabelClass">allegato_comunicazione_richiesta_integrazione</span><span class="plominoFieldClass">allegato_comunicazione_richiesta_integrazione</span>
 </div>
 </div>
 <div>
-<span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span>
-<div class="row-fluid">
-<div class="span3">
+<span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span><div class="row-fluid"><div class="span3">
 <span class="plominoLabelClass">data_comunicazione_richiesta_integrazione</span><span class="plominoFieldClass">data_comunicazione_richiesta_integrazione</span>
-</div>
-</div>
+</div></div>
 <span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span>
 </div>
 <p><span class="plominoActionClass">btn_invia_comunicazione</span></p>
@@ -505,11 +498,12 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 </param>
 </params>
         </element>
-        <element id="altri_destinatari_richiesta_integrazione" title="Altri destinatari" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">altri_destinatari_richiesta_integrazione</id>
+        <element id="destinatari_richiesta_integrazione" title="Destinatari della richiesta" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">destinatari_richiesta_integrazione</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[parent_document=context.getItem('parent_document') or context.REQUEST.URL.split('/')[-3]
+return context.getParentDatabase().resources.getDestinatari(parent_document,keys=1)]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -535,7 +529,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <member>
 <name>selectionlistformula</name>
 <value><string>parent_document=context.getItem('parent_document') or context.REQUEST.URL.split('/')[-3]
-return context.getParentDatabase().resources.customscripts.getAltriDestinatari(parent_document)
+return context.getParentDatabase().resources.getDestinatari(parent_document)
 </string></value>
 </member>
 </struct></value>

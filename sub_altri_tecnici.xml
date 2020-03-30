@@ -11,11 +11,10 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-
 <div><span class="plominoFieldClass">altri_tecnici_opt</span></div>
 <p><span class="plominoHidewhenClass">start:hw_no_altri_tecnici</span></p>
 <div>
-<span class="plominoLabelClass">altri_tecnici_incaricati_grid</span> <span class="plominoFieldClass">altri_tecnici_incaricati_grid</span>
+<span class="plominoLabelClass">altri_tecnici_grid</span> <span class="plominoFieldClass">altri_tecnici_grid</span>
 </div>
 <p><span class="plominoHidewhenClass">end:hw_no_altri_tecnici</span></p>
 ]]></FormLayout>
@@ -44,7 +43,13 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">altri_tecnici_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+try:
+    parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+    if parentDoc:
+        return parentDoc.getItem("altri_tecnici_opt")
+except:
+    pass]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
@@ -69,11 +74,8 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>ll=['''Non sono stati incaricati altri tecnici;|1''','''Sono stati incaricati, in qualità di altri tecnici, i seguenti soggetti:|2''']
-if context.getItem('iol_tipo_app','') in ['scia2','dia','pdc','cila']:
-    ll.append('''Altri tecnici incaricati saranno individuati prima dell'inizio dei lavori;|3''')
-
-return ll</string></value>
+<value><string>['''Non sono stati incaricati altri tecnici;|1''','''Sono stati incaricati, in qualità di altri tecnici, i seguenti soggetti:|2''','''Altri tecnici incaricati saranno individuati prima dell'inizio dei lavori;|3''']
+</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -86,11 +88,17 @@ return ll</string></value>
 </param>
 </params>
         </element>
-        <element id="altri_tecnici_incaricati_grid" title="Altri tecnici incaricati" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">altri_tecnici_incaricati_grid</id>
+        <element id="altri_tecnici_grid" title="Ulteriori tecnici incaricati" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">altri_tecnici_grid</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+try:
+    parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+    if parentDoc:
+        return parentDoc.getItem("altri_tecnici_grid")
+except:
+    pass]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

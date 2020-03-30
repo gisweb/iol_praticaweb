@@ -230,16 +230,19 @@ menus['front'] = [
 
 menus['back'] = [
     {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
-    {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
-    {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
-    {"label": "Inizio / Fine lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
-    {"label": "Asseverata", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
-    {"label": "Vincoli", "frm": "bo_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
-    {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"},
-    {"label": "Eventi e Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+    {"label": "Oneri", "frm": "bo_oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
+    {"label": "Lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
+    {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
+    {"label": "Asseverazioni", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
 ]
+
 
 
 return menus
@@ -398,7 +401,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Dati del dichiarante", "frm": "frm_iniziolavori", "title": "Dati anagrafici dei richiedenti"},
-    {"label": "Tecnici incaricati", "frm": "frm_integrazione_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Tecnici incaricati", "frm": "frm_variazione_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Documentazione allegata", "frm": "frm_iniziolavori_allegati", "title": "Documentazione allegata"},
     {"label": "Resoconto Finale", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
@@ -451,7 +454,6 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Dati del dichiarante", "frm": "frm_integrazione", "title": "Dati anagrafici dei richiedenti"},
-    {"label": "Tecnici incaricati", "frm": "frm_integrazione_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Documentazione allegata", "frm": "frm_integrazione_allegati", "title": "Documentazione allegata"},
     {"label": "Resoconto Finale", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
@@ -1247,7 +1249,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Dati del richiedente", "frm": "frm_variazioni", "title": "Dati anagrafici dei richiedenti"},
-    {"label": "Tecnici variazioni", "frm": "frm_variazioni_dati", "title": "Tecnici incaricati"}, 
+    {"label": "Comunicazione variazioni", "frm": "frm_variazioni_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Documentazione allegata", "frm": "frm_variazioni_allegati", "title": "Documentazione allegata"},
     {"label": "Resoconto Finale", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]

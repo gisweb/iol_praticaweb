@@ -6,9 +6,29 @@
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
       <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[#Solo se ho fatto il salvataggio dal button 
-if 'btn_next' in context.REQUEST.keys():
+if not 'btn_next' in context.REQUEST.keys():
+    return 
+
+context.setItem('numero_pratica',context.getItem('titolo_esistente_numero'))
+
+
+if context.getParentDatabase().resources.customscripts.getProvider()=='praticaweb':
+    bw = "@@pw-info-procedimento"
+elif context.getParentDatabase().resources.customscripts.getProvider()=='halley':
     context.doAction('init')
-    return context.toNextForm()]]></onSaveDocument>
+    return context.toNextForm() 
+else:
+    bw = "@@sue-info-procedimento"
+    
+infoPratica = context.restrictedTraverse(bw)
+    
+if infoPratica:
+    infoPratica.setInfoProcedimento()
+    context.doAction('init')
+    context.setItem('iol_tipo_proc',context.getItem('iol_tipo_proc','sue'))
+    return context.toNextForm()    
+else:
+    context.plone_utils.addPortalMessage('info procedimento fallito, manca info-procedimento','error')]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

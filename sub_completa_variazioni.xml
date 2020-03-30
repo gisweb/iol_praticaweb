@@ -35,7 +35,7 @@
 <p><span class="plominoSubformClass">sub_comproprietari</span></p>
 <p><span class="plominoSubformClass">base_sub_delegato</span></p>
 </fieldset></div>
-<p><span class="plominoSubformClass">sub_variazioni_dati</span></p>
+<p><span class="plominoSubformClass">sub_comunicazione_variazioni</span></p>
 <div class="v-content well"><span class="plominoSubformClass">base_sub_stampa</span></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

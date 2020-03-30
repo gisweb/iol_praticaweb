@@ -1,0 +1,127 @@
+<plominodatabase id="iol_praticaweb">
+  <design>
+    <element id="sub_collaudatore_comunicazione" title="sub_collaudatore_comunicazione" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">sub_collaudatore_comunicazione</id>
+      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
+      <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
+      <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
+      <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSaveDocument>
+      <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
+      <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
+      <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
+      <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
+<p><span class="plominoFieldClass">collaudatore_comunicazione_opt</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_collaudatore_esistente</span></p>
+<p><span class="plominoLabelClass">collaudatore_esistente</span><span class="plominoFieldClass">collaudatore_esistente</span></p>
+<p><span class="plominoHidewhenClass">end:hw_no_collaudatore_esistente</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_collaudatore_lavori</span></p>
+<p><span class="plominoSubformClass">base_sub_collaudatore</span></p>
+<p><span class="plominoHidewhenClass">end:hw_no_collaudatore_lavori</span></p>
+]]></FormLayout>
+      <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
+      <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
+      <DynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</DynamicDocumentTitle>
+      <StoreDynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</StoreDynamicDocumentTitle>
+      <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentId>
+      <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
+      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">True</HideDefaultActions>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
+      <isSearchForm type="Products.Archetypes.Field.BooleanField">False</isSearchForm>
+      <isPage type="Products.Archetypes.Field.BooleanField">False</isPage>
+      <SearchView type="Products.Archetypes.Field.StringField"/>
+      <SearchFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></SearchFormula>
+      <Position type="Products.Archetypes.Field.IntegerField"/>
+      <ResourcesJS type="Products.Archetypes.Field.TextField"><![CDATA[]]></ResourcesJS>
+      <ResourcesCSS type="Products.Archetypes.Field.TextField"><![CDATA[++resource++iol.document/css/bootstrap.min.css
+++resource++iol.document/css/bootstrap-accessibile.min.css
+++resource++iol.document/css/bootstrap-responsive.min.css
+++resource++iol.document/css/iol.css
+resources/iol-custom.css]]></ResourcesCSS>
+      <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="collaudatore_comunicazione_opt" title="Comunicazione del collaudatore" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">collaudatore_comunicazione_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc and parentDoc.getItem("collaudatore_search"):
+    return '2'
+else:
+    return '1']]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_comunicazione_variazioni']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+ll=['''Collaudatore non necessario o già comunicato;|1''','''Ai sensi dell’art.67, c.8bis del DPR 380/01, il collaudo non è dovuto per interventi locali/riparazione ai sensi delle vigenti norme tecniche sulle costruzioni;|2''']
+
+if parentDoc and parentDoc.getItem("collaudatore_search"):
+    ll.append('''Comunico le generalità del NUOVO Collaudatore in sostituzione del precedente;|4''')
+else:
+    ll.append('''Comunico le generalità del Collaudatore;|3''')
+
+return ll</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="hw_no_collaudatore_lavori" title="hw_no_collaudatore_lavori" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_collaudatore_lavori</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('collaudatore_comunicazione_opt') not in ['3','4']]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="hw_no_collaudatore_esistente" title="hw_no_collaudatore_esistente" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_collaudatore_esistente</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('collaudatore_comunicazione_opt') not in ['4']]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="collaudatore_esistente" title="Collaudatore da sostituire" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">collaudatore_esistente</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc:
+    return parentDoc.getItem("collaudatore_search")]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['readonly']]></HTMLAttributesFormula>
+        </element>
+      </elements>
+    </element>
+  </design>
+</plominodatabase>

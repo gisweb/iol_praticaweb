@@ -1,6 +1,6 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="bo_tecnici" title="bo_tecnici" type="PlominoForm">
+    <element id="bo_tecnici" title="bo_tecnici_variazioni" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_tecnici</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
@@ -11,14 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<p><span class="plominoFieldClass">progettista</span></p>
-<p><span class="plominoFieldClass">direttore</span></p>
-<p><span class="plominoFieldClass">progettista_strutt</span></p>
-<p><span class="plominoFieldClass">direttore_strutt</span></p>
-<p><span class="plominoFieldClass">altri_tecnici</span></p>
-<p><span class="plominoFieldClass">collaudatore</span></p>
-<p><span class="plominoFieldClass">sicurezza</span></p>
-<p><span class="plominoFieldClass">esecutore</span></p>
+<p><span class="plominoFieldClass">elenco_tecnici</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -290,7 +283,7 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">elenco_tecnici</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.customscripts.getElencoTecnici(context)]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.getElencoTecnici(context)]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

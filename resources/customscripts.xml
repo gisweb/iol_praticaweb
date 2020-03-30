@@ -260,7 +260,11 @@ if not doc.getItem('data_presentazione'):
 
 if doc.getItem('iol_tipo_app','') in ['integrazione','finelavori','iniziolavori','pagamento']:
     parentDoc = context.getDocument(doc.getItem('titolo_esistente_id',''))
-    setIolEvent(parentDoc,evento="Presentazione %s per la pratica %s" %(doc.getItem('iol_tipo_app',''),parentDoc.getItem('numero_pratica')),notifica=[parentDoc.getItem('istruttore')])
+    utenti_notificati = [parentDoc.getItem('istruttore')]
+    if parentDoc.getItem('istruttore_paesaggistica'):
+        utenti_notificati.append(parentDoc.getItem('istruttore_paesaggistica'))
+        
+    setIolEvent(parentDoc,evento="Presentazione %s per la pratica %s" %(doc.getItem('iol_tipo_app',''),parentDoc.getItem('numero_pratica')),notifica=utenti_notificati)
     
 else:
     setIolEvent(

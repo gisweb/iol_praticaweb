@@ -352,7 +352,7 @@ else:
         <element id="hw_no_istruttore_paesaggistica" title="hw_no_istruttore_paesaggistica" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_istruttore_paesaggistica</id>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#se clono non server aggiungere l'istruttore paesaggistica
-if context.getItem('procedimento_autorizzazione_paesaggistica_opt') in ['1','2']:
+if context.getItem('autorizzazione_paesaggistica_opt') in ['3']:
     return "setClonePaesaggistica" in context.getParentDatabase().resources
 else:
     return True]]></Formula>

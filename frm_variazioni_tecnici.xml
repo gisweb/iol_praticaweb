@@ -1,7 +1,7 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="frm_variazioni_dati" title="Dati variazioni tecnici" type="PlominoForm">
-      <id type="Products.Archetypes.Field.StringField">frm_variazioni_dati</id>
+    <element id="frm_variazioni_tecnici" title="Variazioni tecnici" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">frm_variazioni_tecnici</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
@@ -15,7 +15,7 @@ elif 'btn_save' in context.REQUEST.keys():
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoSubformClass">base_sub_toolbar</span></p>
-<p><span class="plominoSubformClass">sub_variazioni_dati</span></p>
+<p><span class="plominoSubformClass">sub_comunicazione_variazioni</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
