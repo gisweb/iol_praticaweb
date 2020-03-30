@@ -3076,6 +3076,28 @@ if not destinatari:
     
 return destinatari
 ]]></resource>
+      <resource id="Procedibilita" title="" type="Script (Python)"><![CDATA[## Script (Python) "Procedibilita"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None
+##title=
+##
+from iol.document.plomino_utils import setIolEvent
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+
+#Setto Attivita'
+#doc.setWfActivity(activity="Rilascio Titolo")
+setIolEvent(doc,evento='Procedibilita')
+#Comunicazione Inizio Lavori
+#setIolEvent(doc,evento='Rilascio Titolo')
+#Invio PEC
+#context.sendMail(doc=doc,azione='procedibilita-ok')
+]]></resource>
     </resource>
   </design>
 </plominodatabase>
