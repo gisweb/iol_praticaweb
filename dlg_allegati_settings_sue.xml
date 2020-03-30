@@ -85,7 +85,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><string>rows = context.getParentDatabase().resources.customscripts.getElencoAllegati()
 result = []
 for row in rows:
-    result.append('%s|%s' %(row[0],row[1]))    
+    result.append('%s (%s)|%s' %(row[0],row[1],row[1]))    
 return result
 </string></value>
 </member>

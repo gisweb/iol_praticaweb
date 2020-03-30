@@ -46,7 +46,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
 if parentDoc and parentDoc.getItem("progettista_search"):
-    return '2'
+    return '3'
 else:
     return '1']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
@@ -75,12 +75,12 @@ else:
 <name>selectionlistformula</name>
 <value><string>db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll=['''Non è previsto l'intervento di un progettista;|1''','''Progettista già comunicato;|2''']
+ll=['''Non è previsto l'intervento di un progettista;|1''','''Progettista già comunicato;|3''']
 
-if parentDoc and parentDoc.getItem("progettista_search"):
+if parentDoc and parentDoc.getItem("progettista_search").strip()!='':
     ll.append('''Comunico le generalità del NUOVO progettista in sostituzione del precedente:|4''')
 else:
-    ll.append('''Comunico le generalità del progettista:|3''')
+    ll.append('''Comunico le generalità del progettista:|5''')
 
 return ll</string></value>
 </member>
@@ -97,12 +97,12 @@ return ll</string></value>
         </element>
         <element id="hw_no_progettista_lavori" title="hw_no_progettista_lavori" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_progettista_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_comunicazione_opt') not in ['3','4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_comunicazione_opt') not in ['4','5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="hw_no_progettista_esistente" title="hw_no_progettista_esistente" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_progettista_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_comunicazione_opt') not in ['4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('progettista_comunicazione_opt') not in ['5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="progettista_esistente" title="Progettista da sostituire" type="PlominoField">

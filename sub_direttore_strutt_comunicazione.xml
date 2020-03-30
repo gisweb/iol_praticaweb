@@ -46,7 +46,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
 if parentDoc and parentDoc.getItem("direttore_strutt_search"):
-    return '2'
+    return '3'
 else:
     return '1']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
@@ -75,12 +75,12 @@ else:
 <name>selectionlistformula</name>
 <value><string>db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll = ['Non è richiesta la nomina di un direttore lavori delle opere strutturali;|1','Il direttore lavori delle opere strutturali coincide con il progettista delle opere strutturali;|2']
+ll = ['Non è richiesta la nomina di un direttore lavori delle opere strutturali;|1','Il direttore lavori delle opere strutturali coincide con il progettista delle opere strutturali;|2','Direttore lavori delle opere strutturali già comunicato;|3']
 
-if parentDoc and parentDoc.getItem("direttore_strutt_search"):
+if parentDoc and parentDoc.getItem("direttore_strutt_search").strip()!='':
     ll.append('''Comunico le generalità del NUOVO direttore lavori delle opere strutturali in sostituzione del precedente:|4''')
 else:
-    ll.append('''Comunico le generalità del direttore lavori delle opere strutturali:|3''')
+    ll.append('''Comunico le generalità del direttore lavori delle opere strutturali:|5''')
 
 return ll</string></value>
 </member>
@@ -97,12 +97,12 @@ return ll</string></value>
         </element>
         <element id="hw_no_direttore_strutt_lavori" title="hw_no_direttore_strutt_lavori" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_direttore_strutt_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_strutt_comunicazione_opt') not in ['3','4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_strutt_comunicazione_opt') not in ['4','5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="hw_no_direttore_strutt_esistente" title="hw_no_direttore_strutt_esistente" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_direttore_strutt_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_strutt_comunicazione_opt') not in ['4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_strutt_comunicazione_opt') not in ['5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="direttore_strutt_esistente" title="Direttore opere strutturali da sostituire" type="PlominoField">

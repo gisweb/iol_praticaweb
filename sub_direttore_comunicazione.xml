@@ -46,7 +46,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
 if parentDoc and parentDoc.getItem("direttore_search"):
-    return '2'
+    return '3'
 else:
     return '1']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
@@ -75,14 +75,15 @@ else:
 <name>selectionlistformula</name>
 <value><string>db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll = ['Non è richiesta la nomina di un direttore lavori;|1','Il direttore dei lavori coincide con il progettista delle opere;|2']
+ll = ['Non è richiesta la nomina di un direttore lavori;|1','Il direttore dei lavori coincide con il progettista delle opere;|2','Direttore lavori già comunicato;|3']
 
-if parentDoc and parentDoc.getItem("direttore_search"):
+if parentDoc and parentDoc.getItem("direttore_search").strip()!='':
     ll.append('''Comunico le generalità del NUOVO direttore lavori in sostituzione del precedente:|4''')
 else:
-    ll.append('''Comunico le generalità del direttore lavori:|3''')
+    ll.append('''Comunico le generalità del direttore lavori:|5''')
 
-return ll</string></value>
+return ll
+</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -97,12 +98,12 @@ return ll</string></value>
         </element>
         <element id="hw_no_direttore_lavori" title="hw_no_direttore_lavori" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_direttore_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['3','4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['4','5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="hw_no_direttore_esistente" title="hw_no_direttore_esistente" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_direttore_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="direttore_esistente" title="Direttore lavori da sostituire" type="PlominoField">

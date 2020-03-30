@@ -10,28 +10,22 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
-<div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border required">Ditta Esecutrice dei Lavori</legend>
-<div><span class="plominoFieldClass">esecutore_opt</span></div>
-<p><span class="plominoHidewhenClass">start:hw_no_esecutore_cambio</span></p>
-<div class="alert alert-info"><h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo con la situazione aggiornata</h5></div>
-<p><span class="plominoHidewhenClass">end:hw_no_esecutore_cambio</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_esecutore_opt</span></p>
+<p><span class="plominoFieldClass">esecutore_comunicazione_opt</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_esecutore_esistente</span></p>
+<p><span class="plominoLabelClass">esecutore_esistente</span><span class="plominoFieldClass">esecutore_esistente</span></p>
+<div class="alert alert-info">
+<h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo con la situazione aggiornata</h5>
+</div>
+<p><span class="plominoHidewhenClass">end:hw_no_esecutore_esistente</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_esecutore</span></p>
 <p><span class="plominoSubformClass">base_sub_esecutore</span></p>
 <div>
 <span class="plominoLabelClass">altri_esecutori_grid</span><span class="plominoFieldClass">altri_esecutori_grid</span>
 </div>
-<p><span class="plominoHidewhenClass">end:hw_no_esecutore_opt</span></p>
-</fieldset></div>
-<p><span class="plominoHidewhenClass">start:hw_no_esecutore_opt</span></p>
-<div class="v-content well"><fieldset class="scheduler-border">
+<fieldset class="scheduler-border">
 <legend class="scheduler-border">TUTELA DELLA SALUTE E DELLA SICUREZZA NEI LUOGHI DI LAVORO - <a class="external-link" href="http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2008-04-09;81!vig=" target="_blank" title="">D.Lgs. 9 aprile 2008, n.81</a> <br>
 </legend>
 <p><span class="plominoSubformClass">base_sub_resp_sicurezza</span></p>
-<div>
-<span class="plominoLabelClass">dich_titolo_iv</span> <span class="plominoFieldClass">dich_titolo_iv</span>
-</div>
-<p><span class="plominoHidewhenClass">start:hw_titolo_iv</span></p>
 <hr>
 <div>
 <span class="plominoLabelClass">dich_doc_imprese</span> <span class="plominoFieldClass">dich_doc_imprese</span>
@@ -40,12 +34,14 @@
 <span class="plominoLabelClass">dich_no_notifica_prel</span><span class="plominoFieldClass">dich_no_notifica_prel</span>
 </div>
 <p><span class="plominoHidewhenClass">start:hw_indica_notifica</span></p>
-<div class="alert alert-info"><div>
+<div class="alert alert-info">
+<div>
 <span class="plominoLabelClass">indica_notifica_prel</span> <span class="plominoFieldClass">indica_notifica_prel</span>
-</div></div>
-<p><span class="plominoHidewhenClass">end:hw_indica_notifica</span> <span class="plominoHidewhenClass">end:hw_titolo_iv</span></p>
-</fieldset></div>
-<p><span class="plominoHidewhenClass">end:hw_no_esecutore_opt</span></p>
+</div>
+</div>
+<p><span class="plominoHidewhenClass">end:hw_indica_notifica</span></p>
+</fieldset>
+<p><span class="plominoHidewhenClass">end:hw_no_esecutore</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -68,14 +64,19 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="esecutore_opt" title="Selezionare per modificare ditta esecutrice dei lavori" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">esecutore_opt</id>
+        <element id="esecutore_comunicazione_opt" title="Comunicazione esecuzione delle opere" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">esecutore_comunicazione_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return '1']]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc and parentDoc.getItem("esecutore_search"):
+    return '3'
+else:
+    return '1']]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
@@ -97,11 +98,17 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>return [
-'''Nessuna variazione in merito all'esecuzione dei lavori;|1''',
-'''Comunico le generalità della ditta / impresa esecutrice dei lavori;|2''',
-'''Comunico le generalità della/e NUOVA ditta / impresa esecutrice dei lavori in sostituzione della/e precedenti;|3''',
-]</string></value>
+<value><string>db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+ll = ['''L'attività oggetto della presente comunicazione/istanza non richiede l'esecuzione di opere.|4''','''I lavori sono eseguiti in economia diretta|2''','''Dati di impresa/e già comunicati;|3''']
+if parentDoc and parentDoc.getItem("esecutore_search").strip()!='':
+    ll.append('''Comunico le generalità della/e NUOVA ditta / impresa esecutrice dei lavori in sostituzione della/e precedenti;|4''')
+else:
+    ll.append('''Comunico le generalità della/e ditta / impresa esecutrice/i dei lavori;|5''')
+
+return ll
+
+</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -114,54 +121,12 @@ resources/iol-custom.css]]></ResourcesCSS>
 </param>
 </params>
         </element>
-        <element id="hw_no_esecutore_opt" title="hw_no_esecutore_opt" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_esecutore_opt</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_opt','1') == '1']]></Formula>
+        <element id="hw_no_esecutore" title="hw_no_esecutore" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_esecutore</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_comunicazione_opt') not in ['4','5']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
-        <element id="esecutore_modifica_opt" title="Selezionare per modificare l'esecutore" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">esecutore_modifica_opt</id>
-          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'bLengthChange': true,
-'bFilter': true,
-'bSort': true,
-'bInfo': true,
-'bAutoWidth': false</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>selectionlistformula</name>
-<value><string>return ['Aggiungere nuova ditta esecutrice|nuovo_esecutore']</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>widget</name>
-<value><string>RADIO</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
-        <element id="altri_esecutori_grid" title="Imprese esecutrici" type="PlominoField">
+        <element id="altri_esecutori_grid" title="Altre imprese esecutrici" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">altri_esecutori_grid</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -214,71 +179,6 @@ resources/iol-custom.css]]></ResourcesCSS>
 <member>
 <name>widget</name>
 <value><string>READ_STATIC</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
-        <element id="hw_no_esecutore_cambio" title="hw_no_esecutore_cambio" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_esecutore_cambio</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_opt') != '3']]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="dich_titolo_iv" title="L'intervento:" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">dich_titolo_iv</id>
-          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_sicurezza''']]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'bLengthChange': true,
-'bFilter': true,
-'bSort': true,
-'bInfo': true,
-'bAutoWidth': false</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>selectionlist</name>
-<value><array><data>
-</data></array></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>selectionlistformula</name>
-<value><string>ll = []
-if context.getItem('lavori_economia_opt') in ['1','4']:
-    ll.append('''non ricade nell'ambito di applicazione delle norme in materia di salute e sicurezza nei luoghi di lavoro (d.lgs. n. 81/2008) – in caso di lavori eseguiti in proprio in quanto opere di modesta entità che non interessano le specifiche normative di settore, i lavori saranno eseguiti in prima persona, senza alcun affidamento a ditte esterne;|1''')
-else:   
-    if context.getItem('iol_tipo_app','')=='pdc':
-        ll.append('''ricade nell'ambito di applicazione del Titolo IV del d.lgs. n. 81/2008 e che, ai sensi dell'art.34 l.r.16/2008 e s.m. i relativi adempimenti saranno assolti prima dell'inizio dei lavori;|2''')
-    else:
-        ll.append('''ricade nell'ambito di applicazione delle norme in materia di salute e sicurezza nei luoghi di lavoro (d.lgs. n. 81/2008);|2''')
- 
-    ll.append('''ricade nell'ambito di applicazione delle norme in materia di salute e sicurezza sul luogo di lavoro (d.lgs. 81/2008), ma si riserva di presentare le dichiarazioni prima dell'inizio dei lavori, poiché i dati dell'impresa saranno forniti prima dell'inizio lavori;|3''')
-
-return ll</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>widget</name>
-<value><string>RADIO</string></value>
 </member>
 </struct></value>
 </data></array></value>
@@ -347,7 +247,7 @@ return ll</string></value>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_sicurezza''']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_esecutore_comunicazione''']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -410,20 +310,31 @@ return ll</string></value>
 </param>
 </params>
         </element>
-        <element id="hw_titolo_iv" title="hw_titolo_iv" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_titolo_iv</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('dich_titolo_iv','1')!='2']]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="hw_allega_notifica" title="hw_allega_notifica" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_allega_notifica</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('dich_no_notifica_prel')!='allega']]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
         <element id="hw_indica_notifica" title="hw_indica_notifica" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_indica_notifica</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('dich_no_notifica_prel')!='3']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('dich_no_notifica_prel')!='2']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="hw_no_esecutore_esistente" title="hw_no_esecutore_esistente" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_esecutore_esistente</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_comunicazione_opt') not in ['5']]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="esecutore_esistente" title="Ditta / impresa/e sostituite" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">esecutore_esistente</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc:
+    return parentDoc.getItem("esecutore_search")]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['readonly']]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

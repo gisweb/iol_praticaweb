@@ -16,15 +16,19 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Direttore Lavori</legend> <span class="plominoSubformClass">sub_direttore_comunicazione</span>
 </fieldset></div>
+<p><span class="plominoHidewhenClass">start:hw_no_tecnici_strutturale</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Progettista Opere Strutturali</legend> <span class="plominoSubformClass">sub_progettista_strutt_comunicazione</span>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Direttore Lavori Opere Strutturali</legend> <span class="plominoSubformClass">sub_direttore_strutt_comunicazione</span>
 </fieldset></div>
+<p><span class="plominoHidewhenClass">end:hw_no_tecnici_strutturale</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_collaudatore</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Collaudatore</legend> <span class="plominoSubformClass">sub_collaudatore_comunicazione</span>
 </fieldset></div>
+<p><span class="plominoHidewhenClass">end:hw_no_collaudatore</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Esecutore delle Opere</legend> <span class="plominoSubformClass">sub_esecutore_comunicazione</span>
 </fieldset></div>
@@ -691,6 +695,26 @@ if parentDoc:
 </data></array></value>
 </param>
 </params>
+        </element>
+        <element id="hw_no_tecnici_strutturale" title="hw_no_tecnici_strutturale" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_tecnici_strutturale</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc:
+    return parentDoc.getItem('iol_tipo_app','pdc') not in ['scia','scia2','pdc']
+else:
+    return True]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
+        </element>
+        <element id="hw_no_collaudatore" title="hw_no_collaudatore" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_collaudatore</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
+parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
+if parentDoc:
+    return parentDoc.getItem('iol_tipo_app','pdc') not in ['dsi']
+else:
+    return True]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
         </element>
       </elements>
     </element>

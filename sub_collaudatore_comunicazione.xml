@@ -75,12 +75,12 @@ else:
 <name>selectionlistformula</name>
 <value><string>db=context.getParentDatabase()
 parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll=['''Collaudatore non necessario o già comunicato;|1''','''Ai sensi dell’art.67, c.8bis del DPR 380/01, il collaudo non è dovuto per interventi locali/riparazione ai sensi delle vigenti norme tecniche sulle costruzioni;|2''']
+ll=['''Collaudatore non necessario o già comunicato;|1''','''Ai sensi dell’art.67, c.8bis del DPR 380/01, il collaudo non è dovuto per interventi locali/riparazione ai sensi delle vigenti norme tecniche sulle costruzioni;|2''','''Collaudatore già comunicato|3''']
 
-if parentDoc and parentDoc.getItem("collaudatore_search"):
+if parentDoc and parentDoc.getItem("collaudatore_search").strip()!='':
     ll.append('''Comunico le generalità del NUOVO Collaudatore in sostituzione del precedente;|4''')
 else:
-    ll.append('''Comunico le generalità del Collaudatore;|3''')
+    ll.append('''Comunico le generalità del Collaudatore;|5''')
 
 return ll</string></value>
 </member>
