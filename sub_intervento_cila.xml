@@ -468,7 +468,10 @@ return context.getItem('iol_tipo_app')]]></Formula>
           <id type="Products.Archetypes.Field.StringField">tipo_sorteggio</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">COMPUTEDONSAVE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA['C']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if '1' in context.getItem('atti_assenso_opt') or '2' in context.getItem('atti_assenso_opt'):
+    return 'CILA'
+else:
+    return '']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

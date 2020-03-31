@@ -11,9 +11,11 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="alert alert-info">inserire nei campi di testo i nomi degli items del plominodocument separati da , . Se il dato è su datagrid nome del item datagrid.item (es. esecutore_email,altri_esecutori_grid.esecutore_email)</div>
-<div class="row-fluid"><div class="span4">
+<div class="row-fluid">
+<div class="span4">
 <span class="plominoLabelClass">azione</span><span class="plominoFieldClass">azione</span>
-</div></div>
+</div>
+</div>
 <div class="row-fluid">
 <div class="span6">
 <span class="plominoLabelClass">destinatari_a</span><span class="plominoFieldClass">destinatari_a</span>

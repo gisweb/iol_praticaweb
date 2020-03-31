@@ -20,7 +20,8 @@
 'bSort': true,
 'bInfo': true,
 'bAutoWidth': false,
-'bServerSide': true]]></DynamicTableParameters>
+'bServerSide': true
+]]></DynamicTableParameters>
       <ViewTemplate type="Products.Archetypes.Field.StringField"/>
       <onOpenView type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenView>
       <Position type="Products.Archetypes.Field.IntegerField"/>

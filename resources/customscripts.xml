@@ -104,6 +104,7 @@ mapAzioni = {
     "avvio_procedimento":"avvio-procedimento",
     "richiesta_integrazione":'richiesta-integrazione-ok',
     "richiesta_parere":"richiesta-parere-ok",
+    "procedibilita":"procedibilita",
     "rilascio_titolo":"rilascio_titolo",
     "preavviso_rigetto":"preavviso_rigetto",
     "rigetto":"rigetto",

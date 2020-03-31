@@ -98,6 +98,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><array><data>
 <value><struct>
 <member>
+<name>size</name>
+<value><nil/></value></member>
+</struct></value>
+<value><struct>
+<member>
 <name>widget</name>
 <value><string>TEXT</string></value>
 </member>
