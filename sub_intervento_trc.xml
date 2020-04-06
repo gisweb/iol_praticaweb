@@ -1,0 +1,167 @@
+<plominodatabase id="iol_praticaweb">
+  <design>
+    <element id="sub_intervento_trc" title="sub_intervento_trc" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">sub_intervento_trc</id>
+      <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
+      <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
+      <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
+      <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSaveDocument>
+      <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
+      <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
+      <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
+      <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
+<div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">TIPOLOGIA DI INTERVENTO E DESCRIZIONE SINTETICA DELLE OPERE</legend>
+<div>
+<span class="plominoLabelClass">tipologia_intervento_opt</span><span class="plominoFieldClass">tipologia_intervento_opt</span>
+</div>
+<hr>
+<div>
+<span class="plominoLabelClass">tipologia_intervento_altro</span><span class="plominoFieldClass">tipologia_intervento_altro</span>
+</div>
+<div>
+<span class="plominoLabelClass">descrizione_intervento</span> <span class="plominoFieldClass">descrizione_intervento</span>
+</div>
+</fieldset></div>
+<div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">VINCOLI E PARERI</legend>
+<p><span class="plominoSubformClass">sub_trc_vincoli_pareri</span></p>
+</fieldset></div>
+]]></FormLayout>
+      <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
+      <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
+      <DynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</DynamicDocumentTitle>
+      <StoreDynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</StoreDynamicDocumentTitle>
+      <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentId>
+      <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
+      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">True</HideDefaultActions>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
+      <isSearchForm type="Products.Archetypes.Field.BooleanField">False</isSearchForm>
+      <isPage type="Products.Archetypes.Field.BooleanField">False</isPage>
+      <SearchView type="Products.Archetypes.Field.StringField"/>
+      <SearchFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></SearchFormula>
+      <Position type="Products.Archetypes.Field.IntegerField"/>
+      <ResourcesJS type="Products.Archetypes.Field.TextField"><![CDATA[]]></ResourcesJS>
+      <ResourcesCSS type="Products.Archetypes.Field.TextField"><![CDATA[++resource++iol.document/css/bootstrap.min.css
+++resource++iol.document/css/bootstrap-accessibile.min.css
+++resource++iol.document/css/bootstrap-responsive.min.css
+++resource++iol.document/css/iol.css
+resources/iol-custom.css]]></ResourcesCSS>
+      <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="tipologia_intervento_opt" title="Opere in progetto:" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">tipologia_intervento_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>if context.getItem('iol_tipo_app')=='trc-immediata':  
+    return ['''realizzazione di nuovi impianti radio per trasmissione punto-punto e puntomultipunto e di impianti radioelettrici per accesso a reti di comunicazione  ad uso pubblico , con potenza massima irradiata in singola antenna non superiore a 10 watt e superficie radiante  non superiore a 0,5 metri quadrati, laddove comportanti opere edilizie (allegato 1, lettera 1), punto 2);|1''','''modificazioni  di infrastrutture per impianti esistenti implicanti esclusivamente riduzione della potenza o variazione della frequenza (allegato 1, lettera 1), punto 3);|2''','''realizzazione di impianto di teleradiocomunicazione per radioamatori;|3''']
+
+elif context.getItem('iol_tipo_app')=='trc-differita':
+    return ['''la realizzazione di un nuovo impianto con potenza massima in singola antenna superiore a 10 watt e non superiore a 20 watt (allegato 1, lettera i, punto 1);|1''','''la modificazione di infrastrutture per impianto esistente mediante inserimento di apparati con tecnologia UMTS e sue evoluzioni o altre tecnologie (allegato 1, lettera i, punto 4);|2''','''la modificazione di infrastrutture di impianto esistente con potenza superiore  a 10 watt e non superiore a 20 watt mediante impiego di tecnologie diverse da quelle UMTS e sue evoluzioni comportanti variazioni di parametri radioelettrici  che comportano un aumento della potenza o variazione della frequenza (allegato 1, lettera i, punto 5);|3''','''la realizzazione di nuovi impianti per radiodiffusione televisiva in tecnica digitale con potenza massima irradiata in singola antenna superiore a 7 W e non superiore a 20 W;|4''']
+
+else:
+    return []
+    </string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>CHECKBOX</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="tipologia_intervento_altro" title="Altro tipo di intervento:" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">tipologia_intervento_altro</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['placeholder="altri interventi: specificare il tipo"']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>size</name>
+<value><string>3</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>TEXTAREA</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="descrizione_intervento" title="Descrizione sommaria dell'intervento" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">descrizione_intervento</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['maxlength = 200']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>size</name>
+<value><string>6</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>TEXTAREA</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+      </elements>
+    </element>
+  </design>
+</plominodatabase>
