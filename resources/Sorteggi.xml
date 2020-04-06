@@ -1,0 +1,87 @@
+<plominodatabase id="iol_praticaweb">
+  <design>
+    <resource id="Sorteggi" title="" type="Script (Python)"><![CDATA[## Script (Python) "Sorteggi"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=params=None
+##title=
+##
+# /home/istanze/buildout-istanze-online/bin/client5 run src/iol.document/src/iol/document/esegui.py sue_demo iol_praticaweb Sorteggi
+
+
+from Products.CMFPlomino.PlominoUtils import DateToString,StringToDate,Now
+from Products.CMFCore.utils import getToolByName
+import random, math
+
+##### configuro le percentuali
+percentuale = {
+    'cila':30,
+    'scia':30,
+    'art48':30
+}
+
+#valori possibili
+#N sorteggiabile non sorteggiata, S sorteggiata, V sorteggiata verificata, X sorteggiata problema
+
+#params tipo dal al 
+
+
+db=context.getParentDatabase()
+idx=db.getIndex()
+
+try:
+    tipo = params[0]
+except:
+    tipo = 'cila'
+
+try:
+    dal = params[1]
+    dal = StringToDate(dal)
+except:
+    ### se mancadal trovo l'ultimo sorteggio fatto dato il tipo/tipi di pratica
+    brains = idx.dbsearch({'iol_tipo_app':tipo, 'iol_sorteggio':'N'}, sortindex='iol_sorteggio_data', reverse=1, only_allowed=False)
+    if len(brains)>0:
+        dal=brains[0].iol_sorteggio_data
+    else:    
+        dal=Now()-300 ##primo sorteggio da 30 gg prima?
+    
+try:
+    al = params[2]
+    al = StringToDate(al)
+except:
+    al=Now()
+    
+
+perc = float(percentuale.get(tipo,0))    
+
+
+        
+###cerco le pratiche da sorteggiare
+query = dict(data_protocollo=dict(query=[dal, al],range="min:max"), iol_tipo_app=tipo, sorteggio='N')
+brains = idx.dbsearch(query, only_allowed=False)
+result =  [str(brain.id) for brain in brains]
+count = len(result)
+
+###mischio
+random.shuffle(result,random.random)
+limit = int(count*perc/100) or 5 #almeno 5 pratiche
+
+#ne prendo la percentuale
+result=result[0:limit]
+
+#setto l'item con il riferimento al sorteggio
+for docId in result:
+    doc=db.getDocument(docId)
+    doc.setItem('iol_sorteggio','S')
+    doc.setItem('iol_sorteggio_data',Now())
+    idx.indexDocument(doc)
+    doc.commitTransaction()
+    
+    
+return str(result)
+]]></resource>
+  </design>
+</plominodatabase>

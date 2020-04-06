@@ -1,0 +1,128 @@
+<plominodatabase id="iol_praticaweb">
+  <design>
+    <element id="vista-istanze-sorteggiate" title="Istanze Sorteggiate" type="PlominoView">
+      <id type="Products.Archetypes.Field.StringField">vista-istanze-sorteggiate</id>
+      <SelectionFormula type="Products.Archetypes.Field.TextField"><![CDATA[context.getItem('sorteggiata',False)]]></SelectionFormula>
+      <SortColumn type="Products.Archetypes.Field.StringField">data-protocollo</SortColumn>
+      <KeyColumn type="Products.Archetypes.Field.StringField">richiedente</KeyColumn>
+      <Categorized type="Products.Archetypes.Field.BooleanField">False</Categorized>
+      <FormFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></FormFormula>
+      <ReverseSorting type="Products.Archetypes.Field.BooleanField">True</ReverseSorting>
+      <PositionIndex type="Products.Archetypes.Field.BooleanField">False</PositionIndex>
+      <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
+      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">True</HideDefaultActions>
+      <HideCheckboxes type="Products.Archetypes.Field.BooleanField">True</HideCheckboxes>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
+      <Widget type="Products.Archetypes.Field.StringField">DYNAMICTABLE</Widget>
+      <DynamicTableParameters type="Products.Archetypes.Field.TextField"><![CDATA['bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bAutoWidth': false,
+'bServerSide': true
+]]></DynamicTableParameters>
+      <ViewTemplate type="Products.Archetypes.Field.StringField"/>
+      <onOpenView type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenView>
+      <Position type="Products.Archetypes.Field.IntegerField"/>
+      <excludeFromNav type="Products.Archetypes.Field.BooleanField">True</excludeFromNav>
+      <elements>
+        <element id="identificativo" title="Identificativo" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">identificativo</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/identificativo</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="tipo" title="Tipo" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">tipo</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/iol_tipo_app</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="sportello" title="Sportello" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">sportello</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/iol_tipo_proc</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="oggetto" title="Oggetto" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">oggetto</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/descrizione_intervento</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="richiedente" title="Richiedente/Dichiarante" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">richiedente</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/anagrafica_search</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="numero-protocollo" title="Anno e Numero Protocollo" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">numero-protocollo</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/numero_protocollo_testo</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="data-protocollo" title="Data ora protocollo" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">data-protocollo</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/data_protocollo</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="data-sorteggio" title="Data Sorteggio" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">data-sorteggio</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/data_sorteggio</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="esito-sorteggio" title="Esito" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">esito-sorteggio</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/esito_sorteggio</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="numero-pratica" title="N. Pratica" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">numero-pratica</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/numero_pratica_testo</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="stato" title="Stato" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">stato</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/iol_workflow_status</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="tipo-sorteggio" title="Tipo Sorteggio" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">tipo-sorteggio</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/iol_tipo_sorteggio</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+      </elements>
+    </element>
+  </design>
+</plominodatabase>
