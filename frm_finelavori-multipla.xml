@@ -24,7 +24,10 @@ if 'btn_next' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">base_sub_pratica</span></p>
 <p><span class="plominoSubformClass">base_sub_privacy</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">ELENCO DELLE PRATICHE</legend> <span class="plominoSubformClass">sub_riferimenti_multipli</span>
+<legend class="scheduler-border">ELENCO DELLE PRATICHE</legend>
+<div class="alert alert-error" style="text-align: justify; ">
+<strong>ATTENZIONE: </strong> nel caso di comunicazione multipla di Fine Lavori, nella tabella seguente, andranno inseriti gli estremi di tutti i procedimenti alle quali la comunicazione è riferita, tenendo presente, tuttavia, che per le eventuali varianti in corso d'opera, ossia per opere già realizzate, il termine di efficacia valido resta quello del procedimento principale. A tale proposito si precisa che nel caso in cui, invece, oltre al procedimento principale, sussistano anche successivi procedimenti di variante, o di completamento, che abbiano una scadenza diversa e successiva, considerato che questa non vale a "posticipare" i termini di efficacia del procedimento principale, si dovrà procedere a separate comunicazione di fine lavori, ossia dedicate ai singoli procedimenti aventi diversa scadenza.</div>
+<span class="plominoSubformClass">sub_riferimenti_multipli</span>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">DATI ANAGRAFICI DEL TITOLARE DELLA PRATICA</legend>

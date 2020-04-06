@@ -10,37 +10,16 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
-<p><span class="plominoFieldClass">esecutore_comunicazione_opt</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_esecutore_esistente</span></p>
-<p><span class="plominoLabelClass">esecutore_esistente</span><span class="plominoFieldClass">esecutore_esistente</span></p>
-<div class="alert alert-info">
-<h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo con la situazione aggiornata</h5>
-</div>
-<p><span class="plominoHidewhenClass">end:hw_no_esecutore_esistente</span></p>
+<p><span class="label"><span class="plominoFieldClass">esecutore_comunicazione_opt</span></span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_esecutore</span></p>
+<div class="alert alert-info"><h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo con la situazione aggiornata</h5></div>
 <p><span class="plominoSubformClass">base_sub_esecutore</span></p>
-<div>
-<span class="plominoLabelClass">altri_esecutori_grid</span><span class="plominoFieldClass">altri_esecutori_grid</span>
-</div>
-<fieldset class="scheduler-border">
-<legend class="scheduler-border">TUTELA DELLA SALUTE E DELLA SICUREZZA NEI LUOGHI DI LAVORO - <a class="external-link" href="http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2008-04-09;81!vig=" target="_blank" title="">D.Lgs. 9 aprile 2008, n.81</a> <br>
-</legend>
-<p><span class="plominoSubformClass">base_sub_resp_sicurezza</span></p>
-<hr>
-<div>
-<span class="plominoLabelClass">dich_doc_imprese</span> <span class="plominoFieldClass">dich_doc_imprese</span>
-</div>
-<div>
-<span class="plominoLabelClass">dich_no_notifica_prel</span><span class="plominoFieldClass">dich_no_notifica_prel</span>
-</div>
+<p><span class="plominoLabelClass">altri_esecutori_grid</span><span class="plominoFieldClass">altri_esecutori_grid</span></p>
+<p><span class="plominoLabelClass">dich_doc_imprese</span> <span class="plominoFieldClass">dich_doc_imprese</span></p>
+<p><span class="plominoLabelClass">dich_no_notifica_prel</span><span class="plominoFieldClass">dich_no_notifica_prel</span></p>
 <p><span class="plominoHidewhenClass">start:hw_indica_notifica</span></p>
-<div class="alert alert-info">
-<div>
-<span class="plominoLabelClass">indica_notifica_prel</span> <span class="plominoFieldClass">indica_notifica_prel</span>
-</div>
-</div>
+<div class="alert alert-info"><p><span class="plominoLabelClass">indica_notifica_prel</span> <span class="plominoFieldClass">indica_notifica_prel</span></p></div>
 <p><span class="plominoHidewhenClass">end:hw_indica_notifica</span></p>
-</fieldset>
 <p><span class="plominoHidewhenClass">end:hw_no_esecutore</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
@@ -68,12 +47,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">esecutore_comunicazione_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc and parentDoc.getItem("esecutore_search"):
-    return '3'
-else:
-    return '1']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
@@ -98,16 +72,7 @@ else:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll = ['''L'attività oggetto della presente comunicazione/istanza non richiede l'esecuzione di opere.|4''','''I lavori sono eseguiti in economia diretta|2''','''Dati di impresa/e già comunicati;|3''']
-if parentDoc and parentDoc.getItem("esecutore_search").strip()!='':
-    ll.append('''Comunico le generalità della/e NUOVA ditta / impresa esecutrice dei lavori in sostituzione della/e precedenti;|4''')
-else:
-    ll.append('''Comunico le generalità della/e ditta / impresa esecutrice/i dei lavori;|5''')
-
-return ll
-
+<value><string>['''L'attività oggetto della presente comunicazione/istanza non richiede l'esecuzione di opere.|1''','I lavori sono eseguiti in economia diretta|2','Dati di impresa/e già comunicati;|3','Dati della/e ditta / impresa esecutrice/i dei lavori (comunicazione o sostituzione):|4']
 </string></value>
 </member>
 </struct></value>
@@ -123,7 +88,7 @@ return ll
         </element>
         <element id="hw_no_esecutore" title="hw_no_esecutore" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_esecutore</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_comunicazione_opt') not in ['4','5']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_comunicazione_opt') != '4']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="altri_esecutori_grid" title="Altre imprese esecutrici" type="PlominoField">
@@ -131,7 +96,7 @@ return ll
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">datagrid_small_view</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
@@ -190,7 +155,7 @@ return ll
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
@@ -241,7 +206,7 @@ return ll
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
@@ -314,27 +279,6 @@ return ll
           <id type="Products.Archetypes.Field.StringField">hw_indica_notifica</id>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('dich_no_notifica_prel')!='2']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="hw_no_esecutore_esistente" title="hw_no_esecutore_esistente" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_esecutore_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('esecutore_comunicazione_opt') not in ['5']]]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="esecutore_esistente" title="Ditta / impresa/e sostituite" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">esecutore_esistente</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc:
-    return parentDoc.getItem("esecutore_search")]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['readonly']]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

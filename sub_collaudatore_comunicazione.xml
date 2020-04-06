@@ -10,10 +10,7 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
-<p><span class="plominoFieldClass">collaudatore_comunicazione_opt</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_collaudatore_esistente</span></p>
-<p><span class="plominoLabelClass">collaudatore_esistente</span><span class="plominoFieldClass">collaudatore_esistente</span></p>
-<p><span class="plominoHidewhenClass">end:hw_no_collaudatore_esistente</span></p>
+<p><span class="label"><span class="plominoFieldClass">collaudatore_comunicazione_opt</span></span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_collaudatore_lavori</span></p>
 <p><span class="plominoSubformClass">base_sub_collaudatore</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_collaudatore_lavori</span></p>
@@ -43,19 +40,14 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">collaudatore_comunicazione_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc and parentDoc.getItem("collaudatore_search"):
-    return '2'
-else:
-    return '1']]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_comunicazione_variazioni']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_collaudatore_comunicazione']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -73,16 +65,8 @@ else:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll=['''Collaudatore non necessario o già comunicato;|1''','''Ai sensi dell’art.67, c.8bis del DPR 380/01, il collaudo non è dovuto per interventi locali/riparazione ai sensi delle vigenti norme tecniche sulle costruzioni;|2''','''Collaudatore già comunicato|3''']
-
-if parentDoc and parentDoc.getItem("collaudatore_search").strip()!='':
-    ll.append('''Comunico le generalità del NUOVO Collaudatore in sostituzione del precedente;|4''')
-else:
-    ll.append('''Comunico le generalità del Collaudatore;|5''')
-
-return ll</string></value>
+<value><string>['Collaudatore non necessario o già comunicato;|1','Ai sensi dell’art.67, c.8bis del DPR 380/01, il collaudo non è dovuto per interventi locali/riparazione ai sensi delle vigenti norme tecniche sulle costruzioni;|2','Il collaudatore è già stato comunicato;|3','Dati anagrafici del collaudatore (comunicazione o sostituzione):|4']
+</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -97,29 +81,8 @@ return ll</string></value>
         </element>
         <element id="hw_no_collaudatore_lavori" title="hw_no_collaudatore_lavori" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_collaudatore_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('collaudatore_comunicazione_opt') not in ['3','4']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('collaudatore_comunicazione_opt') != '4']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="hw_no_collaudatore_esistente" title="hw_no_collaudatore_esistente" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_collaudatore_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('collaudatore_comunicazione_opt') not in ['4']]]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="collaudatore_esistente" title="Collaudatore da sostituire" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">collaudatore_esistente</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc:
-    return parentDoc.getItem("collaudatore_search")]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['readonly']]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

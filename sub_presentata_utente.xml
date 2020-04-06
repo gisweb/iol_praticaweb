@@ -12,14 +12,25 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">ws_response_message</span></p>
 <p><span class="plominoFieldClass">iol_workflow_title</span></p>
-<!--PAGAMENTI--><p><span class="plominoFieldClass">pagamenti</span></p>
-<!-- AUTORIZZAZIONE --><p><span class="plominoFieldClass">autorizzazione</span></p>
-<!-- EVENTUALE AVVISO DI RIGETTO --><p><span class="plominoFieldClass">avviso_rigetto</span></p>
-<!-- EVENTUALE RIGETTO --><p><span class="plominoFieldClass">rigetto</span></p>
-<!-- VISTA PRATICA --><p><span class="plominoFieldClass">display_document</span></p>
+<!--PAGAMENTI-->
+<p><span class="plominoFieldClass">pagamenti</span></p>
+<!-- AUTORIZZAZIONE -->
+<p><span class="plominoFieldClass">autorizzazione</span></p>
+<!-- PROCEDIBILITA' -->
+<p><span class="plominoFieldClass">procedibilita</span></p>
+<!-- EVENTUALE AVVISO DI RIGETTO -->
+<p><span class="plominoFieldClass">avviso_rigetto</span></p>
+<!-- EVENTUALE RIGETTO -->
+<p><span class="plominoFieldClass">rigetto</span></p>
+<!-- VISTA PRATICA -->
+<p><span class="plominoFieldClass">display_document</span></p>
 <p><span class="plominoFieldClass">child_documents</span></p>
-<!-- INTEGRAZIONI --><p><span class="plominoFieldClass">elenco_integrazioni</span></p>
-<!-- PRATICHE COLLEGATE --><div class="v-content well"><p><span class="plominoFieldClass">pratiche_collegate</span></p></div>
+<!-- INTEGRAZIONI -->
+<p><span class="plominoFieldClass">elenco_integrazioni</span></p>
+<!-- PRATICHE COLLEGATE -->
+<div class="v-content well">
+<p><span class="plominoFieldClass">pratiche_collegate</span></p>
+</div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -532,6 +543,33 @@ for brain in brains:
         html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a target="_blank" href="%s">%s prot. %s del %s </a></legend><div class="v-content well">%s</div></fieldset>'%(doc.absolute_url(),doc.getItem('iol_form_title','Documento'),doc.getItem('numero_protocollo'),doc.getItem('data_protocollo_testo'),content)  
 
         
+return html]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="procedibilita" title="Procedibilita'" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">procedibilita</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
+    return
+
+#se non ce titolo non mostro
+if not context.getItem('data_comunicazione_procedibilita'):
+    return ''
+
+db=context.getParentDatabase()
+renderForm=db.getForm('bo_procedibilita')
+content=asUnicode(renderForm.displayDocument(context))
+html=''
+if content:
+    html='<div class="v-content well"><fieldset class="scheduler-border"><legend class="scheduler-border"> Notifica di Procedibilit&agrave; </legend>%s</fieldset></div>'%content
+    
 return html]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>

@@ -401,7 +401,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Dati del dichiarante", "frm": "frm_iniziolavori", "title": "Dati anagrafici dei richiedenti"},
-    {"label": "Tecnici incaricati", "frm": "frm_variazione_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Tecnici incaricati", "frm": "frm_variazioni_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Documentazione allegata", "frm": "frm_iniziolavori_allegati", "title": "Documentazione allegata"},
     {"label": "Resoconto Finale", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
@@ -1283,6 +1283,223 @@ menus['back'] = [
     {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}, 
 ]
 
+
+return menus
+]]></resource>
+      <resource id="trc-attivazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-attivazione"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-attivazione", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc-attivazione_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnico/progettista", "frm": "frm_progettista", "title": "Tecnici incaricati"}, 
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
+    {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+]
+
+return menus
+]]></resource>
+      <resource id="trc-differita" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-differita"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-differita", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnici", "frm": "frm_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Sicurezza", "frm": "frm_sicurezza", "title": "Sicurezza nei luogi di lavoro"}, 
+    {"label": "Asseverata", "frm": "frm_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Vincoli", "frm": "frm_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
+    {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Oneri", "frm": "bo_oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
+    {"label": "Lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
+    {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
+    {"label": "Asseverazioni", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+]
+
+return menus
+]]></resource>
+      <resource id="trc-dismissione" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-dismissione"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-dismissione", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc-dismissione_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnici", "frm": "frm_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Sicurezza", "frm": "frm_sicurezza", "title": "Sicurezza nei luogi di lavoro"}, 
+    {"label": "Asseverata", "frm": "frm_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Vincoli", "frm": "frm_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
+    {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Oneri", "frm": "bo_oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
+    {"label": "Lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
+    {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
+    {"label": "Asseverazioni", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+]
+
+return menus
+]]></resource>
+      <resource id="trc-immediata" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-immediata"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-immediata", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnici", "frm": "frm_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Sicurezza", "frm": "frm_sicurezza", "title": "Sicurezza nei luogi di lavoro"}, 
+    {"label": "Asseverata", "frm": "frm_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Vincoli", "frm": "frm_vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"},     
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
+    {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Oneri", "frm": "bo_oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
+    {"label": "Lavori", "frm": "bo_lavori", "title": "Inizio / Fine lavori"},  
+    {"label": "Asservimenti", "frm": "bo_asservimenti", "title": "Asservimenti"},     
+    {"label": "Asseverazioni", "frm": "bo_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+]
+
+return menus
+]]></resource>
+      <resource id="trc-installazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-installazione"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-installazione", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc-installazione_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnico/progettista", "frm": "frm_progettista", "title": "Tecnici incaricati"}, 
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
+    {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Tecnici", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Allegati", "frm": "bo_allegati", "title": "Documentazione allegata"},
+    {"label": "Scadenze", "frm": "bo_scadenze", "title": "Documentazione allegata"}   
+]
+
+return menus
+]]></resource>
+      <resource id="trc-senzaopere" title="" type="Script (Python)"><![CDATA[## Script (Python) "trc-senzaopere"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+menus=dict()
+
+menus['front'] = [
+    {"label": "Richiedenti", "frm": "frm_trc-senzaopere", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm__ubicazione_pianificazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Intervento", "frm": "frm_trc_intervento_scia", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Tecnici", "frm": "frm__tecnici", "title": "Tecnici incaricati"}, 
+    {"label": "Vincoli", "frm": "frm__vincoli", "title": "Dichiarazioni di asseverazione 2 - Vincoli"}, 
+    {"label": "Allegati", "frm": "frm_trc_allegati", "title": "Documentazione allegata"}, 
+    {"label": "Completata", "frm": "frm__completata", "title": "Istanza completata - resoconto finale"}
+]
+
+menus['back'] = [
+    {"label": "Procedimento", "frm": "tab-procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Anagrafiche", "frm": "tab-anagrafiche", "title": "Anagrafiche"}, 
+    {"label": "Ubicazione e vincoli", "frm": "tab-ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
+    {"label": "Asservimenti", "frm": "tab-asservimenti", "title": "Asservimenti"}, 
+    {"label": "Intervento", "frm": "tab-intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Oneri", "frm": "tab-oneri", "title": "Contributo di costruzione e oneri di urbanizzazione"}, 
+    {"label": "Documentazione allegata", "frm": "tab-allegati", "title": "Documentazione allegata"}, 
+]
 
 return menus
 ]]></resource>

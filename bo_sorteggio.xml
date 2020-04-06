@@ -36,8 +36,8 @@
       <StoreDynamicDocumentTitle type="Products.Archetypes.Field.BooleanField">False</StoreDynamicDocumentTitle>
       <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentId>
       <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
-      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">False</HideDefaultActions>
-      <HideInMenu type="Products.Archetypes.Field.BooleanField">False</HideInMenu>
+      <HideDefaultActions type="Products.Archetypes.Field.BooleanField">True</HideDefaultActions>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
       <isSearchForm type="Products.Archetypes.Field.BooleanField">False</isSearchForm>
       <isPage type="Products.Archetypes.Field.BooleanField">False</isPage>
       <SearchView type="Products.Archetypes.Field.StringField"/>
@@ -112,7 +112,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>['SI|1','NO|0']</string></value>
+<value><string>['VERIFICATO|1','IN CORSO DI VERIFICA|0']</string></value>
 </member>
 </struct></value>
 </data></array></value>
@@ -223,8 +223,8 @@ else:
 </param>
 </params>
         </element>
-        <element id="tipo_sorteggio" title="Tipologia di Verifica" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">tipo_sorteggio</id>
+        <element id="iol_tipo_sorteggio" title="Tipologia di Verifica" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">iol_tipo_sorteggio</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">COMPUTED</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
@@ -252,7 +252,7 @@ else:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>['Sorteggio Cila|1','Sorteggio SCA|2','Altro|99']</string></value>
+<value><string>['Sorteggio Cila|CILA','Sorteggio SCA|SCA','Altro|ALTRO']</string></value>
 </member>
 </struct></value>
 </data></array></value>

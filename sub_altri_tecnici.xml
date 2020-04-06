@@ -92,13 +92,7 @@ except:
           <id type="Products.Archetypes.Field.StringField">altri_tecnici_grid</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-try:
-    parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-    if parentDoc:
-        return parentDoc.getItem("altri_tecnici_grid")
-except:
-    pass]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -144,6 +138,12 @@ except:
         "height": 800
     }
 </string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>REGULAR</string></value>
 </member>
 </struct></value>
 </data></array></value>

@@ -1,7 +1,7 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="sub_pagamenti_aggiuntivi" title="Richieste di pagamento" type="PlominoForm">
-      <id type="Products.Archetypes.Field.StringField">sub_pagamenti_aggiuntivi</id>
+    <element id="base_sub_pagopa_pagamenti" title="base_sub_pagopa_pagamenti" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">base_sub_pagopa_pagamenti</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setItem('fromform',context.getItem('Form'))]]></beforeSaveDocument>
@@ -16,7 +16,8 @@ orderDG(context,'elenco_importi_aggiuntivi_dg','elenco_importi_index')]]></onSav
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<p><span class="plominoLabelClass">elenco_importi_aggiuntivi_dg</span><span class="plominoFieldClass">elenco_importi_aggiuntivi_dg</span></p>
+<p><span class="plominoLabelClass">elenco_importi_pagamento_dg</span><span class="plominoFieldClass">elenco_importi_pagamento_dg</span></p>
+<p><span class="plominoLabelClass">note_pagamento</span><span class="plominoFieldClass">note_pagamento</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -38,8 +39,8 @@ orderDG(context,'elenco_importi_aggiuntivi_dg','elenco_importi_index')]]></onSav
 ++resource++iol.document/css/iol.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="elenco_importi_aggiuntivi_dg" title="Importi Aggiuntivi" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">elenco_importi_aggiuntivi_dg</id>
+        <element id="elenco_importi_pagamento_dg" title="Importi da pagare" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_importi_pagamento_dg</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
@@ -49,7 +50,7 @@ orderDG(context,'elenco_importi_aggiuntivi_dg','elenco_importi_index')]]></onSav
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[return 
 
 ##non ci possono essere piu importi copn lo stesso codice causale
-rows=context.getItem('elenco_importi_aggiuntivi_dg',[])
+rows=context.getItem('elenco_importi_pagamento_dg',[])
 check=[]
 for row in rows:
     if row[0] in check:
@@ -64,7 +65,7 @@ for row in rows:
 <value><struct>
 <member>
 <name>associated_form</name>
-<value><string>dlg_importi</string></value>
+<value><string>dlg_pagopa_importi_richiesta</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -94,6 +95,37 @@ for row in rows:
         "height": 400
     }
 </string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="note_pagamento" title="Note al pagamento" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">note_pagamento</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>size</name>
+<value><string>4</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>TEXTAREA</string></value>
 </member>
 </struct></value>
 </data></array></value>

@@ -45,8 +45,11 @@ context.doAction('init_bo')]]></onSaveDocument>
 <legend class="scheduler-border">DATI ANAGRAFICI</legend>
 <p><span class="plominoSubformClass">base_sub_fisica</span></p>
 </fieldset></div>
-<p><span class="plominoSubformClass">sub_pagamento_importi</span></p>
+<div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">IMPORTI</legend>
+<p><span class="plominoSubformClass">base_sub_pagopa_pagamenti</span></p>
 <div class="alert alert-error">ATTENZIONE VERIFICARE GLI IMPORTI PRIMA DI PROSEGUIRE</div>
+</fieldset></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA['Trasmissione pagamento %s' %context.getItem('parent_document')]]></DocumentTitle>

@@ -287,8 +287,8 @@ else:
     doc.setItem('ws_response_message',"<div class='alert alert-success'><h5>%s</h5></div>" %msg)
     
 #se ho configurato la replica su db rilancio un save per sincronizzare i dati in postgresql
-if db.resources.config().get("pgreplica"):
-    doc.save(onSaveEvent=False)
+#if db.resources.config().get("pgreplica"):
+doc.save(onSaveEvent=False)
 ]]></resource>
       <resource id="ProtocollaDocumento" title="" type="Script (Python)"><![CDATA[## Script (Python) "ProtocollaDocumento"
 ##bind container=container
@@ -526,7 +526,7 @@ flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,2)
+res = view.protocolla_comunicazione(flusso,data,0)
 #Recupero il risultato
 res = json_loads(res)
 #Se successo inserisco informazioni su Protocollo
@@ -2109,16 +2109,19 @@ if isinstance(doc, basestring):
 
 if context.aq_parent.config().get('comune_default')=='E463':
     context.sendMailJ(doc=doc,azione=azione,form=form)
+    idCom = '1'
 elif context.aq_parent.config().get('mail_provider','') == 'test':
-    pass    
+    idCom = '1'
 elif context.aq_parent.config().get('mail_provider','') == 'sicraweb' and not azione in ['presentazione-ok','presentazione-ko','protocollazione-ok','protocollazione-ko']:
     #da sostituire con sendMailSicraWeb
     #form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
     idCom = context.sendMailSicraWeb(doc=doc,azione=azione)
-    return idCom
+
 else:
     form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
-    doc.iolSendMail(azione=azione, form=form)
+    idCom = doc.iolSendMail(azione=azione, form=form)
+
+return idCom
 ]]></resource>
       <resource id="sendMailJ" title="" type="Script (Python)"><![CDATA[## Script (Python) "sendMailJ"
 ##bind container=container
@@ -3098,6 +3101,71 @@ setIolEvent(doc,evento='Procedibilita')
 #setIolEvent(doc,evento='Rilascio Titolo')
 #Invio PEC
 #context.sendMail(doc=doc,azione='procedibilita-ok')
+]]></resource>
+      <resource id="InviaComunicazioneRR" title="" type="Script (Python)"><![CDATA[## Script (Python) "InviaComunicazioneRR"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=doc=None,step='',parentDoc=None
+##title=
+##
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
+#Schifezza da togliere
+#Bisogna allineare i nomi delle mail con le azioni di WF
+mapAzioni = {
+    "presentazione":"presentazione",
+    "avvio_procedimento":"avvio-procedimento",
+    "richiesta_integrazione":'richiesta-integrazione-ok',
+    "richiesta_parere":"richiesta-parere-ok",
+    "procedibilita":"procedibilita",
+    "rilascio_titolo":"rilascio_titolo",
+    "preavviso_rigetto":"preavviso_rigetto",
+    "rigetto":"rigetto",
+}
+
+if isinstance(doc, basestring):
+    doc = context.getDocument(doc)
+    
+if not parentDoc:
+    parentDoc = doc
+elif  isinstance(parentDoc, basestring):
+    parentDoc = context.getDocument(parentDoc)   
+
+db=context.getParentDatabase()
+#Se e' gia' stata protocollata la comunicazione skip
+protocollo = doc.getItem('protocollo_%s' %step,0)
+if not protocollo:    
+    protocollo = context.Protocollazione(doc=doc,step=step,parentDoc=parentDoc)
+    #Setto informazioni di Protocollazione
+    if protocollo:
+        doc.setItem('protocollo_%s' %step,protocollo)
+        doc.setItem('data_protocollo_%s' %step,Now())
+
+        
+if protocollo > 0:
+    
+    #Recupero la configurazione del protocollo
+    configProt = db.resources.config_protocollo(parentDoc)
+    #context.plone_log(configProt.get('step','----'))
+    #context.plone_log(configProt['step'].get(step,'----'))
+    if configProt['step'].get(step,'') and configProt['step'][step].get('mail',False):
+        idCom = context.sendMail(doc=doc,azione=mapAzioni[step])
+        if idCom > 0:
+            doc.setItem('data_comunicazione_%s' %step,Now())
+            #logMessage = "INVIATA COMUNICAZIONE %s" %str(idCom)
+            #context.plone_log(logMessage)
+    return protocollo
+elif protocollo == 0:
+    return 0
+else:
+    doc.plone_utils.addPortalMessage('''Attenzione si sono riscontrati errori durante la protocollazione automatica''' ,'error')
+    msg='''Errore in fase di protocollazione automatica. Il servizio di assistenza ha gia' preso in carico la segnalazione.'''
+    doc.setItem('ws_response_message',"<div class='alert alert-error'><h5>%s</h5></div>" %msg)
+    doc.commitTransaction()
+    context.sendMail(doc=doc,azione='protocollazione-ko')
+    return -1
 ]]></resource>
     </resource>
   </design>

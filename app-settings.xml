@@ -409,7 +409,7 @@ return elencoGruppi(context)</string></value>
 <value><struct>
 <member>
 <name>field_mapping</name>
-<value><string>azione,oggetto,destinatari_a,destinatari_cc,protocollo_opt,pec_opt,testo,allegato_principale,allegati</string></value>
+<value><string>azione,oggetto,destinatari_a,destinatari_cc,protocollo_opt,pec_opt,testo,principale,allegati</string></value>
 </member>
 </struct></value>
 <value><struct>

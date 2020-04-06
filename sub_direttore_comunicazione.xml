@@ -10,10 +10,7 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
-<p><span class="plominoFieldClass">direttore_comunicazione_opt</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_direttore_esistente</span></p>
-<p><span class="plominoLabelClass">direttore_esistente</span><span class="plominoFieldClass">direttore_esistente</span></p>
-<p><span class="plominoHidewhenClass">end:hw_no_direttore_esistente</span></p>
+<p><span class="label"><span class="plominoFieldClass">direttore_comunicazione_opt</span></span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_direttore_lavori</span></p>
 <p><span class="plominoSubformClass">base_sub_direttore</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_direttore_lavori</span></p>
@@ -43,19 +40,14 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">direttore_comunicazione_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc and parentDoc.getItem("direttore_search"):
-    return '3'
-else:
-    return '1']]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-SELECTIONFieldRead</FieldReadTemplate>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_comunicazione_variazioni']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_direttore_comunicazione']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -73,17 +65,7 @@ else:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-ll = ['Non è richiesta la nomina di un direttore lavori;|1','Il direttore dei lavori coincide con il progettista delle opere;|2','Direttore lavori già comunicato;|3']
-
-if parentDoc and parentDoc.getItem("direttore_search").strip()!='':
-    ll.append('''Comunico le generalità del NUOVO direttore lavori in sostituzione del precedente:|4''')
-else:
-    ll.append('''Comunico le generalità del direttore lavori:|5''')
-
-return ll
-</string></value>
+<value><string>['Non è richiesta la nomina di un direttore lavori;|1','Il direttore lavori è già stato comunicato;|2','Dati anagrafici del direttore lavori (comunicazione o sostituzione):|3']</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -98,29 +80,8 @@ return ll
         </element>
         <element id="hw_no_direttore_lavori" title="hw_no_direttore_lavori" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_direttore_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['4','5']]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') !='3']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="hw_no_direttore_esistente" title="hw_no_direttore_esistente" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_direttore_esistente</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_comunicazione_opt') not in ['5']]]></Formula>
-          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
-        </element>
-        <element id="direttore_esistente" title="Direttore lavori da sostituire" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">direttore_esistente</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-parentDoc = db.getDocument(context.getItem('titolo_esistente_id'))
-if parentDoc:
-    return parentDoc.getItem("direttore_search")]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['readonly']]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>
