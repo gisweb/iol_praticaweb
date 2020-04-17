@@ -119,7 +119,7 @@
           <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/iol_tipo_sorteggio</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
-          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
       </elements>

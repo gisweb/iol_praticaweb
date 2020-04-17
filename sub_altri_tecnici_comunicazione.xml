@@ -78,7 +78,7 @@ except:
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>return ['Non sono stati incaricati altri tecnici;|1','Sono stati incaricati, in qualità di altri tecnici, i seguenti soggetti:|2']
+<value><string>return ['Non sono stati incaricati altri tecnici;|1','Sono stati incaricati, in qualità di altri tecnici, i seguenti soggetti:|3']
 
 
 
@@ -171,7 +171,7 @@ except:
         </element>
         <element id="hw_no_altri_tecnici" title="hw_no_altri_tecnici" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_altri_tecnici</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('altri_tecnici_comunicazione_opt','2') != '2']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('altri_tecnici_comunicazione_opt','3') != '3']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
         <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">

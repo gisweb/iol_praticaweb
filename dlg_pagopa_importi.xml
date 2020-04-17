@@ -11,6 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">nascondi_campi_editor</span></p>
+<div class="alert alert-error">ATTENZIONE A FAR CORRISPONDERE L'IMPORTO CON LA TIPOLOGIA DI PAGAMENTO CORRETTA</div>
 <div class="row-fluid">
 <div class="span9">
 <span class="plominoLabelClass">tipo</span><span class="plominoFieldClass">tipo</span>
@@ -35,7 +36,8 @@
 <span class="plominoLabelClass">codimp</span><span class="plominoFieldClass">codimp</span>
 </div>
 <div class="span5">
-<br><div class="alert alert-info">Lasciare vuoto in fase di inserimento di nuovi importi</div>
+<br>
+<div class="alert alert-info">Lasciare vuoto in fase di inserimento di nuovi importi</div>
 </div>
 </div>
 ]]></FormLayout>

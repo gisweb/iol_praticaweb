@@ -100,7 +100,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
@@ -319,6 +319,10 @@ parentDoc = db.getDocument(context.getItem('parent_document'))
 invia = db.resources.customscripts.InviaComunicazione(context,'richiesta_pagamento',parentDoc)
 if invia > 0:
     parentDoc.doAction('richiedi_pagamento')
+    db.resources.customscripts.setImportiPagoPa(
+        parentDoc,
+        importi=context.getItem('elenco_importi_richiesta_pagamento_dg')
+    )
     context.setItem('data_comunicazione_richiesta_pagamento',Now())
     
 #Allineo i readers
@@ -377,14 +381,14 @@ except:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('allegato_comunicazione_richiesta_pagamento',{})=={}:
-    return '''<div class="alert alert-info">Allegare la comunicazione per abilitare l'invio della richiesta</div>'''
+    return '''<h6 class="text-info"><strong>Allegare la comunicazione per abilitare l'invio della richiesta</strong></h6>'''
 elif context.getItem('data_comunicazione_richiesta_pagamento')!='':
-    msg = 'Comunicazione di richiesta integrazione inviata in data ' +  DateToString(context.getItem('data_comunicazione_richiesta_pagamento'),format="%d/%m/%Y %H:%M")
+    msg = 'Comunicazione di richiesta pagamento inviata in data ' +  DateToString(context.getItem('data_comunicazione_richiesta_pagamento'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_richiesta_pagamento'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_richiesta_pagamento'))
-    return '''<div class="alert alert-success"><strong>%s</strong></div>''' %msg
+    return '''<h6 class="text-success"><strong>%s</strong></h6>''' %msg
 else:
-    return '''<div class="alert alert-info">Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</div>''']]></Formula>
+    return '''<h6 class="text-info"><strong>Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</strong></h6>''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -503,12 +507,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <id type="Products.Archetypes.Field.StringField">elenco_importi_richiesta_pagamento_dg</id>
           <FieldType type="Products.Archetypes.Field.StringField">DATAGRID</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[try:
-    #setta gli importi da pagare e l'azione da passare all'Agent
-    context.getParentDatabase().resources.config_pagopa(doc=context,azione='presentazione') 
-    return context.getItem('elenco_importi_richiesta_dg')
-except:
-    pass]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -522,7 +521,7 @@ except:
 <value><struct>
 <member>
 <name>associated_form</name>
-<value><string>dlg_pagopa_importi_richiesta</string></value>
+<value><string>dlg_pagopa_importi</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -549,7 +548,7 @@ except:
 "bAutoWidth": false,
 "plominoDialogOptions": {
         "width": 800,
-        "height": 400
+        "height": 500
     }
 </string></value>
 </member>

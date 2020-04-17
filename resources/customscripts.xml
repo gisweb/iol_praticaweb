@@ -17,7 +17,9 @@ if isinstance(doc, basestring):
     doc = context.getDocument(doc)
 
 #doc.setWfActivity(activity="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'), notifyTo=[doc.getItem('istruttore')],priority=1)
-setIolEvent(doc,evento="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'),notifica=[doc.getItem('istruttore')])
+setIolEvent(doc,evento="Pratica %s assegnata a %s" %(doc.getItem('numero_pratica'),doc.getItem('istruttore_nominativo')),notifica=[doc.getItem('istruttore')])
+if doc.getItem('istruttore_paesaggistica'):
+    setIolEvent(doc,evento="Pratica %s assegnata a %s - Responsabile Ambientale" %(doc.getItem('numero_pratica'),doc.getItem('istruttore_paesaggistica')),notifica=[doc.getItem('istruttore_paesaggistica')])
 
 #Ciclo sui figli per settare l'istruttore
 db = context.getParentDatabase()
@@ -27,6 +29,9 @@ for i in brains:
     childDoc = i.getObject()
     childDoc.setItem('istruttore_nominativo',doc.getItem('istruttore_nominativo'))
     childDoc.setItem('istruttore',doc.getItem('istruttore'))
+#    childDoc.setItem('istruttore_paesaggistica_nominativo',doc.getItem('istruttore_paesaggistica_nominativo'))
+#    childDoc.setItem('istruttore_paesaggistica',doc.getItem('istruttore_paesaggistica'))
+    childDoc.save(onSaveEvent=False,refresh_index=True)
 #setIolEvent(doc,evento="Pratica assegnata a %s" %doc.getItem('istruttore_nominativo'))
 ]]></resource>
       <resource id="Assegnazione" title="" type="Script (Python)"><![CDATA[## Script (Python) "Assegnazione"
@@ -107,6 +112,7 @@ mapAzioni = {
     "procedibilita":"procedibilita",
     "rilascio_titolo":"rilascio_titolo",
     "preavviso_rigetto":"preavviso_rigetto",
+    "richiesta_pagamento":"richiesta_pagamento",
     "rigetto":"rigetto",
 }
 
@@ -121,7 +127,7 @@ elif  isinstance(parentDoc, basestring):
 db=context.getParentDatabase()
 #Se e' gia' stata protocollata la comunicazione skip
 protocollo = doc.getItem('protocollo_%s' %step,0)
-if not protocollo:    
+if not protocollo or protocollo==-1:    
     protocollo = context.Protocollazione(doc=doc,step=step,parentDoc=parentDoc)
     #Setto informazioni di Protocollazione
     if protocollo:
@@ -137,7 +143,7 @@ if protocollo > 0:
     #context.plone_log(configProt['step'].get(step,'----'))
     if configProt['step'].get(step,'') and configProt['step'][step].get('mail',False):
         idCom = context.sendMail(doc=doc,azione=mapAzioni[step])
-        if idCom > 0:
+        if idCom <> '-1':
             doc.setItem('data_comunicazione_%s' %step,Now())
             #logMessage = "INVIATA COMUNICAZIONE %s" %str(idCom)
             #context.plone_log(logMessage)
@@ -242,6 +248,8 @@ if context.getProvider()=='sue':
         if parentDoc:
             doc.setItem('istruttore_nominativo',parentDoc.getItem('istruttore_nominativo'))
             doc.setItem('istruttore',parentDoc.getItem('istruttore'))
+            doc.setItem('istruttore_paesaggistica_nominativo',doc.getItem('istruttore_paesaggistica_nominativo'))
+            doc.setItem('istruttore_paesaggistica',doc.getItem('istruttore_paesaggistica'))            
         
     else:
         doc.setItem('IOL_PREVIOUS_FORM','bo_procedimento')      
@@ -485,7 +493,7 @@ if step=='richiesta_parere':
         e = {
             "codfis": "",
             "nome": "",
-            "cognome": "",
+            "cognome": denominazione,
             "denominazione": denominazione,
             "mail": mail,
             "indirizzo": "",
@@ -506,7 +514,7 @@ data['elenco_soggetti'] = ', '.join(elenco_soggetti)
 #Recupero le informazioni sugli allegati da protocollare
 #la getDocumenti va sostituita magari con la  getAttachmentInfo o cose simili
     
-    
+   
 rr = view.getDocumenti(fld_docprincipale)
 data["documento_principale"] = rr[0]
 if fld_allegati:
@@ -526,9 +534,11 @@ flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,0)
+res = view.protocolla_comunicazione(flusso,data,2)
 #Recupero il risultato
+
 res = json_loads(res)
+
 #Se successo inserisco informazioni su Protocollo
 if res["success"]==1:    
     protocollo = res["NumeroProtocollo"]
@@ -2118,9 +2128,24 @@ elif context.aq_parent.config().get('mail_provider','') == 'sicraweb' and not az
     idCom = context.sendMailSicraWeb(doc=doc,azione=azione)
 
 else:
-    form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
-    idCom = doc.iolSendMail(azione=azione, form=form)
+    if doc.getItem('parent_document'):
+        parentDoc =  context.getDocument(doc.getItem('parent_document'))
+        res = parentDoc.iolSendMail(azione=azione, parentDoc=doc)
+    else:
+        form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
+        res = doc.iolSendMail(azione=azione, form=form)
 
+#Temporaneo finche non uniformiamo l'uscita della iolSendMail        
+try:
+    success = str(res["success"])
+except:
+    success = '-1'
+    
+if success == '1':
+    idCom = res['message_id']
+else:
+    idCom = '-1'
+    
 return idCom
 ]]></resource>
       <resource id="sendMailJ" title="" type="Script (Python)"><![CDATA[## Script (Python) "sendMailJ"
@@ -2372,10 +2397,10 @@ data["testo"] = ""
 res = invia_comunicazione(doc,data)
 pec = parentDoc.getItem('pec_inviate',[])
 if res['success']==1:
-    idCom = res['idComunicazione']
+    idCom = str(res['idComunicazione'])
      
 else:
-    idCom = -1
+    idCom = '-1'
     
 pec.append([idCom, protocollo, anno, data['oggetto'], mail_sent,'', ''])    
 parentDoc.setItem('pec_inviate',pec)    
@@ -3101,71 +3126,6 @@ setIolEvent(doc,evento='Procedibilita')
 #setIolEvent(doc,evento='Rilascio Titolo')
 #Invio PEC
 #context.sendMail(doc=doc,azione='procedibilita-ok')
-]]></resource>
-      <resource id="InviaComunicazioneRR" title="" type="Script (Python)"><![CDATA[## Script (Python) "InviaComunicazioneRR"
-##bind container=container
-##bind context=context
-##bind namespace=
-##bind script=script
-##bind subpath=traverse_subpath
-##parameters=doc=None,step='',parentDoc=None
-##title=
-##
-from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now 
-#Schifezza da togliere
-#Bisogna allineare i nomi delle mail con le azioni di WF
-mapAzioni = {
-    "presentazione":"presentazione",
-    "avvio_procedimento":"avvio-procedimento",
-    "richiesta_integrazione":'richiesta-integrazione-ok',
-    "richiesta_parere":"richiesta-parere-ok",
-    "procedibilita":"procedibilita",
-    "rilascio_titolo":"rilascio_titolo",
-    "preavviso_rigetto":"preavviso_rigetto",
-    "rigetto":"rigetto",
-}
-
-if isinstance(doc, basestring):
-    doc = context.getDocument(doc)
-    
-if not parentDoc:
-    parentDoc = doc
-elif  isinstance(parentDoc, basestring):
-    parentDoc = context.getDocument(parentDoc)   
-
-db=context.getParentDatabase()
-#Se e' gia' stata protocollata la comunicazione skip
-protocollo = doc.getItem('protocollo_%s' %step,0)
-if not protocollo:    
-    protocollo = context.Protocollazione(doc=doc,step=step,parentDoc=parentDoc)
-    #Setto informazioni di Protocollazione
-    if protocollo:
-        doc.setItem('protocollo_%s' %step,protocollo)
-        doc.setItem('data_protocollo_%s' %step,Now())
-
-        
-if protocollo > 0:
-    
-    #Recupero la configurazione del protocollo
-    configProt = db.resources.config_protocollo(parentDoc)
-    #context.plone_log(configProt.get('step','----'))
-    #context.plone_log(configProt['step'].get(step,'----'))
-    if configProt['step'].get(step,'') and configProt['step'][step].get('mail',False):
-        idCom = context.sendMail(doc=doc,azione=mapAzioni[step])
-        if idCom > 0:
-            doc.setItem('data_comunicazione_%s' %step,Now())
-            #logMessage = "INVIATA COMUNICAZIONE %s" %str(idCom)
-            #context.plone_log(logMessage)
-    return protocollo
-elif protocollo == 0:
-    return 0
-else:
-    doc.plone_utils.addPortalMessage('''Attenzione si sono riscontrati errori durante la protocollazione automatica''' ,'error')
-    msg='''Errore in fase di protocollazione automatica. Il servizio di assistenza ha gia' preso in carico la segnalazione.'''
-    doc.setItem('ws_response_message',"<div class='alert alert-error'><h5>%s</h5></div>" %msg)
-    doc.commitTransaction()
-    context.sendMail(doc=doc,azione='protocollazione-ko')
-    return -1
 ]]></resource>
     </resource>
   </design>

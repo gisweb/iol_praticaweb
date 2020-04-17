@@ -24,14 +24,8 @@
 <p><span class="plominoFieldClass">notifica_procedibilita</span></p>
 <!-- READERS  -->
 <p><span class="plominoFieldClass">utenti_readers</span></p>
-<!-- RESPONSABILE DEL PROCEDIMENTO  -->
-<p><span class="plominoFieldClass">assegnazione_responsabile</span></p>
-<!-- AVVIO DEL PROCEDIMENTO  -->
-<p><span class="plominoFieldClass">avvio_procedimento</span></p>
-<!-- ASSEGNAZIONE E AVVIO DEL PROCEDIMENTO  -->
-<p> </p>
-<!--<p><span class="plominoFieldClass">assegnazione_avvio_procedimento</span></p>-->
-<p> </p>
+<!-- RESPONSABILE E AVVIO DEL PROCEDIMENTO  -->
+<p><span class="plominoFieldClass">assegnazione_avvio_procedimento</span></p>
 <!-- ELENCO INTEGRAZIONI -->
 <p><span class="plominoFieldClass">elenco_richieste_pagamento</span></p>
 <!-- ELENCO INTEGRAZIONI -->

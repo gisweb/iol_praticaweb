@@ -87,6 +87,7 @@ menus['front'] = [
 
 menus['back'] = [
     {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -273,6 +274,7 @@ menus['front'] = [
 
 menus['back'] = [
     {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 

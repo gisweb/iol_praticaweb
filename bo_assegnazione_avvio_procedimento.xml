@@ -18,8 +18,8 @@ if 'btn_stampa_comunicazione' in context.REQUEST.keys():
             field='allegato_documento_avvio_procedimento')
     return "%s/EditDocument?openwithform=bo_assegnazione_avvio_procedimento" %context.absolute_url()
 else:
-    if context.isActionSupported('assegna'):
-        context.doAction('assegna')
+    if context.isActionSupported('assegnazione_avvio_procedimento'):
+        context.doAction('assegnazione_avvio_procedimento')
     #riassegnazione
     elif context.getItem('istruttore_temp')!=context.getItem('istruttore'):
         context.resources.customscripts.Assegna(context)  

@@ -376,14 +376,14 @@ except:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('allegato_comunicazione_richiesta_integrazione',{})=={}:
-    return '''<div class="alert alert-info">Allegare la comunicazione per abilitare l'invio della richiesta</div>'''
+    return '''<h6 class="text-info"><strong>Allegare la comunicazione per abilitare l'invio della richiesta</strong></h6>'''
 elif context.getItem('data_comunicazione_richiesta_integrazione')!='':
     msg = 'Comunicazione di richiesta integrazione inviata in data ' +  DateToString(context.getItem('data_comunicazione_richiesta_integrazione'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_richiesta_integrazione'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_richiesta_integrazione'))
-    return '''<div class="alert alert-success"><strong>%s</strong></div>''' %msg
+    return '''<h6 class="text-success"><strong>%s</strong></h6>''' %msg
 else:
-    return '''<div class="alert alert-info">Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</div>''']]></Formula>
+    return '''<<h6 class="text-info"><strong>Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</strong></h6>''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

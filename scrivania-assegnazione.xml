@@ -59,7 +59,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><string>'bPaginate': true,
 'aLengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
 'iDisplayLength':50,
-'aaSorting': [[ 7, "asc" ]],
+'aaSorting': [[ 9, "asc" ]],
 'sPaginationType': 'full_numbers',
 'bLengthChange': true,
 'bProcessing': true,

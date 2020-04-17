@@ -44,9 +44,9 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 </div>
 <p><span class="plominoHidewhenClass">end:hw_no_parere_ente_altro</span></p>
 <p><span class="plominoLabelClass">oggetto_richiesta_parere</span><span class="plominoFieldClass">oggetto_richiesta_parere</span></p>
-<p><span class="plominoLabelClass">altri_destinatari_richiesta_parere</span><span class="plominoFieldClass">altri_destinatari_richiesta_parere</span></p>
 <hr>
-<span class="plominoHidewhenClass">start:hw_no_edit</span><div class="row-fluid">
+<span class="plominoHidewhenClass">start:hw_no_edit</span>
+<div class="row-fluid">
 <div class="span8">
 <span class="plominoLabelClass">modello_stampa_richiesta_parere</span><span class="plominoFieldClass">modello_stampa_richiesta_parere</span>
 </div>
@@ -54,23 +54,28 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <br><span class="plominoActionClass">btn_stampa_comunicazione</span>
 </div>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_edit</span><p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
+<span class="plominoHidewhenClass">end:hw_no_edit</span>
+<p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
 <p><span class="plominoFieldClass">istruzioni_richiesta_parere</span></p>
 <div class="row-fluid">
-<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_parere</span><div class="span4">
+<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_parere</span>
+<div class="span4">
 <span class="plominoLabelClass">allegato_documento_richiesta_parere</span><span class="plominoFieldClass">allegato_documento_richiesta_parere</span>
 </div>
 <div class="span4">
 <span class="plominoLabelClass">allegato_allafirma_richiesta_parere</span><span class="plominoFieldClass">allegato_allafirma_richiesta_parere</span>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_parere</span><div class="span4">
+<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_parere</span>
+<div class="span4">
 <span class="plominoLabelClass">allegato_comunicazione_richiesta_parere</span><span class="plominoFieldClass">allegato_comunicazione_richiesta_parere</span>
 </div>
 </div>
 <p><span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span></p>
-<div class="row-fluid"><div class="span3">
+<div class="row-fluid">
+<div class="span3">
 <span class="plominoLabelClass">data_comunicazione_richiesta_parere</span><span class="plominoFieldClass">data_comunicazione_richiesta_parere</span>
-</div></div>
+</div>
+</div>
 <p><span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span></p>
 <p><span class="plominoActionClass">btn_invia_esterni</span></p>
 <p><span class="plominoActionClass">btn_invia_interni</span></p>
@@ -549,14 +554,14 @@ except:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('allegato_comunicazione_richiesta_parere',{})=={}:
-    return '''<div class="alert alert-info">Allegare la comunicazione per abilitare l'invio della richiesta</div>'''
+    return '''<h6 class="text-info"><strong>Allegare la comunicazione per abilitare l'invio della richiesta</strong></h6>'''
 elif context.getItem('data_comunicazione_richiesta_parere')!='':
     msg = 'Comunicazione di richiesta parere inviata in data ' +  DateToString(context.getItem('data_comunicazione_richiesta_parere'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_richiesta_parere'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_richiesta_parere'))
-    return '''<div class="alert alert-success"><strong>%s</strong></div>''' %msg
+    return '''<h6 class="text-info"><strong>%s</strong></h6>''' %msg
 else:
-    return '''<div class="alert alert-info">Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</div>''']]></Formula>
+    return '''<h6 class="text-info"><strong>Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</strong></h6>''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -729,7 +734,7 @@ if invia > 0:
 #Allineo i readers
 context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
 ##potrebbe servire mettere l'ente come autor per far modificare il doc
-context.setItem('Plomino_Authors',readers)
+#context.setItem('Plomino_Authors',readers)
 context.getParentDatabase().getIndex().indexDocument(context)
 return parentDoc.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
@@ -783,7 +788,7 @@ except:
           <Content type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
 url=db.getForm('bo_risposta_parere').absolute_url()
 return "%s?parent_document=%s" %(url,context.getId())]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return context.isEditMode()]]></Hidewhen>
+          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return context.isEditMode() or context.getItem('protocollo_richiesta_parere',0)==0 or (not 'PlominoEditor' in context.getCurrentUserRights())]]></Hidewhen>
           <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
         </element>
         <element id="parere_risposte_elenco" title="Elenco pareri acquisiti" type="PlominoField">

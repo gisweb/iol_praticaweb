@@ -313,16 +313,16 @@ except:
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('allegato_allafirma_procedibilita',{})=={}:
-    return '<div class="alert alert-info">Dopo aver creato il documento desiderato, allegarlo in formato pdf nel campo “Comunicazione da firmare” per abilitare l’iter di invio alla firma del funzionario abilitato alla firma.</div>'
+    return '<h6 class="text-info"><strong>Dopo aver creato il documento desiderato, allegarlo in formato pdf nel campo “Comunicazione da firmare” per abilitare l’iter di invio alla firma del funzionario abilitato alla firma.</strong></h6>'
 elif context.getItem('allegato_comunicazione_procedibilita',{})=={}:
-    return '''<div class="alert alert-info">Dopo aver fatto firmare digitalmente il documento, allegare il p7m nel campo “Comunicazione firmata” e salvare.</div>'''
+    return '''<h6 class="text-info"><strong>Dopo aver fatto firmare digitalmente il documento, allegare il p7m nel campo “Comunicazione firmata” e salvare.</strong></h6>'''
 elif context.getItem('data_comunicazione_procedibilita')!='':
     msg = '''Comunicazione di procedibilita dell'istanza inviata in data ''' +  DateToString(context.getItem('data_comunicazione_procedibilita'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_procedibilita'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_procedibilita'))
-    return '''<div class="alert alert-success"><strong>%s</strong></div>''' %msg
+    return '''<h6 class="text-success"><strong>%s</strong></h6>''' %msg
 else:
-    return '''<div class="alert alert-info">Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</div>''']]></Formula>
+    return '''<h6 class="text-info"><strong>Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</strong></h6>''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

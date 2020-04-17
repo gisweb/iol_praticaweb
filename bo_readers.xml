@@ -13,13 +13,24 @@ if isinstance(readers, basestring):
     readers=[readers]
 readers.append(settings.getItem('grp_readers','sue_readers'))
 context.setItem('Plomino_Readers',readers)
-db.getIndex().indexDocument(context)]]></onSaveDocument>
+db.getIndex().indexDocument(context)
+
+###aggiungo il readers sui figli
+idx=db.getIndex()
+brains = idx.dbsearch({"parent_document":context.getId(),"Form":["bo_richiesta_integrazione","bo_richiesta_pagamento"]},only_allowed=False)
+for brain in brains:
+    doc=brain.getObject()
+    doc.setItem('Plomino_Readers',context.getItem('Plomino_Readers'))
+    db.getIndex().indexDocument(doc)
+]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<div class="v-content well"><p><span class="plominoLabelClass">iol_readers</span><span class="plominoFieldClass">iol_readers</span> <span class="plominoLabelClass">note_readers</span><span class="plominoFieldClass">note_readers</span></p></div>
+<div class="v-content well">
+<p><span class="plominoLabelClass">iol_readers</span><span class="plominoFieldClass">iol_readers</span> <span class="plominoLabelClass">note_readers</span><span class="plominoFieldClass">note_readers</span></p>
+</div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>

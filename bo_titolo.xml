@@ -159,11 +159,11 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('allegato_allafirma_titolo',{})=={}:
-    return '<div class="alert alert-info">Allegare il documento da sottoporre alla firma per inviare il documento di autorizzazione alla firma del responsabile</div>'
+    return '<h6 class="text-info"><strong>Allegare il documento da sottoporre alla firma per inviare il documento di autorizzazione alla firma del responsabile</strong></h6>'
 elif context.getItem('allegato_comunicazione_titolo',{})=={}:
-    return '''<div class="alert alert-info">Allegare la comunicazione firmata digitalmente per il rilascio dell'autorizzazione</div>'''
+    return '''<h6 class="text-info"><strong>Allegare la comunicazione firmata digitalmente per il rilascio dell'autorizzazione</strong></h6>'''
 else:
-    return '''<div class="alert alert-success"><strong>Autorizzazione rilasciata, per la data di rilascio dell'autorizzazione fa fede la data di firma digitale</strong></div>''']]></Formula>
+    return '''<h6 class="text-success"><strong>Autorizzazione rilasciata, per la data di rilascio dell'autorizzazione fa fede la data di firma digitale</strong></h6>''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
