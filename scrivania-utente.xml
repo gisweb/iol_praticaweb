@@ -138,7 +138,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <name>dynamictableparam</name>
 <value><string>'bPaginate': true,
 'alengthMenu': [[20, 50, 100, -1], [20, 50, 100, "All"]],
-'aaSorting': [[ 7, "asc" ]],
+'aaSorting': [[ 9, "asc" ]],
 'sPaginationType': 'full_numbers',
 'bLengthChange': true,
 'bProcessing': true,

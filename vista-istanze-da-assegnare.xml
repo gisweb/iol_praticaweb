@@ -1,8 +1,8 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="vista-istanze-sorteggiate" title="Istanze Sorteggiate" type="PlominoView">
-      <id type="Products.Archetypes.Field.StringField">vista-istanze-sorteggiate</id>
-      <SelectionFormula type="Products.Archetypes.Field.TextField"><![CDATA[context.getItem('sorteggiata',False)]]></SelectionFormula>
+    <element id="vista-istanze-da-assegnare" title="Istanze da assegnare" type="PlominoView">
+      <id type="Products.Archetypes.Field.StringField">vista-istanze-da-assegnare</id>
+      <SelectionFormula type="Products.Archetypes.Field.TextField"><![CDATA[context.getItem('iol_tipo_app','') not in ['','cdu','iniziolavori','finelavori','integrazione','variazioni'] and context.getItem('data_protocollo','')!='' and context.getItem('iol_workflow_status','') in ['presentata']]]></SelectionFormula>
       <SortColumn type="Products.Archetypes.Field.StringField">data-protocollo</SortColumn>
       <KeyColumn type="Products.Archetypes.Field.StringField">richiedente</KeyColumn>
       <Categorized type="Products.Archetypes.Field.BooleanField">False</Categorized>
@@ -65,6 +65,22 @@
           <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
+        <element id="progettista" title="Progettista" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">progettista</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/progettista_search</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="direttore" title="Direttore Lavori" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">direttore</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/direttore_search</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
         <element id="numero-protocollo" title="Anno e Numero Protocollo" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">numero-protocollo</id>
           <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/numero_protocollo_testo</SelectedField>
@@ -79,22 +95,6 @@
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
           <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
-          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
-        </element>
-        <element id="data-sorteggio" title="Data Sorteggio" type="PlominoColumn">
-          <id type="Products.Archetypes.Field.StringField">data-sorteggio</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/data_sorteggio</SelectedField>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
-          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
-          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
-        </element>
-        <element id="esito-sorteggio" title="Esito" type="PlominoColumn">
-          <id type="Products.Archetypes.Field.StringField">esito-sorteggio</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/esito_sorteggio</SelectedField>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
-          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
         <element id="numero-pratica" title="N. Pratica" type="PlominoColumn">
@@ -113,12 +113,20 @@
           <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
-        <element id="tipo-sorteggio" title="Tipo Sorteggio" type="PlominoColumn">
-          <id type="Products.Archetypes.Field.StringField">tipo-sorteggio</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">bo_sorteggio/iol_tipo_sorteggio</SelectedField>
+        <element id="istruttore" title="Istruttore" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">istruttore</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
           <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
+        </element>
+        <element id="istruttore-paesaggistica" title="Istruttore paesaggistica" type="PlominoColumn">
+          <id type="Products.Archetypes.Field.StringField">istruttore-paesaggistica</id>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore_paesaggistica</SelectedField>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
       </elements>

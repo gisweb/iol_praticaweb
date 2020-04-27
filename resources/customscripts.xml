@@ -112,7 +112,7 @@ mapAzioni = {
     "procedibilita":"procedibilita",
     "rilascio_titolo":"rilascio_titolo",
     "preavviso_rigetto":"preavviso_rigetto",
-    "richiesta_pagamento":"richiesta_pagamento",
+    "richiesta_pagamento":"richiedi_pagamento",
     "rigetto":"rigetto",
 }
 
@@ -534,7 +534,7 @@ flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,2)
+res = view.protocolla_comunicazione(flusso,data,0)
 #Recupero il risultato
 
 res = json_loads(res)
@@ -2135,16 +2135,16 @@ else:
         form = form or 'sub_completa_' + doc.getItem('iol_tipo_app')
         res = doc.iolSendMail(azione=azione, form=form)
 
-#Temporaneo finche non uniformiamo l'uscita della iolSendMail        
-try:
-    success = str(res["success"])
-except:
-    success = '-1'
-    
-if success == '1':
-    idCom = res['message_id']
-else:
-    idCom = '-1'
+    #Temporaneo finche non uniformiamo l'uscita della iolSendMail        
+    try:
+        success = str(res["success"])
+    except:
+        success = '-1'
+        
+    if success == '1':
+        idCom = res['message_id']
+    else:
+        idCom = '-1'
     
 return idCom
 ]]></resource>

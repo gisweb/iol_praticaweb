@@ -19,8 +19,7 @@
 'bFilter': true,
 'bSort': true,
 'bAutoWidth': false,
-'bServerSide': true
-]]></DynamicTableParameters>
+'bServerSide': true]]></DynamicTableParameters>
       <ViewTemplate type="Products.Archetypes.Field.StringField"/>
       <onOpenView type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenView>
       <Position type="Products.Archetypes.Field.IntegerField"/>
@@ -92,16 +91,16 @@
         </element>
         <element id="data-protocollo" title="Data ora protocollo" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">data-protocollo</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/data_protocollo</SelectedField>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/data_protocollo_testo</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
-          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
         <element id="numero-pratica" title="N. Pratica" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">numero-pratica</id>
           <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/numero_pratica_testo</SelectedField>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('numero_pratica')]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
           <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
@@ -116,15 +115,15 @@
         </element>
         <element id="istruttore" title="Istruttore" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">istruttore</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore</SelectedField>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore_nominativo</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
-          <RenderField type="Products.Archetypes.Field.BooleanField">True</RenderField>
+          <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>
           <DisplaySum type="Products.Archetypes.Field.BooleanField">False</DisplaySum>
         </element>
         <element id="istruttore-paesaggistica" title="Istruttore paesaggistica" type="PlominoColumn">
           <id type="Products.Archetypes.Field.StringField">istruttore-paesaggistica</id>
-          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore_paesaggistica</SelectedField>
+          <SelectedField type="Products.Archetypes.Field.StringField">app-indexes/istruttore_paesaggistica_nominativo</SelectedField>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <HiddenColumn type="Products.Archetypes.Field.BooleanField">False</HiddenColumn>
           <RenderField type="Products.Archetypes.Field.BooleanField">False</RenderField>

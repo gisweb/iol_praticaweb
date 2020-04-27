@@ -10,11 +10,11 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
+<div class="dynamicSearch"><p><span class="plominoFieldClass">filtro_statico</span></p></div>
 <div class="iol-control-buttons"><span class="plominoActionClass">btn_chiudi</span></div>
-<p class="staticSearch"><span class="plominoFieldClass">filtro_statico</span></p>
 <fieldset class="scheduler-border">
 <legend class="scheduler-border">ISTANZE DA ASSEGNARE</legend>
-<p><span class="plominoFieldClass">istanze_da_assegnare</span></p>
+<p><span class="plominoFieldClass">istanze_presentate</span></p>
 </fieldset>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
@@ -38,8 +38,8 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="istanze_da_assegnare" title="Istanze da assegnare" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">istanze_da_assegnare</id>
+        <element id="istanze_presentate" title="Istanze Presentate" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">istanze_presentate</id>
           <FieldType type="Products.Archetypes.Field.StringField">DOCLINK</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
@@ -81,8 +81,7 @@ resources/iol-custom.css]]></ResourcesCSS>
    "aTargets": [0]
  
 },
-{ "aTargets": [ 2, 8 ], "bSortable": false }  ,       
-{ "aTargets": [ 1 ], "bVisible": false }                       
+{ "aTargets": [ 2, 8 ], "bSortable": false }        
 ]</string></value>
 </member>
 </struct></value>
@@ -95,7 +94,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>sourceview</name>
-<value><string>vista-istanze-protocollate</string></value>
+<value><string>vista-istanze-da-assegnare</string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -120,7 +119,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">filtro_statico</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA['''{"iol_workflow_status":["presentata"]}''']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA['''{"iol_workflow-status":"presentata"}''']]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

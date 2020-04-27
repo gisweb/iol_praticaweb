@@ -731,8 +731,14 @@ parentDoc = db.getDocument(context.getItem('parent_document'))
 invia = db.resources.customscripts.InviaComunicazione(context,'richiesta_parere',parentDoc)
 if invia > 0:
     parentDoc.doAction('richiedi_parere')
-#Allineo i readers
-context.setItem('Plomino_Readers',parentDoc.getItem('Plomino_Readers'))  
+
+#Recupero i readers
+readers = context.getItem('Plomino_Readers',[])
+#i Readers saranno Enti coinvolti + istruttori
+settings = context.getParentDatabase().resources.customscripts.getDocSettings()
+users = context.getItem('parere_ente_opt',[]) + context.getItem('parere_interno_opt',[]) + [str(settings.getItem('grp_istruttori')),'gw_istruttori']
+context.setItem('Plomino_Readers',users)    
+ 
 ##potrebbe servire mettere l'ente come autor per far modificare il doc
 #context.setItem('Plomino_Authors',readers)
 context.getParentDatabase().getIndex().indexDocument(context)
@@ -756,13 +762,13 @@ parentDoc.doAction('richiedi_parere')
 
 context.setItem('data_comunicazione_richiesta_parere',Now())
 
-#Allineo gli utenti
+#i Readers saranno Enti coinvolti + istruttori
 settings = context.getParentDatabase().resources.customscripts.getDocSettings()
-users = context.getItem('parere_ente_opt',[]) + context.getItem('parere_ufficio_opt',[]) + [str(settings.getItem('grp_istruttori')),'gw_istruttori']
-
-context.setItem('Plomino_Readers',users)  
-#enti come autor per far modificare il doc
-context.setItem('Plomino_Authors',users)
+users = context.getItem('parere_ente_opt',[]) + context.getItem('parere_interno_opt',[]) + [str(settings.getItem('grp_istruttori')),'gw_istruttori']
+context.setItem('Plomino_Readers',users)    
+ 
+#enti come author per far modificare il doc
+#context.setItem('Plomino_Authors',users)
 
 ## invio la mail di notifica ai destinatari
 parentDoc.iolSendMail(config='config_mailhost_nopec', azione='richiedi_parere', parentDoc=context)
