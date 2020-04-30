@@ -220,7 +220,13 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>["di presentare contestualmente all’attivazione dell’impianto l’ autocertificazione di attivazione dello stesso all'A.R.P.A.L (condizione valida per gli impianti di cui al punto i) lettere 2 e 3 dell’Allegato 1 della LR 10/2012) ;|1","che l’impianto, sulla base della stima del campo generato e della simulazione numerica effettuata, è conforme ai limiti di esposizione, ai valori di attenzione ed agli obiettivi di qualità di cui alla L. 36/2001;|2","che il /i  coefficiente/i  alfa giornaliero indicato/i, (laddove &lt; 1) è/sono stato/i individuato/i sulla base delle motivazioni dettagliatamente espresse nella documentazione tecnica allegata (condizione valida per gli impianti di cui al punto i) lettere 2 e 3 dell’Allegato 1 della LR 10/2012);|3","di riconoscere che per gli interventi di realizzazione di infrastrutture per impianti di tele radiocomunicazioni, per i quali non è necessario asseverare la regolarità e legittimità delle opere già esistenti rappresentate sugli elaborati grafici, l’accoglimento della presente comunicazione non costituisce legittimazione dello stato di fatto rappresentato e, di conseguenza, l’eventuale carattere abusivo delle opere non può in alcun modo ritenersi oggetto di regolarizzazione;|4"] </string></value>
+<value><string>["di presentare contestualmente all’attivazione dell’impianto l’ autocertificazione di attivazione dello stesso all'A.R.P.A.L (condizione valida per gli impianti di cui al punto i);|1","che l’impianto, sulla base della stima del campo generato e della simulazione numerica effettuata, è conforme ai limiti di esposizione, ai valori di attenzione ed agli obiettivi di qualità di cui alla L. 36/2001;|2","che il /i  coefficiente/i  alfa giornaliero indicato/i, (laddove &lt; 1) è/sono stato/i individuato/i sulla base delle motivazioni dettagliatamente espresse nella documentazione tecnica allegata (condizione valida per gli impianti di cui al punto i);|3","di riconoscere che per gli interventi di realizzazione di infrastrutture per impianti di tele radiocomunicazioni, per i quali non è necessario asseverare la regolarità e legittimità delle opere già esistenti rappresentate sugli elaborati grafici, l’accoglimento della presente comunicazione non costituisce legittimazione dello stato di fatto rappresentato e, di conseguenza, l’eventuale carattere abusivo delle opere non può in alcun modo ritenersi oggetto di regolarizzazione;|4"] </string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>separator</name>
+<value><string>&lt;br&gt;</string></value>
 </member>
 </struct></value>
 <value><struct>

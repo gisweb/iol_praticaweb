@@ -3,9 +3,7 @@
     <element id="bo_protocollo" title="Assegnazione protocollo" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_protocollo</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
-      <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[if context.getParentDatabase().resources.config().get('wsprotocollo'):
-    context.doAction('protocolla')
-    context.REQUEST.RESPONSE.redirect(context.absolute_url())]]></onOpenDocument>
+      <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[context.setItem('fromform',context.getItem('Form'))]]></beforeSaveDocument>
       <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('fromform'):
     context.setItem('Form',context.getItem('fromform'))
@@ -23,10 +21,12 @@ context.doAction('protocolla')]]></onSaveDocument>
 <h3>Attenzione, prima di inviare la pratica agli istruttori, assicurarsi che il protocollo sia corretto</h3>
 <hr>
 </div>
-<div id="iol-sending-message" title="Invio della richiesta"><div class="row-fluid">
+<div id="iol-sending-message" title="Invio della richiesta">
+<div class="row-fluid">
 <div class="span6"><img alt="sending message" src="../../++resource++iol.document/images/send.jpg"></div>
 <div class="span6"><span class="sending-message">Invio della pratica in corso...l'operazione potrebbe richiedere qualche minuto. NON RIPETERE L'INVIO</span></div>
-</div></div>
+</div>
+</div>
 </div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

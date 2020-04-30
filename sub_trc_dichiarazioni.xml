@@ -71,7 +71,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>["il richiedente presenta contestualmente all’attivazione dell’impianto l’ autocertificazione di attivazione dello stesso all'A.R.P.A.L (condizione valida per gli impianti di cui al punto i) lettere 2 e 3 dell’Allegato 1 della LR 10/2012);|1"] </string></value>
+<value><string>["il richiedente presenta contestualmente all’attivazione dell’impianto l’ autocertificazione di attivazione dello stesso all'A.R.P.A.L (condizione valida per gli impianti di cui al punto i);|1"] </string></value>
 </member>
 </struct></value>
 <value><struct>
@@ -113,7 +113,7 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>["il /i  coefficiente/i  alfa giornaliero indicato/i, (laddove &lt; 1) è/sono stato/i individuato/i sulla base delle motivazioni dettagliatamente espresse nella documentazione tecnica allegata (condizione valida per gli impianti di cui al punto i) lettere 2 e 3 dell’Allegato 1 della LR 10/2012);|1"] </string></value>
+<value><string>["il /i  coefficiente/i  alfa giornaliero indicato/i, (laddove &lt; 1) è/sono stato/i individuato/i sulla base delle motivazioni dettagliatamente espresse nella documentazione tecnica allegata (condizione valida per gli impianti di cui al punto i);|1"] </string></value>
 </member>
 </struct></value>
 <value><struct>

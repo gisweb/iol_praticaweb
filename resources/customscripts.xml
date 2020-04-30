@@ -534,7 +534,7 @@ flusso = config["step"][step]["flusso"]
 #Se inserisco il terzo parametro 'testxml' non protocolla 
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,0)
+res = view.protocolla_comunicazione(flusso,data,2)
 #Recupero il risultato
 
 res = json_loads(res)
