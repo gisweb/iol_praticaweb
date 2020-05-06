@@ -25,6 +25,9 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <div class="iol-toolbar"></div>
 <div class="v-content well">
 <div>
+<span class="plominoLabelClass">procedibilita_opt</span><span class="plominoFieldClass">procedibilita_opt</span>
+</div>
+<div>
 <span class="plominoLabelClass">oggetto_procedibilita</span><span class="plominoFieldClass">oggetto_procedibilita</span>
 </div>
 <span class="plominoHidewhenClass">start:hw_no_edit</span>
@@ -409,6 +412,48 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <member>
 <name>widget</name>
 <value><string>JQUERY</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="procedibilita_opt" title="Istanza procedibile" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">procedibilita_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['SI|1','NO|2']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
 </member>
 </struct></value>
 </data></array></value>

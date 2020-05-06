@@ -16,13 +16,17 @@
 <p><span class="plominoLabelClass">allegato_agibilita_parziale</span> <span class="plominoFieldClass">allegato_agibilita_parziale</span></p>
 </fieldset></div>
 <p><span class="plominoHidewhenClass">end:hw_no_allegato_agibilita_parziale</span></p>
-<div class="v-content well"><div><span class="plominoFieldClass">allegati_elenco_impianti_dg</span></div></div>
+<div class="v-content well">
+<div><span class="plominoFieldClass">allegati_elenco_impianti_dg</span></div>
+</div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">SICUREZZA STATICA E SISMICA</legend>
 <p><span class="plominoHidewhenClass">start:hw_no_allegato_certificato_collaudo</span></p>
-<span class="plominoLabelClass">allegato_certificato_collaudo</span> <span class="plominoFieldClass">allegato_certificato_collaudo</span><p><span class="plominoHidewhenClass">end:hw_no_allegato_certificato_collaudo</span></p>
+<span class="plominoLabelClass">allegato_certificato_collaudo</span> <span class="plominoFieldClass">allegato_certificato_collaudo</span>
+<p><span class="plominoHidewhenClass">end:hw_no_allegato_certificato_collaudo</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_allegato_regolare_esecuzione</span></p>
-<span class="plominoLabelClass">allegato_regolare_esecuzione</span> <span class="plominoFieldClass">allegato_regolare_esecuzione</span><p><span class="plominoHidewhenClass">end:hw_no_allegato_regolare_esecuzione</span></p>
+<span class="plominoLabelClass">allegato_regolare_esecuzione</span> <span class="plominoFieldClass">allegato_regolare_esecuzione</span>
+<p><span class="plominoHidewhenClass">end:hw_no_allegato_regolare_esecuzione</span></p>
 <p><span class="plominoHidewhenClass">start:hw_sicurezza_sismica</span></p>
 <div class="text-label">Nessun documento da allegare</div>
 <p><span class="plominoHidewhenClass">end:hw_sicurezza_sismica</span></p>
@@ -30,7 +34,8 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">PRESTAZIONE ENERGETICA DEGLI EDIFICI</legend>
 <p><span class="plominoHidewhenClass">start:hw_no_qualificazione_energetica</span></p>
-<span class="plominoLabelClass">allegato_qualificazione_energetica</span> <span class="plominoFieldClass">allegato_qualificazione_energetica</span><p><span class="plominoHidewhenClass">end:hw_no_qualificazione_energetica</span></p>
+<span class="plominoLabelClass">allegato_qualificazione_energetica</span> <span class="plominoFieldClass">allegato_qualificazione_energetica</span>
+<p><span class="plominoHidewhenClass">end:hw_no_qualificazione_energetica</span></p>
 <p><span class="plominoHidewhenClass">start:hw_qualificazione_energetica</span></p>
 <div class="text-label">Nessun documento da allegare</div>
 <p><span class="plominoHidewhenClass">end:hw_qualificazione_energetica</span></p>
@@ -38,7 +43,8 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">BARRIERE ARCHITETTONICHE</legend>
 <p><span class="plominoHidewhenClass">start:hw_no_allegato_barriere_architettoniche</span></p>
-<span class="plominoLabelClass">allegato_barriere_architettoniche</span> <span class="plominoFieldClass">allegato_barriere_architettoniche</span><p><span class="plominoHidewhenClass">end:hw_no_allegato_barriere_architettoniche</span></p>
+<span class="plominoLabelClass">allegato_barriere_architettoniche</span> <span class="plominoFieldClass">allegato_barriere_architettoniche</span>
+<p><span class="plominoHidewhenClass">end:hw_no_allegato_barriere_architettoniche</span></p>
 <p><span class="plominoHidewhenClass">start:hw_barriere_architettoniche</span></p>
 <div class="text-label">Nessun documento da allegare</div>
 <p><span class="plominoHidewhenClass">end:hw_barriere_architettoniche</span></p>
@@ -55,7 +61,8 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">PREVENZIONE INCENDI</legend>
 <p><span class="plominoHidewhenClass">start:hw_no_allegato_prevenzione_incendi</span></p>
-<span class="plominoLabelClass">allegato_prevenzione_incendi</span> <span class="plominoFieldClass">allegato_prevenzione_incendi</span><p><span class="plominoHidewhenClass">end:hw_no_allegato_prevenzione_incendi</span></p>
+<span class="plominoLabelClass">allegato_prevenzione_incendi</span> <span class="plominoFieldClass">allegato_prevenzione_incendi</span>
+<p><span class="plominoHidewhenClass">end:hw_no_allegato_prevenzione_incendi</span></p>
 <p><span class="plominoHidewhenClass">start:hw_prevenzione_incendi</span></p>
 <div class="text-label">Nessun documento da allegare</div>
 <p><span class="plominoHidewhenClass">end:hw_prevenzione_incendi</span></p>

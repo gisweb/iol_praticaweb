@@ -39,9 +39,11 @@
 <div>
 <span class="plominoLabelClass">altra_documentazione_specifica</span><span class="plominoFieldClass">altra_documentazione_specifica</span>
 </div>
-<div class="row-fluid"><div class="span6">
+<div class="row-fluid">
+<div class="span6">
 <span class="plominoLabelClass">descrizione_documento</span><span class="plominoFieldClass">descrizione_documento</span>
-</div></div>
+</div>
+</div>
 </fieldset></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

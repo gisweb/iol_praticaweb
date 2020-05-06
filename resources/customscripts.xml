@@ -516,7 +516,14 @@ data['elenco_soggetti'] = ', '.join(elenco_soggetti)
     
    
 rr = view.getDocumenti(fld_docprincipale)
-data["documento_principale"] = rr[0]
+#data["documento_principale"] = rr[0]
+
+for i in range(len(rr)):
+    if i == 0:
+        data["documento_principale"] = rr[0]
+    else:
+        data["allegati"].append(rr[i])
+        
 if fld_allegati:
     allegati = view.getDocumenti(fld_allegati)
     for a in allegati:
@@ -2754,7 +2761,7 @@ return '<br />'.join([x[0]+'.'+x[1] for x in elencoCampi if x[1] not in elencoSe
 ##parameters=doc=None, step='',parentDoc=''
 ##title=
 ##
-from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads 
+from Products.CMFPlomino.PlominoUtils import StringToDate, DateToString, Now, json_loads,asList
 
 db=context.getParentDatabase()
 
@@ -2838,14 +2845,21 @@ data['elenco_soggetti'] = ', '.join(elenco_soggetti)
     
     
 rr = view.getDocumenti(fld_docprincipale)
-data["documento_principale"] = rr[0]
+
+
+for i in range(len(rr)):
+    if i == 0:
+        data["documento_principale"] = rr[0]
+    else:
+        data["allegati"].append(rr[i])
+    
 if fld_allegati:
     allegati = view.getDocumenti(fld_allegati)
+    
     for a in allegati:
         data["allegati"].append(a)
 
         
-
 
 #Se la pratica e' collegata ad un'altra inserisco i riferimenti del protocollo genitore
 #Utile per raggruppare i protocolli sul sistema del protocollo

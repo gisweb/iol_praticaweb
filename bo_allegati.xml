@@ -103,6 +103,9 @@ idx = db.getIndex()
 if not 'numero_pratica' in idx.indexes():
     return []
 
+if not context.getItem('numero_pratica'):
+    return []
+
 brains = idx.dbsearch(dict(numero_pratica=context.getItem('numero_pratica'),iol_tipo_app=['integrazione','iniziolavori','finelavori','voltura']),sortindex="data_protocollo")
 
 html=''

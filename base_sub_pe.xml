@@ -222,8 +222,7 @@ return ll</string></value>
 <value><struct>
 <member>
 <name>format</name>
-<value><string>%d/%m/%Y %H:%M</string></value>
-</member>
+<value><nil/></value></member>
 </struct></value>
 <value><struct>
 <member>

@@ -22,7 +22,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -53,7 +54,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -121,7 +123,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "frm_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
@@ -312,7 +315,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
@@ -509,7 +513,7 @@ menus=dict()
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_paesaggistica-ordinaria", "title": "Dati anagrafici dei richiedenti"}, 
     {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento - Mappa"}, 
-    {"label": "Intervento", "frm": "frm_paesaggistica_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Intervento", "frm": "frm_paesaggistica-ordinaria_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Progettista", "frm": "frm_progettista", "title": "Progettista incaricato"}, 
     {"label": "Asseverata", "frm": "frm_paesaggistica_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Allegati", "frm": "frm_paesaggistica_allegati", "title": "Documentazione allegata"}, 
@@ -517,7 +521,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -542,7 +547,7 @@ menus=dict()
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_paesaggistica-semplificata", "title": "Dati anagrafici dei richiedenti"}, 
     {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento - Mappa"}, 
-    {"label": "Intervento", "frm": "frm_paesaggistica_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Intervento", "frm": "frm_paesaggistica-semplificata_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Progettista", "frm": "frm_progettista", "title": "Progettista incaricato"}, 
     {"label": "Asseverata", "frm": "frm_paesaggistica_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Allegati", "frm": "frm_paesaggistica_allegati", "title": "Documentazione allegata"}, 
@@ -550,7 +555,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -574,7 +580,7 @@ menus=dict()
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_paesaggistica-accertamento", "title": "Dati anagrafici dei richiedenti"}, 
     {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento - Mappa"}, 
-    {"label": "Intervento", "frm": "frm_paesaggistica_intervento", "title": "Qualificazione e tipo di intervento"}, 
+    {"label": "Intervento", "frm": "frm_paesaggistica-accertamento_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Progettista", "frm": "frm_progettista", "title": "Progettista incaricato"}, 
     {"label": "Asseverata", "frm": "frm_paesaggistica_asseverata", "title": "Dichiarazioni di asseverazione 1"},     
     {"label": "Allegati", "frm": "frm_paesaggistica_allegati", "title": "Documentazione allegata"}, 
@@ -582,7 +588,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -613,7 +620,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
@@ -643,7 +651,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -672,7 +681,8 @@ menus['front'] = [
     {"label": "Completata", "frm": "frm_completata", "title": "Istanza completata - resoconto finale"}
 ]
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -731,7 +741,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -762,7 +773,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -793,7 +805,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
@@ -838,7 +851,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -868,7 +882,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -1100,7 +1115,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
@@ -1129,7 +1145,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -1198,7 +1215,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Tecnici / Imprese", "frm": "bo_tecnici", "title": "Tecnici incaricati"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
@@ -1279,7 +1297,8 @@ menus['front'] = [
 ]
 
 menus['back'] = [
-    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
+    {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"},
+    {"label": "Pareri", "frm": "bo_pareri", "title": "Pareri"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
     {"label": "Ubicazione e vincoli", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}, 

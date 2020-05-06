@@ -1,7 +1,7 @@
 <plominodatabase id="iol_praticaweb">
   <design>
-    <element id="sub_trc-dismissione_dichiarazioniXXXXXXXXXXXXXXXXXXXx" title="sub_trc-dismissione_dichiarazioni" type="PlominoForm">
-      <id type="Products.Archetypes.Field.StringField">sub_trc-dismissione_dichiarazioniXXXXXXXXXXXXXXXXXXXx</id>
+    <element id="sub_trc-dismissione_dichiarazioni" title="sub_trc-dismissione_dichiarazioni" type="PlominoForm">
+      <id type="Products.Archetypes.Field.StringField">sub_trc-dismissione_dichiarazioni</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
