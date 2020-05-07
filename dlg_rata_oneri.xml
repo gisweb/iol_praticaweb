@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="dlg_rata_oneri" title="Rata" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">dlg_rata_oneri</id>

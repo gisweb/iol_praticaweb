@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_altri_tecnici" title="sub_altri_tecnici" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_altri_tecnici</id>
@@ -11,11 +11,9 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<div><span class="plominoFieldClass">altri_tecnici_opt</span></div>
+<p><span class="plominoLabelClass">altri_tecnici_opt</span><span class="plominoFieldClass">altri_tecnici_opt</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_altri_tecnici</span></p>
-<div>
-<span class="plominoLabelClass">altri_tecnici_grid</span> <span class="plominoFieldClass">altri_tecnici_grid</span>
-</div>
+<p><span class="plominoLabelClass">altri_tecnici_grid</span> <span class="plominoFieldClass">altri_tecnici_grid</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_altri_tecnici</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
@@ -56,7 +54,7 @@ except:
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_altri_tecnici''']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_altri_tecnici']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -143,7 +141,7 @@ except:
 <value><struct>
 <member>
 <name>widget</name>
-<value><string>REGULAR</string></value>
+<value><string>READ_STATIC</string></value>
 </member>
 </struct></value>
 </data></array></value>

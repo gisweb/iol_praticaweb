@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm__presentata_altrodb" title="Pratica  Presentata Altro DB" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm__presentata_altrodb</id>

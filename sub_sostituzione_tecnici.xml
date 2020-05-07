@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_sostituzione_tecnici" title="sub_sostituzione_tecnici" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_sostituzione_tecnici</id>
@@ -51,7 +51,7 @@
       <DocumentId type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentId>
       <ActionBarPosition type="Products.Archetypes.Field.StringField">TOP</ActionBarPosition>
       <HideDefaultActions type="Products.Archetypes.Field.BooleanField">False</HideDefaultActions>
-      <HideInMenu type="Products.Archetypes.Field.BooleanField">False</HideInMenu>
+      <HideInMenu type="Products.Archetypes.Field.BooleanField">True</HideInMenu>
       <isSearchForm type="Products.Archetypes.Field.BooleanField">False</isSearchForm>
       <isPage type="Products.Archetypes.Field.BooleanField">False</isPage>
       <SearchView type="Products.Archetypes.Field.StringField"/>

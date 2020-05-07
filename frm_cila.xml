@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_cila" title="Comunicazione Inizio Lavori Asseverata - CILA" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_cila</id>

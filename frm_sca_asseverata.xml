@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_sca_asseverata" title="Relazione Tecnica di Asseverazione - SCA" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_sca_asseverata</id>

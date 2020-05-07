@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="sub_check_email" title="sub_check_email" type="PlominoForm">
+    <element id="sub_check_email" title="Elenco comunicazioni email / PEC" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_check_email</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>

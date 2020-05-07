@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="base_sub_esecutore" title="Impresa Esecutrice" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">base_sub_esecutore</id>

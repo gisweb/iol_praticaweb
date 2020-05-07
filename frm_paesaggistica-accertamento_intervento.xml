@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_paesaggistica-accertamento_intervento" title="Intervento" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_paesaggistica-accertamento_intervento</id>

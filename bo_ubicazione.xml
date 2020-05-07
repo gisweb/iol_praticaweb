@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_ubicazione" title="bo_ubicazione" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_ubicazione</id>
@@ -35,20 +35,6 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="hide_toolbar_menus" title="hide_toolbar_menus" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">hide_toolbar_menus</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.isEditMode():
-    return '''<style>#iol-menus{display:none !important;}</style>''']]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
         <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">
           <id type="Products.Archetypes.Field.StringField">btn_save</id>
           <ActionType type="Products.Archetypes.Field.StringField">SAVE</ActionType>
@@ -77,38 +63,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">ubicazione_mappa</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
-db=context.getParentDatabase()
-renderForm=db.getForm('sub_ubicazione')
-content=renderForm.displayDocument(context)
-html=''
-if content:
-    html='''<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=sub_ubicazione"> Ubicazione dell'intervento e regimi vincolistici <i class="icon-edit"></i></a></legend><div class="v-content well">%s</div></fieldset>'''%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
-        <element id="ubicazione_vincoli" title="ubicazione_vincoli" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">ubicazione_vincoli</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
-db=context.getParentDatabase()
-renderForm=db.getForm('sub_ubicazioni_vincoli_verifica')
-content=renderForm.displayDocument(context)
-html=''
-if content:
-    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=sub_ubicazioni_vincoli_verifica"> VINCOLI...PIANIFICAZIONE??? <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.renderForm('frm_ubicazione')]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

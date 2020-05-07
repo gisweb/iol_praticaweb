@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_collaudatore" title="sub_collaudatore" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_collaudatore</id>
@@ -11,8 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-
-<p><span class="plominoFieldClass">collaudatore_opt</span></p>
+<p class="tecnico-opt"><span class="plominoLabelClass">collaudatore_opt</span><span class="plominoFieldClass">collaudatore_opt</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_collaudatore</span></p>
 <p><span class="plominoSubformClass">base_sub_collaudatore</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_collaudatore</span></p>
@@ -39,7 +38,7 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="collaudatore_opt" title="Scelta del collaudatore" type="PlominoField">
+        <element id="collaudatore_opt" title="Scelta del Collaudatore" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">collaudatore_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -50,7 +49,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=1']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_collaudatore']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>

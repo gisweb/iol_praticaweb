@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_cila_oneri" title="Contributo di Costruzione CILA" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_cila_oneri</id>
@@ -17,7 +17,15 @@ elif 'btn_save' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">base_sub_toolbar</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">CONTRIBUTO DI COSTRUZIONE</legend>
-<p><span class="plominoSubformClass">sub_contributo_costruzione_cila</span></p>
+<div>
+<span class="plominoLabelClass">contributo_costruzione_opt</span><span class="plominoFieldClass">contributo_costruzione_opt</span>
+</div>
+<p><span class="plominoHidewhenClass">start:hw_no_contributo_costruzione</span></p>
+<fieldset class="scheduler-border">
+<legend class="required ">Relativamente al versamento del contributo di costruzione</legend>
+<span class="plominoFieldClass">contributo_costruzione_pagamento_opt</span>
+</fieldset>
+<p><span class="plominoHidewhenClass">end:hw_no_contributo_costruzione</span></p>
 <p><span class="plominoSubformClass">base_sub_info_pagamenti</span></p>
 </fieldset></div>
 ]]></FormLayout>
@@ -41,6 +49,140 @@ elif 'btn_save' in context.REQUEST.keys():
 ++resource++iol.document/css/iol.css
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="contributo_costruzione_opt" title="L'intervento da realizzare:" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=1']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''è a titolo gratuito|1''','''è a titolo oneroso (articoli 38 e 39 l.r. 16/2008 e s.m.), pertanto allega il prospetto di calcolo preventivo del contributo di costruzione, commisurato all’incidenza delle sole opere di urbanizzazione, a firma di tecnico abilitato|2''']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="contributo_costruzione_pagamento_opt" title="Relativamente al versamento del contributo di costruzione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_pagamento_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''allega la ricevuta di versamento ovvero procede al pagamento online|1''','''effettuerà, prima dell’inizio dei lavori, il pagamento del contributo commisurato all’incidenza delle sole opere di urbanizzazione.|2''']
+</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="contributo_costruzione_calcolo" title="Relativamente al calcolo del contributo di costruzione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_calcolo</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''chiede allo Sportello unico di effettuare il calcolo del contributo di costruzione e a tal fine allega la documentazione tecnica necessaria alla sua determinazione|1''','''allega il prospetto di calcolo preventivo del contributo di costruzione a firma del tecnico abilitato|2''']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="hw_no_contributo_costruzione" title="hw_no_contributo_costruzione" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_contributo_costruzione</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('contributo_costruzione_opt','')!='2']]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+      </elements>
     </element>
   </design>
 </plominodatabase>

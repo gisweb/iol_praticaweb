@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_richiesta_parere" title="Richiesta di parere" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_richiesta_parere</id>
@@ -45,8 +45,7 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <p><span class="plominoHidewhenClass">end:hw_no_parere_ente_altro</span></p>
 <p><span class="plominoLabelClass">oggetto_richiesta_parere</span><span class="plominoFieldClass">oggetto_richiesta_parere</span></p>
 <hr>
-<span class="plominoHidewhenClass">start:hw_no_edit</span>
-<div class="row-fluid">
+<span class="plominoHidewhenClass">start:hw_no_edit</span><div class="row-fluid">
 <div class="span8">
 <span class="plominoLabelClass">modello_stampa_richiesta_parere</span><span class="plominoFieldClass">modello_stampa_richiesta_parere</span>
 </div>
@@ -54,28 +53,23 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <br><span class="plominoActionClass">btn_stampa_comunicazione</span>
 </div>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_edit</span>
-<p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
+<span class="plominoHidewhenClass">end:hw_no_edit</span><p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
 <p><span class="plominoFieldClass">istruzioni_richiesta_parere</span></p>
 <div class="row-fluid">
-<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_parere</span>
-<div class="span4">
+<span class="plominoHidewhenClass">start:hw_no_istruttore_richiesta_parere</span><div class="span4">
 <span class="plominoLabelClass">allegato_documento_richiesta_parere</span><span class="plominoFieldClass">allegato_documento_richiesta_parere</span>
 </div>
 <div class="span4">
 <span class="plominoLabelClass">allegato_allafirma_richiesta_parere</span><span class="plominoFieldClass">allegato_allafirma_richiesta_parere</span>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_parere</span>
-<div class="span4">
+<span class="plominoHidewhenClass">end:hw_no_istruttore_richiesta_parere</span><div class="span4">
 <span class="plominoLabelClass">allegato_comunicazione_richiesta_parere</span><span class="plominoFieldClass">allegato_comunicazione_richiesta_parere</span>
 </div>
 </div>
 <p><span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span></p>
-<div class="row-fluid">
-<div class="span3">
+<div class="row-fluid"><div class="span3">
 <span class="plominoLabelClass">data_comunicazione_richiesta_parere</span><span class="plominoFieldClass">data_comunicazione_richiesta_parere</span>
-</div>
-</div>
+</div></div>
 <p><span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span></p>
 <p><span class="plominoActionClass">btn_invia_esterni</span></p>
 <p><span class="plominoActionClass">btn_invia_interni</span></p>

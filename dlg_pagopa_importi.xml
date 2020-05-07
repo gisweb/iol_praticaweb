@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="dlg_pagopa_importi" title="Nuovo Importo" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">dlg_pagopa_importi</id>
@@ -36,8 +36,7 @@
 <span class="plominoLabelClass">codimp</span><span class="plominoFieldClass">codimp</span>
 </div>
 <div class="span5">
-<br>
-<div class="alert alert-info">Lasciare vuoto in fase di inserimento di nuovi importi</div>
+<br><div class="alert alert-info">Lasciare vuoto in fase di inserimento di nuovi importi</div>
 </div>
 </div>
 ]]></FormLayout>

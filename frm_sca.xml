@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_sca" title="Segnalazione Certificata di Agibilità art. 24 del d.P.R. n. 380/2001 e s.m.i." type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_sca</id>

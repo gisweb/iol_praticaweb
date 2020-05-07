@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_paesaggistica_asseverata" title="Relazione Paesaggistica " type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_paesaggistica_asseverata</id>

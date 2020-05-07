@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_trc_concessione" title="sub_trc_concessione" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_trc_concessione</id>

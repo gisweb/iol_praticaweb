@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_risposta_parere" title="Parere acquisito" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_risposta_parere</id>

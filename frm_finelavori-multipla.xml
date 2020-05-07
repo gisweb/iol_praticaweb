@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_finelavori-multipla" title="Comunicazione di fine lavori per più pratiche" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_finelavori-multipla</id>

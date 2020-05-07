@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_lr25" title="Comunicazione per il mutamento di utilizzo senza opere all'interno della stessa categoria funzionale, come definite dalla L.R. n.25 del 07/04/95" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_lr25</id>

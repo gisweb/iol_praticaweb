@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_vincoli" title="Dichiarazioni relative ai vincoli" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_vincoli</id>

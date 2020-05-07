@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_oneri_importi_tabella" title="bo_oneri_importi_tabella" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_oneri_importi_tabella</id>

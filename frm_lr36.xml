@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_lr36" title="Istanza di Procedimento Urbanistico ai sensi della L.R. 36/97" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_lr36</id>

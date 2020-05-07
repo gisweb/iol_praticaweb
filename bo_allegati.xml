@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_allegati" title="bo_allegati" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_allegati</id>
@@ -101,9 +101,6 @@ return html]]></Formula>
 db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'numero_pratica' in idx.indexes():
-    return []
-
-if not context.getItem('numero_pratica'):
     return []
 
 brains = idx.dbsearch(dict(numero_pratica=context.getItem('numero_pratica'),iol_tipo_app=['integrazione','iniziolavori','finelavori','voltura']),sortindex="data_protocollo")

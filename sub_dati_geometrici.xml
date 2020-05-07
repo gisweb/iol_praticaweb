@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_dati_geometrici" title="sub_dati_geometrici" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_dati_geometrici</id>

@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_voltura_variazioni" title="Tecnici variazioni" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_voltura_variazioni</id>

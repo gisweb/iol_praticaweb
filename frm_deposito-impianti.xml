@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_deposito-impianti" title="Deposito impianti, certificazioni energetiche, legge 10" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_deposito-impianti</id>

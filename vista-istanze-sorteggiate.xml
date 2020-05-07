@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="vista-istanze-sorteggiate" title="Istanze Sorteggiate" type="PlominoView">
       <id type="Products.Archetypes.Field.StringField">vista-istanze-sorteggiate</id>

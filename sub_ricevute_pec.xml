@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_ricevute_pec" title="sub_ricevute_pec" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_ricevute_pec</id>

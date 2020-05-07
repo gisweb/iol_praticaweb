@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_art22" title="Regolarizzazione sotto il profilo amministrativo ai sensi dell'art 22 L.R. 16/08" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_art22</id>

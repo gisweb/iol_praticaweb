@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_procedibilita" title="Notifica di procedibilità" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_procedibilita</id>
@@ -25,13 +25,9 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <div class="iol-toolbar"></div>
 <div class="v-content well">
 <div>
-<span class="plominoLabelClass">procedibilita_opt</span><span class="plominoFieldClass">procedibilita_opt</span>
-</div>
-<div>
 <span class="plominoLabelClass">oggetto_procedibilita</span><span class="plominoFieldClass">oggetto_procedibilita</span>
 </div>
-<span class="plominoHidewhenClass">start:hw_no_edit</span>
-<div class="row-fluid">
+<span class="plominoHidewhenClass">start:hw_no_edit</span><div class="row-fluid">
 <div class="span8">
 <span class="plominoLabelClass">modello_stampa_procedibilita</span><span class="plominoFieldClass">modello_stampa_procedibilita</span>
 </div>
@@ -39,29 +35,23 @@ context.REQUEST.set('returnurl',parentDoc.absolute_url())]]></onDeleteDocument>
 <br><span class="plominoActionClass">btn_stampa_comunicazione</span>
 </div>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_edit</span>
-<p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
+<span class="plominoHidewhenClass">end:hw_no_edit</span><p><span class="plominoHidewhenClass">start:hw_new_comunicazione</span></p>
 <p><span class="plominoFieldClass">istruzioni_procedibilita</span></p>
 <div class="row-fluid">
-<span class="plominoHidewhenClass">start:hw_no_istruttore_procedibilita</span>
-<div class="span4">
+<span class="plominoHidewhenClass">start:hw_no_istruttore_procedibilita</span><div class="span4">
 <span class="plominoLabelClass">allegato_documento_procedibilita</span><span class="plominoFieldClass">allegato_documento_procedibilita</span>
 </div>
 <div class="span4">
 <span class="plominoLabelClass">allegato_allafirma_procedibilita</span><span class="plominoFieldClass">allegato_allafirma_procedibilita</span>
 </div>
-<span class="plominoHidewhenClass">end:hw_no_istruttore_procedibilita</span>
-<div class="span4">
+<span class="plominoHidewhenClass">end:hw_no_istruttore_procedibilita</span><div class="span4">
 <span class="plominoLabelClass">allegato_comunicazione_procedibilita</span><span class="plominoFieldClass">allegato_comunicazione_procedibilita</span>
 </div>
 </div>
 <div>
-<span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span>
-<div class="row-fluid">
-<div class="span3">
+<span class="plominoHidewhenClass">start:hw_no_data_comunicazione</span><div class="row-fluid"><div class="span3">
 <span class="plominoLabelClass">data_comunicazione_procedibilita</span><span class="plominoFieldClass">data_comunicazione_procedibilita</span>
-</div>
-</div>
+</div></div>
 <span class="plominoHidewhenClass">end:hw_no_data_comunicazione</span>
 </div>
 <p><span class="plominoActionClass">btn_invia_comunicazione</span></p>
@@ -412,48 +402,6 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
 <member>
 <name>widget</name>
 <value><string>JQUERY</string></value>
-</member>
-</struct></value>
-</data></array></value>
-</param>
-</params>
-        </element>
-        <element id="procedibilita_opt" title="Istanza procedibile" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">procedibilita_opt</id>
-          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-          <params>
-<param>
-<value><array><data>
-<value><struct>
-<member>
-<name>dynamictableparam</name>
-<value><string>'bPaginate': true,
-'bLengthChange': true,
-'bFilter': true,
-'bSort': true,
-'bInfo': true,
-'bAutoWidth': false</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>selectionlistformula</name>
-<value><string>['SI|1','NO|2']</string></value>
-</member>
-</struct></value>
-<value><struct>
-<member>
-<name>widget</name>
-<value><string>RADIO</string></value>
 </member>
 </struct></value>
 </data></array></value>

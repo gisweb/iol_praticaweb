@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_allegati_interventi_strutturali" title="sub_allegati_interventi_strutturali" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_allegati_interventi_strutturali</id>

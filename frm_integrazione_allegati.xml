@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_integrazione_allegati" title="Documentazione Allegata - Integrazione" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_integrazione_allegati</id>

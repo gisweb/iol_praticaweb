@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="scrivania-sorteggi" title="SCRIVANIA SORTEGGI" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">scrivania-sorteggi</id>

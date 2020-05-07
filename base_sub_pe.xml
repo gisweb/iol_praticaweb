@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="base_sub_pe" title="base_sub_pe" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">base_sub_pe</id>
@@ -219,11 +219,6 @@ return ll</string></value>
           <params>
 <param>
 <value><array><data>
-<value><struct>
-<member>
-<name>format</name>
-<value><nil/></value></member>
-</struct></value>
 <value><struct>
 <member>
 <name>widget</name>

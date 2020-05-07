@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_vincoli_paesaggistica" title="sub_vincoli_paesaggistica" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_vincoli_paesaggistica</id>

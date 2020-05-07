@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_direttore" title="sub_direttore" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_direttore</id>
@@ -14,13 +14,15 @@ if context.getItem('direttore_opt')=='2':
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<div><span class="plominoFieldClass">direttore_opt</span></div>
+<div class="tecnico-opt">
+<span class="plominoLabelClass">direttore_opt</span><span class="plominoFieldClass">direttore_opt</span>
+</div>
 <p><span class="plominoHidewhenClass">start:hw_no_direttore_avviso</span></p>
 <div class="alert alert-error"><h5>Con la scelta di questa opzione si dichiara di essere consapevole che l’efficacia del titolo abilitativo è condizionata alla obbligatoria comunicazione dell’inizio dei lavori comprensiva di tutti i dati relativi al direttore dei lavori.<br>L’efficacia del titolo abilitativo è condizionata alla obbligatoria comunicazione dell’inizio dei lavori comprensiva di tutti i dati relativi del direttore dei lavori e la sua sottoscrizione</h5></div>
 <p><span class="plominoHidewhenClass">end:hw_no_direttore_avviso</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_direttore_lavori</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_direttore</span></p>
 <p><span class="plominoSubformClass">base_sub_direttore</span></p>
-<p><span class="plominoHidewhenClass">end:hw_no_direttore_lavori</span></p>
+<p><span class="plominoHidewhenClass">end:hw_no_direttore</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -43,12 +45,12 @@ if context.getItem('direttore_opt')=='2':
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="hw_no_direttore_lavori" title="hw_no_direttore_lavori" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_direttore_lavori</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('direttore_opt','')!='3']]></Formula>
+        <element id="hw_no_direttore" title="hw_no_direttore" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_direttore</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.getItem('direttore_opt') not in ['3','6']]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>
-        <element id="direttore_opt" title="Scelta del direttore dei lavori " type="PlominoField">
+        <element id="direttore_opt" title="Scelta del Direttore dei lavori " type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">direttore_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -59,7 +61,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_direttore''']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_direttore']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -77,7 +79,11 @@ resources/iol-custom.css]]></ResourcesCSS>
 <value><struct>
 <member>
 <name>selectionlistformula</name>
-<value><string>return ['Non è richiesta la nomina di un direttore lavori;|1','Il direttore dei lavori coincide con il progettista delle opere;|2','Il direttore dei lavori è persona diversa dal progettista;|3','''Il direttore dei lavori sarà comunicato prima dell'inizio dei lavori;|4''']</string></value>
+<value><string>if context.getItem('iol_tipo_app','variazione') in ['variazione','iniziolavori']:
+    return ['Non è richiesta la nomina di un Direttore lavori;|1','Il Direttore dei lavori coincide con il Progettista delle opere;|2','Dati anagrafici aggiornati del Direttore dei lavori:|3','''Il Direttore dei lavori sarà comunicato prima dell'inizio dei lavori;|4''','''Direttore dei lavori revocato;|5''','''Direttore dei lavori revocato, dati anagrafici del nuovo Direttore dei lavori:|6''']
+else:
+    return ['Non è richiesta la nomina di un Direttore dei lavori;|1','Il Direttore dei lavori coincide con il Progettista delle opere;|2','Il Direttore dei lavori è persona diversa dal Progettista:|3','''Il Direttore dei lavori sarà comunicato prima dell'inizio dei lavori;|4''']
+</string></value>
 </member>
 </struct></value>
 <value><struct>

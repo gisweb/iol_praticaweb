@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="vista-istanze-amministratore" title="vista istanze amministratore" type="PlominoView">
       <id type="Products.Archetypes.Field.StringField">vista-istanze-amministratore</id>

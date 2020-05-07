@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_fotovoltaico" title="Modello unico per la realizzazione, la connessione e l'esercizio di piccoli impianti fotovoltaici integrati sui tetti degli edifici" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_fotovoltaico</id>

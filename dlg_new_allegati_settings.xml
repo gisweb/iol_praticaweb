@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="dlg_new_allegati_settings" title="Configurazione allegato" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">dlg_new_allegati_settings</id>

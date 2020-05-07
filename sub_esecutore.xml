@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_esecutore" title="sub_esecutore" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_esecutore</id>
@@ -11,7 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<div><span class="plominoFieldClass">lavori_economia_opt</span></div>
+<p class="tecnico-opt"><span class="plominoLabelClass">lavori_economia_opt</span><span class="plominoFieldClass">lavori_economia_opt</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_avviso</span></p>
 <div class="alert alert-error"><h5>Con la scelta di questa opzione si dichiara di essere consapevole che l’efficacia del titolo abilitativo è condizionata alla obbligatoria comunicazione dell’inizio dei lavori comprensiva di tutti i dati relativi all’impresa esecutrice.<br>L’efficacia del titolo abilitativo è condizionata alla obbligatoria comunicazione dell’inizio dei lavori comprensiva di tutti i dati relativi all’impresa esecutrice.</h5></div>
 <p><span class="plominoHidewhenClass">end:hw_no_avviso</span></p>
@@ -57,7 +57,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_esecutore''']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_esecutore']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -162,6 +162,12 @@ return ll
         "height": 800
     }
 </string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>READ_STATIC</string></value>
 </member>
 </struct></value>
 </data></array></value>

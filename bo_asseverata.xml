@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_asseverata" title="bo_asseverata" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_asseverata</id>
@@ -10,7 +10,6 @@
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
-<div class="iol-toolbar"></div>
 <div><span class="plominoFieldClass">asseverata</span></div>
 <div><span class="plominoFieldClass">vincoli</span></div>
 ]]></FormLayout>
@@ -41,15 +40,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">asseverata</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-renderForm=db.getForm('frm_asseverata')
-content=asUnicode(renderForm.displayDocument(context))
-html=''
-if content:
-    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=frm_asseverata"> Dati per la relazione asseverata <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.renderForm('frm_asseverata')]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -62,15 +53,7 @@ return html]]></Formula>
           <id type="Products.Archetypes.Field.StringField">vincoli</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
-renderForm=db.getForm('frm_vincoli')
-content=asUnicode(renderForm.displayDocument(context))
-html=''
-if content:
-    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=frm_vincoli"> Dati relativi a vincoli <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.renderForm('frm_vincoli')]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -78,22 +61,6 @@ return html]]></Formula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
-        <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">
-          <id type="Products.Archetypes.Field.StringField">btn_save</id>
-          <ActionType type="Products.Archetypes.Field.StringField">SAVE</ActionType>
-          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[not context.isEditMode()]]></Hidewhen>
-          <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
-        </element>
-        <element id="btn_cancel" title="Annulla" type="PlominoAction">
-          <id type="Products.Archetypes.Field.StringField">btn_cancel</id>
-          <ActionType type="Products.Archetypes.Field.StringField">PYTHON</ActionType>
-          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.absolute_url()]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return not context.isEditMode()]]></Hidewhen>
-          <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
         </element>
       </elements>
     </element>

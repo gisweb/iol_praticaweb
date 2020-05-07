@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_trc_proprieta_immobile" title="sub_proprieta_immobile" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_trc_proprieta_immobile</id>
@@ -14,8 +14,7 @@
 <div>
 <span class="plominoLabelClass">proprieta_immobile_opt</span><span class="plominoFieldClass">proprieta_immobile_opt</span>
 </div>
-<span class="plominoHidewhenClass">start:hw_no_altro_proprietario</span>
-<div>
+<span class="plominoHidewhenClass">start:hw_no_altro_proprietario</span><div>
 <span class="plominoLabelClass">altro_proprietario</span><span class="plominoFieldClass">altro_proprietario</span>
 </div>
 <div class="alert alert-info">Nel caso in cui il richiedente sia diverso dal proprietario occorrerà allegare nota di assenso debitamente sottoscritta dal proprietario con indicazione delle generalità e domicilio dello stesso, specifica in relazione all'intervento con allegata copia del documento d'identità in corso di validità. Nel caso in cui il richiedente sia il legale rappresentante di una Società è necessario specificare il nominativo e indicare se la Società stessa è proprietaria dell'immobile oggetto d'intervento;</div>

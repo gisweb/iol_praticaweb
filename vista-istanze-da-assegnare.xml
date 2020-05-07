@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="vista-istanze-da-assegnare" title="Istanze da assegnare" type="PlominoView">
       <id type="Products.Archetypes.Field.StringField">vista-istanze-da-assegnare</id>

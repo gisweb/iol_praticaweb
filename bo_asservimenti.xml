@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_asservimenti" title="bo_asservimenti" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_asservimenti</id>
@@ -36,20 +36,6 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="hide_toolbar_menus" title="hide_toolbar_menus" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">hide_toolbar_menus</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.isEditMode():
-    return '''<style>#iol-menus{display:none !important;}</style>''']]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
         <element id="btn_save" title="Salva e continua &gt;&gt;" type="PlominoAction">
           <id type="Products.Archetypes.Field.StringField">btn_save</id>
           <ActionType type="Products.Archetypes.Field.StringField">SAVE</ActionType>
@@ -83,17 +69,19 @@ db = getToolByName(context, 'iol_asservimenti')
 idx = db.getIndex()
 if not 'parent_document' in idx.indexes():
     return ''
+
 #la ricerca deve restituire i documenti dei queli l'utente corrente è author
 brains = idx.dbsearch(dict(parent_document=context.getId()))  
 html=''
 for brain in brains:
-    content=''
     doc=brain.getObject()
-    renderForm=db.getForm('sub_vista_asservimento')
-    content=content + renderForm.displayDocument(doc)    
+    title="ASSERVIMENTO REP. %s" %doc.getItem('repertorio')
+    content = doc.renderForm('sub_vista_asservimento',title=title)
     if content:
-        html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s"> ASSERVIMENTO REP. %s </a></legend><div class="v-content well">%s</div></fieldset>'%(doc.absolute_url(),doc.getItem('repertorio'),content)
-
+        html=html+content
+        
+if not html:
+    html = '<fieldset class="scheduler-border"><legend class="scheduler-border">Asservimenti</legend><span class="label">Nessun asservimento</span></fieldset>' 
     
 return html]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>

@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_comproprietari" title="sub_comproprietari" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_comproprietari</id>
@@ -82,6 +82,12 @@
         "height": 800
     }
 </string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>READ_STATIC</string></value>
 </member>
 </struct></value>
 </data></array></value>

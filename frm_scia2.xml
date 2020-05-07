@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_scia2" title="Segnalazione Certificata di Inizio Attività Alternativa al Permesso di Costruire" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_scia2</id>

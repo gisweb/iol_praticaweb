@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_allegati_trc" title="sub_allegati_trc" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_allegati_trc</id>
@@ -11,25 +11,11 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[<div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Documentazione da presentare</legend> <!--
-<p><span class="plominoHidewhenClass">start:hw_proprietario</span></p>
-<div><span class="plominoLabelClass">allegato_assenso_proprietario</span><span class="plominoFieldClass">allegato_assenso_proprietario</span></div>
-<p><span class="plominoHidewhenClass">end:hw_proprietario</span></p>
+<p><span class="plominoHidewhenClass">start:hw_proprietario</span></p><div><span class="plominoLabelClass">allegato_assenso_proprietario</span><span class="plominoFieldClass">allegato_assenso_proprietario</span></div><p><span class="plominoHidewhenClass">end:hw_proprietario</span></p>
 
 
 
-<div><span class="plominoLabelClass">allegato_autocertificazione_conformita</span><span class="plominoFieldClass">allegato_autocertificazione_conformita</span></div>
-<div><span class="plominoLabelClass">allegato_relazione_tecnica</span><span class="plominoFieldClass">allegato_relazione_tecnica</span></div>
-<div><span class="plominoLabelClass">allegato_relazione_geologica</span><span class="plominoFieldClass">allegato_relazione_geologica</span></div>
-<div><span class="plominoLabelClass">allegato_relazione_geotecnica</span><span class="plominoFieldClass">allegato_relazione_geotecnica</span></div>
-<div><span class="plominoLabelClass">allegato_corografia</span><span class="plominoFieldClass">allegato_corografia</span></div>
-<div><span class="plominoLabelClass">allegato_ctrn</span><span class="plominoFieldClass">allegato_ctrn</span></div>
-<div><span class="plominoLabelClass">allegato_mappa_catastale</span><span class="plominoFieldClass">allegato_mappa_catastale</span></div>
-<div><span class="plominoLabelClass">allegato_dissesto</span><span class="plominoFieldClass">allegato_dissesto</span></div>
-<div><span class="plominoLabelClass">allegato_elaborati_grafici</span><span class="plominoFieldClass">allegato_elaborati_grafici</span></div>
-<div><span class="plominoLabelClass">allegato_planimetria</span><span class="plominoFieldClass">allegato_planimetria</span></div>
-<div><span class="plominoLabelClass">allegato_sezioni</span><span class="plominoFieldClass">allegato_sezioni</span></div>
-<div><span class="plominoLabelClass">allegato_documentazione_fotografica</span><span class="plominoFieldClass">allegato_documentazione_fotografica</span></div>
-<div><span class="plominoLabelClass">allegato_progetto_sistemazione</span><span class="plominoFieldClass">allegato_progetto_sistemazione</span></div>
+<div><span class="plominoLabelClass">allegato_autocertificazione_conformita</span><span class="plominoFieldClass">allegato_autocertificazione_conformita</span></div><div><span class="plominoLabelClass">allegato_relazione_tecnica</span><span class="plominoFieldClass">allegato_relazione_tecnica</span></div><div><span class="plominoLabelClass">allegato_relazione_geologica</span><span class="plominoFieldClass">allegato_relazione_geologica</span></div><div><span class="plominoLabelClass">allegato_relazione_geotecnica</span><span class="plominoFieldClass">allegato_relazione_geotecnica</span></div><div><span class="plominoLabelClass">allegato_corografia</span><span class="plominoFieldClass">allegato_corografia</span></div><div><span class="plominoLabelClass">allegato_ctrn</span><span class="plominoFieldClass">allegato_ctrn</span></div><div><span class="plominoLabelClass">allegato_mappa_catastale</span><span class="plominoFieldClass">allegato_mappa_catastale</span></div><div><span class="plominoLabelClass">allegato_dissesto</span><span class="plominoFieldClass">allegato_dissesto</span></div><div><span class="plominoLabelClass">allegato_elaborati_grafici</span><span class="plominoFieldClass">allegato_elaborati_grafici</span></div><div><span class="plominoLabelClass">allegato_planimetria</span><span class="plominoFieldClass">allegato_planimetria</span></div><div><span class="plominoLabelClass">allegato_sezioni</span><span class="plominoFieldClass">allegato_sezioni</span></div><div><span class="plominoLabelClass">allegato_documentazione_fotografica</span><span class="plominoFieldClass">allegato_documentazione_fotografica</span></div><div><span class="plominoLabelClass">allegato_progetto_sistemazione</span><span class="plominoFieldClass">allegato_progetto_sistemazione</span></div>
 
 
 -->

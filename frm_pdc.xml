@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_pdc" title="Istanza di Permesso di Costruire" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_pdc</id>

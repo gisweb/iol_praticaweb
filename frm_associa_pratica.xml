@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_associa_pratica" title="Associa pratica esistente" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_associa_pratica</id>

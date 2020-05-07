@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_paesaggistica_allegati" title="frm_paesaggistica_allegati" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_paesaggistica_allegati</id>

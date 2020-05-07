@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_paesaggistica-accertamento" title="Istanza di Accertamento di Compatibilità Paesaggistica ex art. 167 del DLGS 22.1.2004 N. 42 e smi" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_paesaggistica-accertamento</id>

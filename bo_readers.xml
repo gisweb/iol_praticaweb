@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="bo_readers" title="Utenti abilitati alla visualizzazione del documento" type="PlominoForm">
+    <element id="bo_readers" title="Utenti accreditati abilitati alla visualizzazione del documento" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_readers</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
@@ -21,16 +21,13 @@ brains = idx.dbsearch({"parent_document":context.getId(),"Form":["bo_richiesta_i
 for brain in brains:
     doc=brain.getObject()
     doc.setItem('Plomino_Readers',context.getItem('Plomino_Readers'))
-    db.getIndex().indexDocument(doc)
-]]></onSaveDocument>
+    db.getIndex().indexDocument(doc)]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-<div class="v-content well">
-<p><span class="plominoLabelClass">iol_readers</span><span class="plominoFieldClass">iol_readers</span> <span class="plominoLabelClass">note_readers</span><span class="plominoFieldClass">note_readers</span></p>
-</div>
+<div class="v-content well"><p><span class="plominoLabelClass">iol_readers</span><span class="plominoFieldClass">iol_readers</span> <span class="plominoLabelClass">note_readers</span><span class="plominoFieldClass">note_readers</span></p></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>

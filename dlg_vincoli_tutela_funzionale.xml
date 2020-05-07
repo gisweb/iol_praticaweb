@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="dlg_vincoli_tutela_funzionale" title="Vincolo di tutela funzionale" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">dlg_vincoli_tutela_funzionale</id>

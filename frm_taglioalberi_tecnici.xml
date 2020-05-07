@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_taglioalberi_tecnici" title="Tecnici" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_taglioalberi_tecnici</id>

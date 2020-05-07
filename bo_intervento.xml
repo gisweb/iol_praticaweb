@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_intervento" title="bo_intervento" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_intervento</id>
@@ -34,19 +34,7 @@
           <id type="Products.Archetypes.Field.StringField">intervento</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
-db=context.getParentDatabase()
-frmId = 'frm_%s_intervento' %context.getItem('tipo_pratica')
-renderForm=db.getForm(frmId)
-html=''
-if renderForm:
-    content=renderForm.displayDocument(context)
-    if content:
-        html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=frm_%s_intervento"> Intervento <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),context.getItem('tipo_pratica'),content)
-else:
-    context.plone_utils.addPortalMessage('manca form %s' %frmId,'error')
-    
-return html]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.renderForm('frm_%s_intervento' %context.getItem('iol_tipo_app'))]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -54,14 +42,6 @@ return html]]></Formula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
-        <element id="btn_edit" title="Modifica" type="PlominoAction">
-          <id type="Products.Archetypes.Field.StringField">btn_edit</id>
-          <ActionType type="Products.Archetypes.Field.StringField">REDIRECT</ActionType>
-          <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
-          <Content type="Products.Archetypes.Field.TextField"><![CDATA['%s/EditDocument?openwithform=frm_%s_intervento' %(context.absolute_url(),context.getItem('iol_tipo_app'))]]></Content>
-          <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[context.isEditMode() or not context.hasCurrentUserRight('PlominoEditor')]]></Hidewhen>
-          <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
         </element>
       </elements>
     </element>

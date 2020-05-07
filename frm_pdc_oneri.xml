@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="frm_pdc_oneri" title="Contributo di Costruzione SCIA" type="PlominoForm">
+    <element id="frm_pdc_oneri" title="Contributo di Costruzione PDC" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_pdc_oneri</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
@@ -17,7 +17,30 @@ elif 'btn_save' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">base_sub_toolbar</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">CONTRIBUTO DI COSTRUZIONE</legend>
-<p><span class="plominoSubformClass">sub_contributo_costruzione_pdc</span></p>
+<div>
+<span class="plominoLabelClass">contributo_costruzione_opt</span><span class="plominoFieldClass">contributo_costruzione_opt</span>
+</div>
+<p><span class="plominoHidewhenClass">start:hw_no_gratuito</span></p>
+<div>
+<span class="plominoLabelClass">oneri_normativa</span><span class="plominoFieldClass">oneri_normativa</span>
+</div>
+<p><span class="plominoHidewhenClass">end:hw_no_gratuito</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_contributo_costruzione</span></p>
+<fieldset class="scheduler-border">
+<legend class="required">Relativamente al calcolo del contributo di costruzione</legend>
+<p><span class="plominoFieldClass">contributo_costruzione_calcolo</span></p>
+</fieldset>
+<fieldset class="scheduler-border">
+<legend class="required ">Relativamente al versamento del contributo di costruzione</legend>
+<div><span class="plominoFieldClass">contributo_costruzione_pagamento_opt</span></div>
+</fieldset>
+<fieldset class="scheduler-border">
+<legend class="scheduler-border">Relativamente agli oneri di urbanizzazione</legend>
+<div>
+<span class="plominoFieldClass">oneri_urbanizzazione</span><span class="plominoLabelClass">oneri_urbanizzazione</span>
+</div>
+</fieldset>
+<p><span class="plominoHidewhenClass">end:hw_no_contributo_costruzione</span></p>
 <p><span class="plominoSubformClass">base_sub_info_pagamenti</span></p>
 </fieldset></div>
 ]]></FormLayout>
@@ -41,6 +64,183 @@ elif 'btn_save' in context.REQUEST.keys():
 ++resource++iol.document/css/iol.css
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="contributo_costruzione_opt" title="L'intervento da realizzare:" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">SELECTIONFieldReadCheck</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=1']]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''è a titolo gratuito|1''','''è a titolo oneroso ai sensi dell'art. 38 l.r. n. 16/2008 e s.m.|2''']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="contributo_costruzione_calcolo" title="Relativamente al calcolo del contributo di costruzione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_calcolo</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''chiede allo Sportello unico di effettuare il calcolo del contributo di costruzione e a tal fine allega la documentazione tecnica necessaria alla sua determinazione|1''','''allega il prospetto di calcolo preventivo del contributo di costruzione a firma del tecnico abilitato|2''']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="contributo_costruzione_pagamento_opt" title="Relativamente al versamento del contributo di costruzione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">contributo_costruzione_pagamento_opt</id>
+          <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>dynamictableparam</name>
+<value><string>'bPaginate': true,
+'bLengthChange': true,
+'bFilter': true,
+'bSort': true,
+'bInfo': true,
+'bAutoWidth': false</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>selectionlistformula</name>
+<value><string>['''dichiara che il versamento del contributo di costruzione sarà effettuato al momento del ritiro del titolo abilitativo|1''','''chiede la rateizzazione del contributo di costruzione secondo le modalità e le garanzie stabilite dal Comune|2''','''si impegna a corrispondere il costo di costruzione in corso di esecuzione delle opere, con le modalità e le garanzie stabilite dal Comune|3''']</string></value>
+</member>
+</struct></value>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>RADIO</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+        <element id="hw_no_contributo_costruzione" title="hw_no_contributo_costruzione" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_contributo_costruzione</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('contributo_costruzione_opt','')!='2']]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="oneri_normativa" title="è a titolo gratuito, ai sensi della seguente normativa:" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">oneri_normativa</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="hw_no_gratuito" title="hw_no_gratuito" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_gratuito</id>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[tipo = context.getItem('iol_tipo_app','dia')   
+return context.getItem('contributo_costruzione_opt','')!='1' or tipo in ['pdc','scia']]]></Formula>
+          <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
+        </element>
+        <element id="oneri_urbanizzazione" title="chiede di eseguire direttamente, a scomputo di quanto dovuto, le opere di urbanizzazione specificate nella proposta di progetto e nello schema di convenzione ad esso allegato da approvarsi prima del rilascio del permesso di costruire" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">oneri_urbanizzazione</id>
+          <FieldType type="Products.Archetypes.Field.StringField">BOOLEAN</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+          <params>
+<param>
+<value><array><data>
+<value><struct>
+<member>
+<name>widget</name>
+<value><string>CHECKBOX</string></value>
+</member>
+</struct></value>
+</data></array></value>
+</param>
+</params>
+        </element>
+      </elements>
     </element>
   </design>
 </plominodatabase>

@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_trc-installazione" title="INSTALLAZIONE O MODIFICAZIONE DI IMPIANTI DI TELERADIOCOMUNICAZIONE" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_trc-installazione</id>

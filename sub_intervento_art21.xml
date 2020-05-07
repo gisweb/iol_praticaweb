@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_intervento_art21" title="sub_intervento_art21" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_intervento_art21</id>

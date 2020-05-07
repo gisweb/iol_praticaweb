@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_intervento_art21ter" title="Sub Form con informazioni intervento Art.21 TER" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_intervento_art21ter</id>

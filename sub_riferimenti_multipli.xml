@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_riferimenti_multipli" title="sub_riferimenti_multipli" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_riferimenti_multipli</id>

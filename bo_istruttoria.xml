@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="bo_istruttoria" title="bo_istruttoria" type="PlominoForm">
+    <element id="bo_istruttoria" title="Istruttoria" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_istruttoria</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>

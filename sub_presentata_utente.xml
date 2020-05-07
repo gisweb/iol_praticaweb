@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_presentata_utente" title="sub_presentata_utente" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_presentata_utente</id>
@@ -12,31 +12,18 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">ws_response_message</span></p>
 <p><span class="plominoFieldClass">iol_workflow_title</span></p>
-<!--PAGAMENTI-->
-<p><span class="plominoFieldClass">pagamenti</span></p>
-<!-- AUTORIZZAZIONE -->
-<p><span class="plominoFieldClass">titolo</span></p>
-<!-- PROCEDIBILITA' -->
-<p><span class="plominoFieldClass">procedibilita</span></p>
-<!-- EVENTUALE PREAVVISO DI RIGETTO -->
-<p><span class="plominoFieldClass">preavviso_rigetto</span></p>
-<!-- EVENTUALE RIGETTO -->
-<p><span class="plominoFieldClass">rigetto</span></p>
-<!-- RICHESTE INTEGRAZIONE -->
-<p><span class="plominoFieldClass">elenco_integrazioni</span></p>
-<!-- RICHESTE PAGAMENTO -->
-<p><span class="plominoFieldClass">elenco_richieste_pagamento</span></p>
-<!-- RICHESTE PARERI -->
-<p><span class="plominoFieldClass">elenco_pareri</span></p>
-<!-- AVVIO PROCEDIMENTO -->
-<p><span class="plominoFieldClass">avvio_procedimento</span></p>
-<!-- VISTA PRATICA -->
-<p><span class="plominoFieldClass">display_document</span></p>
+<!--PAGAMENTI--><p><span class="plominoFieldClass">pagamenti</span></p>
+<!-- AUTORIZZAZIONE --><p><span class="plominoFieldClass">titolo</span></p>
+<!-- PROCEDIBILITA' --><p><span class="plominoFieldClass">procedibilita</span></p>
+<!-- EVENTUALE PREAVVISO DI RIGETTO --><p><span class="plominoFieldClass">preavviso_rigetto</span></p>
+<!-- EVENTUALE RIGETTO --><p><span class="plominoFieldClass">rigetto</span></p>
+<!-- RICHESTE INTEGRAZIONE --><p><span class="plominoFieldClass">elenco_integrazioni</span></p>
+<!-- RICHESTE PAGAMENTO --><p><span class="plominoFieldClass">elenco_richieste_pagamento</span></p>
+<!-- RICHESTE PARERI --><p><span class="plominoFieldClass">elenco_pareri</span></p>
+<!-- AVVIO PROCEDIMENTO --><p><span class="plominoFieldClass">avvio_procedimento</span></p>
+<!-- VISTA PRATICA --><p><span class="plominoFieldClass">display_document</span></p>
 <p><span class="plominoFieldClass">child_documents</span></p>
-<!-- PRATICHE COLLEGATE -->
-<div class="v-content well">
-<p><span class="plominoFieldClass">pratiche_collegate</span></p>
-</div>
+<!-- PRATICHE COLLEGATE --><div class="v-content well"><p><span class="plominoFieldClass">pratiche_collegate</span></p></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -281,7 +268,7 @@ for brain in brains:
 if content:
     content='<fieldset class="scheduler-border"><legend class="scheduler-border">TRASMISSIONE PER COMPETENZA </legend>%s</fieldset>'%content
     
-return content ]]></Formula>
+return content]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -476,31 +463,6 @@ content=asUnicode(renderForm.displayDocument(context))
 html=''
 if content:
     html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=bo_rilascio_titolo"> Rilascio del titolo <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
-        <element id="copy_of_rigetto" title="Rigetto istanza" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">copy_of_rigetto</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if not context.isDocument():
-    return
-if not context.getItem('oggetto_rigetto'):
-    return ''
-db=context.getParentDatabase()
-renderForm=db.getForm('bo_rigetto')
-content=asUnicode(renderForm.displayDocument(context))
-html=''
-if content:
-    html='<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=bo_rigetto"> Rigetto istanza <i class="icon-edit"></i></a></legend>%s</fieldset>'%(context.absolute_url(),content)
 
     
 return html]]></Formula>

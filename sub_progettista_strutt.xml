@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_progettista_strutt" title="sub_progettista_strutt" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_progettista_strutt</id>
@@ -11,11 +11,10 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
-
-<p><span class="plominoFieldClass">opere_strutturali_opt</span></p>
-<p><span class="plominoHidewhenClass">start:hw_no_opere_strutt</span></p>
+<p class="tecnico-opt"><span class="plominoLabelClass">opere_strutturali_opt</span><span class="plominoFieldClass">opere_strutturali_opt</span></p>
+<p><span class="plominoHidewhenClass">start:hw_no_progettista_strutt</span></p>
 <p><span class="plominoSubformClass">base_sub_progettista_strutt</span></p>
-<p><span class="plominoHidewhenClass">end:hw_no_opere_strutt</span></p>
+<p><span class="plominoHidewhenClass">end:hw_no_progettista_strutt</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -38,7 +37,7 @@
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
       <elements>
-        <element id="opere_strutturali_opt" title="Scelta del progettista delle opere strutturali" type="PlominoField">
+        <element id="opere_strutturali_opt" title="Scelta del Progettista delle opere strutturali" type="PlominoField">
           <id type="Products.Archetypes.Field.StringField">opere_strutturali_opt</id>
           <FieldType type="Products.Archetypes.Field.StringField">SELECTION</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
@@ -49,7 +48,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['''data-dhw=sub_progettista_strutt''']]></HTMLAttributesFormula>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA['data-dhw=sub_progettista_strutt']]></HTMLAttributesFormula>
           <params>
 <param>
 <value><array><data>
@@ -74,6 +73,9 @@ if context.getItem('iol_tipo_app','') in ['dsi']:
 if context.getItem('iol_tipo_app','') in ['scia2','dia','pdc']:
     ll.append('''Il progettista delle opere strutturali sarà individuati prima dell'inizio dei lavori;|3''')
 
+    ll.append('''Revoca del Progettista delle opere strutturali:|5''')
+ll.append('''Revoca del Progettista delle opere strutturali e comunicazione dei nuovi dati:|6''')
+
 return ll</string></value>
 </member>
 </struct></value>
@@ -87,8 +89,8 @@ return ll</string></value>
 </param>
 </params>
         </element>
-        <element id="hw_no_opere_strutt" title="hw_no_opere_strutt" type="PlominoHidewhen">
-          <id type="Products.Archetypes.Field.StringField">hw_no_opere_strutt</id>
+        <element id="hw_no_progettista_strutt" title="hw_no_progettista_strutt" type="PlominoHidewhen">
+          <id type="Products.Archetypes.Field.StringField">hw_no_progettista_strutt</id>
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return plominoDocument.getItem('opere_strutturali_opt','0')!='1']]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">True</isDynamicHidewhen>
         </element>

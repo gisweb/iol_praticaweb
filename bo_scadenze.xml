@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_scadenze" title="bo_scadenze" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_scadenze</id>
@@ -36,16 +36,7 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">scadenze</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
-db=context.getParentDatabase()
-renderForm=db.getForm('app-events')
-content=renderForm.displayDocument(context)
-html=''
-if content:
-    html='''<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=app-events"> Eventi e Scadenze <i class="icon-edit"></i></a></legend>%s</fieldset>'''%(context.absolute_url(),content)
-
-    
-return html]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[context.renderForm('app-events')]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>

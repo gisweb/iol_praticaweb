@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_art35" title="Richiesta di Parere Preventivo art35 L.R 16/08" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_art35</id>

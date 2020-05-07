@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_pareri" title="bo_pareri" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_pareri</id>
@@ -40,30 +40,23 @@ resources/iol-custom.css]]></ResourcesCSS>
           <id type="Products.Archetypes.Field.StringField">elenco_pareri</id>
           <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
           <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[#NB il documento viene renderizzato usando la form specificata in settings/labelcolumn
-from iol.document.plomino_utils import getSelectionValue
-
-db=context.getParentDatabase()
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[db=context.getParentDatabase()
 idx = db.getIndex()
 if not 'parent_document' in idx.indexes():
-    return ''
+    return []
 
-#la ricerca deve restituire i documenti dei queli l'utente corrente è author
-brains = idx.dbsearch(dict(parent_document=context.getId(),Form=['bo_richiesta_parere']),sortindex='id')  
+brains = idx.dbsearch(dict(parent_document=context.getId(),Form='bo_richiesta_parere'))  
 html=''
-
 for brain in brains:
     doc=brain.getObject()
-    editForm = 'bo_richiesta_parere'
-    ente=''
-    #ente = ",".join(getSelectionValue(doc,'parere_ente_opt',editForm))
-    #ente = ente + ",".join(getSelectionValue(doc,'parere_interno_opt',editForm))
-    
-    renderForm=db.getForm(editForm)
-    content=asUnicode(renderForm.displayDocument(doc))
+    content = doc.renderForm('bo_richiesta_parere')
     if content:
-        html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a href="%s/EditDocument?openwithform=%s"> Richiesta parere / verifica %s <i class="icon-edit"></i></a></legend>%s</fieldset>'%(doc.absolute_url(),editForm,ente,content)
-    
+        html=html+content
+
+        
+if not html:
+    html = '<fieldset class="scheduler-border"><legend class="scheduler-border">Richiesta pareri</legend><span class="label">Nessuna richiesta parere</span></fieldset>'
+
 return html]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>

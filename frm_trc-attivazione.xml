@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_trc-attivazione" title="COMUNICAZIONE ATTIVAZIONE  IMPIANTI DI TELERADIOCOMUNICAZIONE (senza esecuzione di opere edilizie)" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_trc-attivazione</id>

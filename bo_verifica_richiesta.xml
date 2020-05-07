@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_verifica_richiesta" title="Verifica a Ente o Ufficio" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_verifica_richiesta</id>
@@ -417,22 +417,6 @@ return "da vedere...."
 
 return dict(formName='base_sub_anagrafica', docId=context.getItem('verifica_pratica_key',context.REQUEST.URL.split('/')[-3]))]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
-          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
-          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
-          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
-          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
-          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
-        </element>
-        <element id="copy_of_destinatario_verifica" title="destinatario_verifica" type="PlominoField">
-          <id type="Products.Archetypes.Field.StringField">copy_of_destinatario_verifica</id>
-          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
-          <FieldMode type="Products.Archetypes.Field.StringField">COMPUTEDONSAVE</FieldMode>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('verifica_ente_opt')=='altro':
-    return context.getItem('verifica_ente_altro_email')
-else:
-    return context.getItem('verifica_ente_opt')]]></Formula>
-          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>

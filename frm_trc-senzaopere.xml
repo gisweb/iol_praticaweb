@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_trc-senzaopere" title="SEGNALAZIONE CERTIFICATA INIZIO ATTIVITA’ DIFFERITA  PER IMPIANTI DI TELERADIOCOMUNICAZIONE (senza esecuzione di opere edilizie)" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_trc-senzaopere</id>
@@ -13,15 +13,19 @@ if 'btn_next' in context.REQUEST.keys():
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
+<p><span class="plominoSubformClass">base_sub_toolbar</span></p>
 <p><span class="plominoSubformClass">base_sub_pratica</span></p>
-<p><span class="plominoSubformClass">base_sub_buttons</span></p>
-<p><span class="plominoSubformClass">base_sub_comune</span></p>
-<p><span class="plominoSubformClass">base_sub_pagopa</span></p>
-<fieldset class="scheduler-border" title="Richiedente">
+<p><span class="plominoSubformClass">base_sub_privacy</span></p>
+<div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">DATI ANAGRAFICI DEL RICHIEDENTE</legend>
-<p><span class="plominoSubformClass">base_sub_anagrafica</span></p>
-</fieldset>
-<p><span class="plominoSubformClass">sub_concessione_comunicazioni</span></p>
+<p><span class="plominoSubformClass">base_sub_fisica</span></p>
+<p><span class="plominoSubformClass">base_sub_fisica_domicilio</span></p>
+<p><span class="plominoSubformClass">base_sub_giuridica</span></p>
+<p><span class="plominoSubformClass">sub_condominio</span></p>
+<p><span class="plominoSubformClass">sub_comproprietari</span></p>
+<p><span class="plominoSubformClass">base_sub_delegato</span></p>
+</fieldset></div>
+<p><span class="plominoSubformClass">sub_trc_concessione</span></p>
 <p><span class="plominoSubformClass">sub_firma_digitale</span></p>
 <p><span class="plominoSubformClass">sub_consenso_pec</span></p>
 ]]></FormLayout>

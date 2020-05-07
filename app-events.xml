@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="app-events" title="Elenco delle Attività" type="PlominoForm">
+    <element id="app-events" title="Eventi e Scadenze" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">app-events</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>

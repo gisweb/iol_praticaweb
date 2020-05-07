@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_istruttoria_allegato" title="Aggiungi allegato" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_istruttoria_allegato</id>

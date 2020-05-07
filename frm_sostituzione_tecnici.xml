@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_sostituzione_tecnici" title="Sostituzione soggetti" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_sostituzione_tecnici</id>

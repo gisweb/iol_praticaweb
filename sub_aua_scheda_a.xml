@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_aua_scheda_a" title="sub_aua_scheda_a" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_aua_scheda_a</id>

@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_fotovoltaico_allegati" title="Documentazione Allegata" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_fotovoltaico_allegati</id>
@@ -17,7 +17,12 @@ elif 'btn_save' in context.REQUEST.keys():
 <p><span class="plominoSubformClass">base_sub_info_allegati</span></p>
 <p><span class="plominoSubformClass">base_sub_toolbar</span></p>
 <p><span class="plominoSubformClass">sub_allegati_doc_identita</span></p>
-<p><span class="plominoSubformClass">sub_allegati_fotovoltaico</span></p>
+<div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">Elaborati grafici</legend>
+<div>
+<span class="plominoLabelClass">allegato_schema_elettrico</span> <span class="plominoFieldClass">allegato_schema_elettrico</span>
+</div>
+</fieldset></div>
 <p><span class="plominoSubformClass">sub_allegati_altro</span></p>
 <p><span class="plominoSubformClass">sub_sending_message</span></p>
 ]]></FormLayout>
@@ -41,6 +46,40 @@ elif 'btn_save' in context.REQUEST.keys():
 ++resource++iol.document/css/iol.css
 resources/iol-custom.css]]></ResourcesCSS>
       <excludeFromNav type="Products.Archetypes.Field.BooleanField">False</excludeFromNav>
+      <elements>
+        <element id="allegato_elaborati_grafici" title="Elaborati grafici dello stato di fatto, di progetto e comparativi" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">allegato_elaborati_grafici</id>
+          <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldRead</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldEdit</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return'''
+data-plugin = "iolUploadFile" data-plugin-options='{"emptyMessage":"NoFiles","maxsize":"7","filetype":["p7m"]}'
+data-tooltip = "firmato digitalmente max 7Mb"
+''']]></HTMLAttributesFormula>
+        </element>
+        <element id="allegato_schema_elettrico" title="Schema elettrico unifilare dell’impianto" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">allegato_schema_elettrico</id>
+          <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldRead</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldEdit</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return'''
+data-plugin = "iolUploadFile" data-plugin-options='{"emptyMessage":"NoFiles","maxsize":"7","filetype":["p7m"]}'
+data-tooltip = "firmato digitalmente max 7Mb"
+''']]></HTMLAttributesFormula>
+        </element>
+      </elements>
     </element>
   </design>
 </plominodatabase>

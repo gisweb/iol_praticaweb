@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_valutazione_preventiva" title="sub_valutazione_preventiva" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_valutazione_preventiva</id>

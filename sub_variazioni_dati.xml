@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_variazioni_dati" title="sub_variazioni_dati" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_variazioni_dati</id>
@@ -17,8 +17,7 @@
 <p><span class="plominoLabelClass">progettista_sostituito</span><span class="plominoFieldClass">progettista_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_progettista_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_progettista_lavori</span></p>
-<span class="plominoSubformClass">base_sub_progettista</span>
-<p><span class="plominoHidewhenClass">end:hw_no_progettista_lavori</span></p>
+<span class="plominoSubformClass">base_sub_progettista</span><p><span class="plominoHidewhenClass">end:hw_no_progettista_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Direttore Lavori</legend>
@@ -27,8 +26,7 @@
 <p><span class="plominoLabelClass">direttore_sostituito</span><span class="plominoFieldClass">direttore_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_direttore_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_direttore_lavori</span></p>
-<span class="plominoSubformClass">base_sub_direttore</span>
-<p><span class="plominoHidewhenClass">end:hw_no_direttore_lavori</span></p>
+<span class="plominoSubformClass">base_sub_direttore</span><p><span class="plominoHidewhenClass">end:hw_no_direttore_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Progettista Opere Strutturali</legend>
@@ -37,8 +35,7 @@
 <p><span class="plominoLabelClass">progettista_strutt_sostituito</span><span class="plominoFieldClass">progettista_strutt_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_progettista_strutt_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_progettista_strutt_lavori</span></p>
-<span class="plominoSubformClass">base_sub_progettista_strutt</span>
-<p><span class="plominoHidewhenClass">end:hw_no_progettista_strutt_lavori</span></p>
+<span class="plominoSubformClass">base_sub_progettista_strutt</span><p><span class="plominoHidewhenClass">end:hw_no_progettista_strutt_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Direttore Lavori Opere Strutturali</legend>
@@ -47,8 +44,7 @@
 <p><span class="plominoLabelClass">direttore_strutt_sostituito</span><span class="plominoFieldClass">direttore_strutt_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_direttore_strutt_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_direttore_strutt_lavori</span></p>
-<span class="plominoSubformClass">base_sub_direttore_strutt</span>
-<p><span class="plominoHidewhenClass">end:hw_no_direttore_strutt_lavori</span></p>
+<span class="plominoSubformClass">base_sub_direttore_strutt</span><p><span class="plominoHidewhenClass">end:hw_no_direttore_strutt_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Collaudatore</legend>
@@ -57,21 +53,17 @@
 <p><span class="plominoLabelClass">collaudatore_sostituito</span><span class="plominoFieldClass">collaudatore_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_collaudatore_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_collaudatore_lavori</span></p>
-<span class="plominoSubformClass">base_sub_collaudatore</span>
-<p><span class="plominoHidewhenClass">end:hw_no_collaudatore_lavori</span></p>
+<span class="plominoSubformClass">base_sub_collaudatore</span><p><span class="plominoHidewhenClass">end:hw_no_collaudatore_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Esecutore delle Opere</legend>
 <p><span class="plominoFieldClass">esecutore_comunicazione_opt</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_esecutore_esistente</span></p>
-<div class="alert alert-info">
-<h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo delle ditte con la situazione aggiornata</h5>
-</div>
+<div class="alert alert-info"><h5>ATTENZIONE: in caso di sostituzione occorre indicare l'elenco completo delle ditte con la situazione aggiornata</h5></div>
 <p><span class="plominoLabelClass">esecutore_sostituito</span><span class="plominoFieldClass">esecutore_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_esecutore_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_esecutore_lavori</span></p>
-<span class="plominoSubformClass">base_sub_esecutore</span>
-<p><span class="plominoLabelClass">altri_esecutori_grid</span><span class="plominoFieldClass">altri_esecutori_grid</span></p>
+<span class="plominoSubformClass">base_sub_esecutore</span><p><span class="plominoLabelClass">altri_esecutori_grid</span><span class="plominoFieldClass">altri_esecutori_grid</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_esecutore_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
@@ -81,8 +73,7 @@
 <p><span class="plominoLabelClass">resp_sicurezza_sostituito</span><span class="plominoFieldClass">resp_sicurezza_sostituito</span></p>
 <p><span class="plominoHidewhenClass">end:hw_no_resp_sicurezza_esistente</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_resp_sicurezza_lavori</span></p>
-<span class="plominoSubformClass">base_sub_resp_sicurezza</span>
-<p><span class="plominoHidewhenClass">end:hw_no_resp_sicurezza_lavori</span></p>
+<span class="plominoSubformClass">base_sub_resp_sicurezza</span><p><span class="plominoHidewhenClass">end:hw_no_resp_sicurezza_lavori</span></p>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Altri Tecnici Incaricati</legend>

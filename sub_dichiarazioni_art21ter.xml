@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="sub_dichiarazioni_art21ter" title="sub_dichiarazioni_art21ter" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">sub_dichiarazioni_art21ter</id>
@@ -34,18 +34,14 @@
 <span class="plominoLabelClass">dichiarazione_parere</span><span class="plominoFieldClass">dichiarazione_parere</span>
 </div>
 <p><span class="plominoHidewhenClass">start:hw_no_dichiarazione_parere</span></p>
-<div class="row-fluid">
-<div class="span4">
+<div class="row-fluid"><div class="span4">
 <span class="plominoLabelClass">ente_rilascio_pareri</span><span class="plominoFieldClass">ente_rilascio_pareri</span>
-</div>
-</div>
+</div></div>
 <p><span class="plominoHidewhenClass">end:hw_no_dichiarazione_parere</span></p>
 <p><span class="plominoHidewhenClass">start:hw_no_dichiarazione_collaudo</span></p>
-<div class="row-fluid">
-<div>
+<div class="row-fluid"><div>
 <span class="plominoLabelClass">dichiarazione_collaudo</span><span class="plominoFieldClass">dichiarazione_collaudo</span>
-</div>
-</div>
+</div></div>
 <p><span class="plominoHidewhenClass">end:hw_no_dichiarazione_collaudo</span></p>
 </fieldset>]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

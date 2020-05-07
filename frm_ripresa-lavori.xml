@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="frm_ripresa-lavori" title="Comunicazione di ripresa Lavori" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">frm_ripresa-lavori</id>

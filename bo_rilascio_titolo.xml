@@ -1,4 +1,4 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
     <element id="bo_rilascio_titolo" title="Rilascio del titolo / autorizzazione" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">bo_rilascio_titolo</id>

@@ -1,6 +1,6 @@
-<plominodatabase id="iol_praticaweb">
+<plominodatabase id="iol_dev">
   <design>
-    <element id="base_sub_info_procedimento" title="base_sub_info_procedimento" type="PlominoForm">
+    <element id="base_sub_info_procedimento" title="Dati identificativi della pratica" type="PlominoForm">
       <id type="Products.Archetypes.Field.StringField">base_sub_info_procedimento</id>
       <onCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onCreateDocument>
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
@@ -11,6 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <p><span class="plominoFieldClass">msg_paesaggistica</span></p>
+<p><span class="plominoSubformClass">base_sub_pe</span></p>
 <h6>RICHIEDENTE:</h6>
 <div class="row-fluid">
 <div class="span6">
