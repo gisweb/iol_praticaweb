@@ -11,7 +11,7 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="v-content well"><fieldset class="scheduler-border">
-<legend class="scheduler-border">IDENTIFICATIVI CATASTALI</legend> <span class="plominoSubformClass">sub_unita_immobiliari</span>
+<legend class="scheduler-border">IDENTIFICATIVI CATASTALI (CATASTO URBANO)</legend> <span class="plominoSubformClass">sub_unita_immobiliari</span>
 </fieldset></div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">COMUNICAZIONE DI FINE LAVORI</legend>
@@ -33,8 +33,14 @@
 <span class="plominoLabelClass">agibilita_opt</span><span class="plominoFieldClass">agibilita_opt</span>
 </div>
 <hr>
-<span class="plominoHidewhenClass">start:hw_no_singoli_edifici</span><div class="alert alert-info"><h5>purché funzionalmente autonomi, qualora siano state realizzate e collaudate le opere di urbanizzazione primaria relative all’intero intervento edilizio e siano state completate e collaudate le parti strutturali connesse, nonché collaudati e certificati gli impianti relativi alle parti comuni, condizioni previste dall’art. 24, comma 4, lett. a) del d.P.R. n. 380/2001. I singoli edifici o le singole porzioni della costruzione risultano puntualmente individuati nell’elaborato planimetrico allegato</h5></div>
-<span class="plominoHidewhenClass">end:hw_no_singoli_edifici</span> <span class="plominoHidewhenClass">start:hw_no_singole_uiu</span><div class="alert alert-info"><h5>purché siano completate e collaudate le opere strutturali connesse, siano certificati gli impianti e siano completate le parti comuni e le opere di urbanizzazione primaria dichiarate funzionali rispetto all’edificio oggetto di agibilità parziale, condizioni previste dall’art. 24, comma 4, lett. b) del d.P.R. n. 380/2001. Le singole unità immobiliari risultano puntualmente individuate nell’elaborato planimetrico allegato</h5></div>
+<span class="plominoHidewhenClass">start:hw_no_singoli_edifici</span>
+<div class="alert alert-info">
+<h5>purché funzionalmente autonomi, qualora siano state realizzate e collaudate le opere di urbanizzazione primaria relative all’intero intervento edilizio e siano state completate e collaudate le parti strutturali connesse, nonché collaudati e certificati gli impianti relativi alle parti comuni, condizioni previste dall’art. 24, comma 4, lett. a) del d.P.R. n. 380/2001. I singoli edifici o le singole porzioni della costruzione risultano puntualmente individuati nell’elaborato planimetrico allegato</h5>
+</div>
+<span class="plominoHidewhenClass">end:hw_no_singoli_edifici</span> <span class="plominoHidewhenClass">start:hw_no_singole_uiu</span>
+<div class="alert alert-info">
+<h5>purché siano completate e collaudate le opere strutturali connesse, siano certificati gli impianti e siano completate le parti comuni e le opere di urbanizzazione primaria dichiarate funzionali rispetto all’edificio oggetto di agibilità parziale, condizioni previste dall’art. 24, comma 4, lett. b) del d.P.R. n. 380/2001. Le singole unità immobiliari risultano puntualmente individuate nell’elaborato planimetrico allegato</h5>
+</div>
 <span class="plominoHidewhenClass">end:hw_no_singole_uiu</span>
 </fieldset></div>
 ]]></FormLayout>

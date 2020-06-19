@@ -291,14 +291,17 @@ except:
           <ActionDisplay type="Products.Archetypes.Field.StringField">BUTTON</ActionDisplay>
           <Content type="Products.Archetypes.Field.TextField"><![CDATA[db = context.getParentDatabase()
 
+action = 'procedibilita'
 #Prima protocollo il documento e lo invio poi effettuo l'azione
-invia = db.resources.customscripts.InviaComunicazione(context,'procedibilita')
+if context.getItem('procedibilita_opt','1')=='2':
+    action = 'improcedibilita'
+invia = db.resources.customscripts.InviaComunicazione(context,action)
 if invia > 0:
-    context.doAction('procedibilita')
+    context.doAction(action)
     
 return context.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[try:
-    return context.isEditMode() or context.getItem('data_comunicazione_procedibilita')!='' or context.getItem('allegato_comunicazione_procedibilita',{})=={}
+    return context.isEditMode() or context.getItem('data_comunicazione_improcedibilita')!='' or context.getItem('data_comunicazione_procedibilita')!='' or context.getItem('allegato_comunicazione_procedibilita',{})=={}
 except:
     return True]]></Hidewhen>
           <InActionBar type="Products.Archetypes.Field.BooleanField">False</InActionBar>
@@ -323,6 +326,11 @@ elif context.getItem('data_comunicazione_procedibilita')!='':
     msg = '''Comunicazione di procedibilita dell'istanza inviata in data ''' +  DateToString(context.getItem('data_comunicazione_procedibilita'),format="%d/%m/%Y %H:%M")
     if context.getItem('protocollo_procedibilita'):
         msg = msg + ' Protocollo ' + str(context.getItem('protocollo_procedibilita'))
+    return '''<h6 class="text-success"><strong>%s</strong></h6>''' %msg
+elif context.getItem('data_comunicazione_improcedibilita')!='':
+    msg = '''Comunicazione di improcedibilita dell'istanza inviata in data ''' +  DateToString(context.getItem('data_comunicazione_improcedibilita'),format="%d/%m/%Y %H:%M")
+    if context.getItem('protocollo_improcedibilita'):
+        msg = msg + ' Protocollo ' + str(context.getItem('protocollo_improcedibilita'))
     return '''<h6 class="text-success"><strong>%s</strong></h6>''' %msg
 else:
     return '''<h6 class="text-info"><strong>Per inviare nuovamente la comunicazione annullare il campo "Data comunicazione"</strong></h6>''']]></Formula>
@@ -425,7 +433,7 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
-          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">True</Mandatory>
           <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>

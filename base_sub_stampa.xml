@@ -844,6 +844,203 @@ return context.getParentDatabase().resources.config().get('rpd',rpd)]]></Formula
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
+        <element id="elenco_vincoli" title="Elenco dei vincoli con descrizione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_vincoli</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='vincoli')]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_tavole" title="Elenco delle tavole della pratica con descrizione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_tavole</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='tavole')]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_prg" title="Elenco delle Zone PRG" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_prg</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_vincolo']=='PRG':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_prg_z" title="Elenco delle zone di PRG - Tavola Zonizzazione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_prg_z</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='ZONIZZAZIONE':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_paes" title="Elenco delle Zone - Tavola Disciplina Paesistica" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_paes</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='DISCIPLINA_PAESISTICA':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_ptcpi" title="Elenco delle Zone PTCP - Tavola Insediativa" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_ptcpi</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='ASSETTO_INSEDIATIVO':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_ptcpg" title="Elenco delle Zone PTCP - Tavola Geomorfologica" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_ptcpg</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='ASSETTO_GEOMORFOLOGICO':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_ptcpv" title="Elenco delle Zone PTCP - Tavola Assetto Vegetazionale" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_ptcpv</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='ASSETTO_VEGETAZIONALE':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_dissesto" title="Elenco delle Zone - Tavola Suscettivita al dissesto (fattibilita geologica)" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_dissesto</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola']=='SUSCETTIVITA_AL_DISSESTO':
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_vp" title="Elenco delle zone - Vincoli Paesaggistici" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_vp</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola'] in ['DLGS_42_2004_ART_142_LETT_A','DLGS_42_2004_ART_142_LETT_C','DLGS_42_2004_ART_142_LETT_G','DM_14_12_1959','DM_14_12_1949']:
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="elenco_zone_altri" title="Elenco delle Zone- Altri Vincoli" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_zone_altri</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[result = list()
+res = context.getParentDatabase().resources.getVincoliParticelleStampa(doc=context,tipo='zone')
+for r in res:
+    if r['nome_tavola'] in ['SUSCETTIVITA_AL_DISSESTO','VINCOLO_IDROGEOLOGICO']:
+        result.append(r)
+        
+return result]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
       </elements>
     </element>
   </design>

@@ -6,20 +6,28 @@
       <onOpenDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onOpenDocument>
       <beforeSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeSaveDocument>
       <onSaveDocument type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
+db = context.getParentDatabase()
 if not parentDoc:
     context.plone_utils.addPortalMessage('Non esiste il documento padre','error')
     return 
  
 if 'btn_stampa_comunicazione' in context.REQUEST.keys():
     if context.getItem('allegato_documento_richiesta_parere',{})=={}:
-        context.getParentDatabase().resources.customscripts.stampaModulo(context,
+        context.printModel(serial='pippo',
             parent=parentDoc.getId(),
-            parentform='sub_completa_'+parentDoc.getItem('iol_tipo_app'),
             model=context.getItem('modello_stampa_richiesta_parere'),
-            app=context.getParentDatabase().getId().replace('iol_',''),
+            app=db.getId().replace('iol_',''),
             grp='richiesta-parere',
             pdf=0,
-            field='allegato_documento_richiesta_parere')     
+            field='allegato_documento_richiesta_parere')
+        #context.getParentDatabase().resources.customscripts.stampaModulo(context,
+        #    parent=parentDoc.getId(),
+        #    parentform='sub_completa_'+parentDoc.getItem('iol_tipo_app'),
+        #    model=context.getItem('modello_stampa_richiesta_parere'),
+        #    app=context.getParentDatabase().getId().replace('iol_',''),
+        #    grp='richiesta-parere',
+        #    pdf=0,
+        #    field='allegato_documento_richiesta_parere')     
     return "%s/EditDocument" %context.absolute_url()
 
 else:
@@ -532,7 +540,9 @@ return elencoUtentiGruppi(context,groups=['INTERNI_PARERI'])
           <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('parere_ente_opt')=='altro':
     return context.getItem('parere_ente_altro_email')
 else:
-    return ",".join(context.getItem('parere_ente_opt'))]]></Formula>
+    interni = ",".join(context.getItem('parere_interno_opt')) or ''
+    esterni = ",".join(context.getItem('parere_ente_opt')) or ''
+    return (interni + ',' +  esterni).rstrip(',').lstrip(',')]]></Formula>
           <FieldReadTemplate type="Products.Archetypes.Field.StringField"/>
           <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
           <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
@@ -760,8 +770,6 @@ except:
           <Content type="Products.Archetypes.Field.TextField"><![CDATA[parentDoc = context.getParentDatabase().getDocument(context.getItem('parent_document'))
 parentDoc.doAction('richiedi_parere')
 
-context.setItem('data_comunicazione_richiesta_parere',Now())
-
 #i Readers saranno Enti coinvolti + istruttori
 settings = context.getParentDatabase().resources.customscripts.getDocSettings()
 users = context.getItem('parere_ente_opt',[]) + context.getItem('parere_interno_opt',[]) + [str(settings.getItem('grp_istruttori')),'gw_istruttori']
@@ -771,7 +779,11 @@ context.setItem('Plomino_Readers',users)
 #context.setItem('Plomino_Authors',users)
 
 ## invio la mail di notifica ai destinatari
-parentDoc.iolSendMail(config='config_mailhost_nopec', azione='richiedi_parere', parentDoc=context)
+message_id = parentDoc.iolSendMail(config='config_mailhost_nopec', azione='richiesta-parere-ok', parentDoc=context)
+
+if message_id != '-1':
+    context.setItem('data_comunicazione_richiesta_parere',Now())
+    doc.setItem('id_comunicazione',message_id)
 
 ## indicizzo
 context.getParentDatabase().getIndex().indexDocument(context)

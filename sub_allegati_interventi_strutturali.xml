@@ -171,7 +171,7 @@ data-tooltip = "firmato digitalmente max 7Mb"
         </element>
         <element id="hw_no_doc_autorizzazione_sismica" title="hw_no_doc_autorizzazione_sismica" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_doc_autorizzazione_sismica</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return context.getItem('interventi_strutturali_opt','')!='4']]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return not (context.getItem('interventi_strutturali_opt','')=='4' and context.getItem('documentazione_autorizzazione_dsi_opt')=='1')]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
         </element>
         <element id="hw_interventistrutturali" title="hw_interventistrutturali" type="PlominoHidewhen">
@@ -207,22 +207,12 @@ data-tooltip = "firmato digitalmente"
         </element>
         <element id="hw_no_ricevuta_dsi" title="hw_no_rivevuta_dsi" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_ricevuta_dsi</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('interventi_strutturali_opt','') == '4':
-    return False
-elif context.getItem('interventi_strutturali_opt','') == '3':
-    return context.getItem('documentazione_dsi_opt','')=='2'
-else:
-    return True]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return not (context.getItem('interventi_strutturali_opt') == '3' and context.getItem('documentazione_dsi_opt')=='1') or (context.getItem('interventi_strutturali_opt') == '4' and context.getItem('documentazione_autorizzazione_dsi_opt')=='1')]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
         </element>
         <element id="hw_no_denuncia_sismica" title="hw_no_denuncia_sismica" type="PlominoHidewhen">
           <id type="Products.Archetypes.Field.StringField">hw_no_denuncia_sismica</id>
-          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[if context.getItem('interventi_strutturali_opt','') == '4':
-    return False
-elif context.getItem('interventi_strutturali_opt','') == '3':
-    return context.getItem('documentazione_dsi_opt','')=='2'
-else:
-    return True]]></Formula>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[return not (context.getItem('interventi_strutturali_opt') == '3' and context.getItem('documentazione_dsi_opt')=='1') or (context.getItem('interventi_strutturali_opt') == '4' and context.getItem('documentazione_autorizzazione_dsi_opt')=='1')]]></Formula>
           <isDynamicHidewhen type="Products.Archetypes.Field.BooleanField">False</isDynamicHidewhen>
         </element>
         <element id="allegato_denuncia_sismica" title="Modulo di Denuncia Sismica Integrata (da compilare e allegare)" type="PlominoField">

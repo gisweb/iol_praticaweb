@@ -34,6 +34,9 @@
 </fieldset></div>
 <p><span class="plominoSubformClass">sub_consenso_pec</span></p>
 <div class="v-content well"><fieldset class="scheduler-border">
+<legend class="scheduler-border">UBICAZIONE DELL'INTERVENTO</legend> <span class="plominoSubformClass">sub_ubicazione</span>
+</fieldset></div>
+<div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">RIFERIMENTI DEL TITOLO ABILITATIVO DELL'IMMOBILE</legend> <span class="plominoSubformClass">sub_titolo_esistente</span>
 </fieldset></div>
 <p><span class="plominoSubformClass">sub_intervento_sca</span></p>

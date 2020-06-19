@@ -11,9 +11,6 @@
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div><span class="plominoFieldClass">elenco_unita_immobiliare</span></div>
-<div class="row-fluid"><div class="span4">
-<span class="plominoLabelClass">catasto_opt</span> <span class="plominoFieldClass">catasto_opt</span>
-</div></div>
 <p><span class="plominoFieldClass">iol_comune</span></p>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>

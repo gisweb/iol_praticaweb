@@ -12,6 +12,7 @@
       <FormLayout type="Products.Archetypes.Field.TextField"><![CDATA[
 <div class="iol-toolbar"></div>
 <div><span class="plominoFieldClass">elenco_pareri</span></div>
+<div><span class="plominoFieldClass">elenco_commissioni</span></div>
 ]]></FormLayout>
       <FormMethod type="Products.Archetypes.Field.TextField"><![CDATA[Auto]]></FormMethod>
       <DocumentTitle type="Products.Archetypes.Field.TextField"><![CDATA[]]></DocumentTitle>
@@ -88,6 +89,67 @@ return html]]></Formula>
           <Content type="Products.Archetypes.Field.TextField"><![CDATA[return context.absolute_url()]]></Content>
           <Hidewhen type="Products.Archetypes.Field.TextField"><![CDATA[return not context.isEditMode()]]></Hidewhen>
           <InActionBar type="Products.Archetypes.Field.BooleanField">True</InActionBar>
+        </element>
+        <element id="elenco_commissioni" title="Elenco commisioni" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">elenco_commissioni</id>
+          <FieldType type="Products.Archetypes.Field.StringField">TEXT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">DISPLAY</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[from Products.CMFCore.utils import getToolByName
+db = getToolByName(context, 'iol_commissioni')
+if not db:
+    return
+
+idx = db.getIndex()
+brains = idx.dbsearch(dict(elenco_pratiche=context.getId())) 
+dlgForm=db.getForm('dlg_parere_pratica')
+html=''
+
+for brain in brains:
+    doc=brain.getObject()
+    rows=doc.getItem('elenco_pratiche_pareri_dg')
+    row=[]
+    content=''
+    for row in rows:
+        if row[1]==context.getId():
+            break
+    ###vedere le vale la pena serializzare il datagrid per evitare che si rompa aggiungendo colonne           
+    if len(row)>0: 
+        ordine=row[0]
+        parere=row[4]
+        testo=row[5]
+        prescrizioni=row[6]
+        renderForm=db.getForm('sub_vista_commissione')
+        content=content + renderForm.displayDocument(doc) 
+        content=content+'''
+        <p><span class="label">Parere: </span></p>
+        <p><span class="TEXTFieldRead-TEXTAREA">%s</span></p>''' %parere
+        content=content+'''
+        <p><span class="label">Testo: </span></p>
+        <p><span class="TEXTFieldRead-TEXTAREA">%s</span></p>''' %testo
+        if prescrizioni:
+            content=content+'''
+        <p><span class="label">Prescrizioni: </span></p>
+        <p><span class="TEXTFieldRead-TEXTAREA">%s</span></p>''' %prescrizioni  
+    
+        if content:
+            html=html+'<fieldset class="scheduler-border"><legend class="scheduler-border"><a target="blank_" href="%s"> %s del %s ordine %s </a></legend>%s</fieldset>'%(doc.absolute_url(),doc.getItem('iol_form_title'),DateToString(doc.getItem('data_convocazione'),format="%d/%m/%Y"),ordine,content)
+
+
+if not html:
+    html = '<fieldset class="scheduler-border"><legend class="scheduler-border">Commissioni</legend><span class="label">Nessuna commissione</span></fieldset>'
+
+return html            
+            
+            
+return html
+]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">TEXTFieldCell</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField"/>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

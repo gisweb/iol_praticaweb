@@ -191,6 +191,7 @@ menus=dict()
 
 menus['front'] = [
     {"label": "Richiedenti", "frm": "frm_sca", "title": "Dati anagrafici dei richiedenti"}, 
+    {"label": "Ubicazione", "frm": "frm_ubicazione", "title": "Localizzazione Intervento - Mappa"},     
     {"label": "Intervento", "frm": "frm_sca_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Tecnici", "frm": "frm_sca_tecnico", "title": "Tecnici incaricati"}, 
     {"label": "Asseverata", "frm": "frm_sca_asseverata", "title": "Dichiarazioni di asseverazione"},     
@@ -201,7 +202,8 @@ menus['front'] = [
 menus['back'] = [
     {"label": "Procedimento", "frm": "bo_procedimento", "title": "Dati del procedimento"}, 
     {"label": "Anagrafiche", "frm": "bo_anagrafiche", "title": "Anagrafiche"}, 
-    {"label": "Tecnico", "frm": "frm_sca_tecnico", "title": "Tecnici incaricati"},     
+    {"label": "Tecnico", "frm": "frm_sca_tecnico", "title": "Tecnici incaricati"},   
+    {"label": "Ubicazione", "frm": "bo_ubicazione", "title": "Localizzazione Intervento e vincoli"}, 
     {"label": "Intervento", "frm": "bo_intervento", "title": "Qualificazione e tipo di intervento"}, 
     {"label": "Asseverata", "frm": "frm_sca_asseverata", "title": "Dichiarazioni di asseverazione 1"}, 
     {"label": "Documentazione allegata", "frm": "bo_allegati", "title": "Documentazione allegata"}, 

@@ -22,7 +22,14 @@ for brain in brains:
     doc=brain.getObject()
     doc.setItem('Plomino_Readers',context.getItem('Plomino_Readers'))
     db.getIndex().indexDocument(doc)
-]]></onSaveDocument>
+    
+###aggiungo il readers sulle pratiche collegate
+brains = idx.dbsearch(dict(numero_pratica=context.getItem('numero_pratica','xxxxx')))
+for brain in brains:
+    doc=brain.getObject()
+    doc.setItem('Plomino_Readers',readers)
+    db.getIndex().indexDocument(doc)    
+    ]]></onSaveDocument>
       <onDeleteDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></onDeleteDocument>
       <onSearch type="Products.Archetypes.Field.TextField"><![CDATA[]]></onSearch>
       <beforeCreateDocument type="Products.Archetypes.Field.TextField"><![CDATA[]]></beforeCreateDocument>

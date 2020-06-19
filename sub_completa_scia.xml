@@ -38,7 +38,6 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">UBICAZIONE DELL'INTERVENTO</legend> <span class="plominoSubformClass">sub_ubicazione</span>
 </fieldset></div>
-<p><span class="plominoSubformClass">sub_titolarita_intervento</span></p>
 <p><span class="plominoSubformClass">sub_intervento_scia</span></p>
 <p><span class="plominoSubformClass">sub_immobile_destinazione</span></p>
 <p><span class="plominoSubformClass">sub_parti_comuni</span></p>
@@ -51,8 +50,12 @@
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border">Direttore dei lavori delle opere architettoniche</legend> <span class="plominoSubformClass">sub_direttore</span>
 </fieldset></div>
-<div class="v-content well"><p><span class="plominoSubformClass">sub_progettista_strutt</span></p></div>
-<div class="v-content well"><p><span class="plominoSubformClass">sub_direttore_strutt</span></p></div>
+<div class="v-content well">
+<p><span class="plominoSubformClass">sub_progettista_strutt</span></p>
+</div>
+<div class="v-content well">
+<p><span class="plominoSubformClass">sub_direttore_strutt</span></p>
+</div>
 <div class="v-content well"><fieldset class="scheduler-border">
 <legend class="scheduler-border required">Altri Tecnici incaricati</legend>
 <p><span class="plominoSubformClass">sub_altri_tecnici</span></p>

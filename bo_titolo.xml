@@ -18,14 +18,18 @@ if context.getItem('allegato_comunicazione_titolo',{})!={}:
 <div class="v-content well">
 <p><span class="plominoFieldClass">istruzioni_titolo</span></p>
 <div class="row-fluid">
-<div class="span6">
+<div class="span4">
 <span class="plominoLabelClass">allegato_comunicazione_titolo</span><span class="plominoFieldClass">allegato_comunicazione_titolo</span>
 </div>
-<div class="span6">
+<div class="span4">
 <span class="plominoLabelClass">allegati_controfirmati</span><span class="plominoFieldClass">allegati_controfirmati</span>
 </div>
+<div class="span4">
+<span class="plominoLabelClass">allegati_altro_titolo</span><span class="plominoFieldClass">allegati_altro_titolo</span>
 </div>
-<span class="plominoHidewhenClass">start:hw_titolo</span><div>
+</div>
+<span class="plominoHidewhenClass">start:hw_titolo</span>
+<div>
 <span class="plominoLabelClass">allegati_alla_controfirma</span><span class="plominoFieldClass">allegati_alla_controfirma</span>
 </div>
 <span class="plominoHidewhenClass">end:hw_titolo</span><hr>
@@ -274,6 +278,21 @@ data-datepicker-options='{"changeMonth": true, "changeYear": true, "minDate":"-1
           <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
           <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
           <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></HTMLAttributesFormula>
+        </element>
+        <element id="allegati_altro_titolo" title="Altra documentazione" type="PlominoField">
+          <id type="Products.Archetypes.Field.StringField">allegati_altro_titolo</id>
+          <FieldType type="Products.Archetypes.Field.StringField">ATTACHMENT</FieldType>
+          <FieldMode type="Products.Archetypes.Field.StringField">EDITABLE</FieldMode>
+          <Formula type="Products.Archetypes.Field.TextField"><![CDATA[]]></Formula>
+          <FieldReadTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTIconFieldRead</FieldReadTemplate>
+          <FieldEditTemplate type="Products.Archetypes.Field.StringField">IOL-ATTACHMENTFieldEdit</FieldEditTemplate>
+          <Mandatory type="Products.Archetypes.Field.BooleanField">False</Mandatory>
+          <ValidationFormula type="Products.Archetypes.Field.TextField"><![CDATA[]]></ValidationFormula>
+          <ToBeIndexed type="Products.Archetypes.Field.BooleanField">False</ToBeIndexed>
+          <IndexType type="Products.Archetypes.Field.StringField">DEFAULT</IndexType>
+          <HTMLAttributesFormula type="Products.Archetypes.Field.TextField"><![CDATA[return'''
+data-plugin = "iolUploadFile" data-plugin-options='{"emptyMessage":"Nessun file","maxsize":"3"}'
+''']]></HTMLAttributesFormula>
         </element>
       </elements>
     </element>

@@ -110,6 +110,7 @@ mapAzioni = {
     "richiesta_integrazione":'richiesta-integrazione-ok',
     "richiesta_parere":"richiesta-parere-ok",
     "procedibilita":"procedibilita",
+    "improcedibilita":"improcedibilita",
     "rilascio_titolo":"rilascio_titolo",
     "preavviso_rigetto":"preavviso_rigetto",
     "richiesta_pagamento":"richiedi_pagamento",
@@ -136,13 +137,13 @@ if not protocollo or protocollo==-1:
 
         
 if protocollo > 0:
-    
+    action = mapAzioni.get(step,step)
     #Recupero la configurazione del protocollo
     configProt = db.resources.config_protocollo(parentDoc)
     #context.plone_log(configProt.get('step','----'))
     #context.plone_log(configProt['step'].get(step,'----'))
     if configProt['step'].get(step,'') and configProt['step'][step].get('mail',False):
-        idCom = context.sendMail(doc=doc,azione=mapAzioni[step])
+        idCom = context.sendMail(doc=doc,azione=action)
         if idCom <> '-1':
             doc.setItem('data_comunicazione_%s' %step,Now())
             #logMessage = "INVIATA COMUNICAZIONE %s" %str(idCom)
@@ -359,7 +360,7 @@ def setClones():
         ((doc.getItem('conglomerato_opt') == '2') or \
         (doc.getItem('conglomerato_opt') == '3' and doc.getItem('denuncia_art65_opt')=='1') or \
         (doc.getItem('interventi_strutturali_opt') == '3' and doc.getItem('documentazione_dsi_opt')=='1') or \
-        (doc.getItem('interventi_strutturali_opt') == '4')):
+        (doc.getItem('interventi_strutturali_opt') == '4' and doc.getItem('documentazione_autorizzazione_dsi_opt')=='1')):
         context.aq_parent.setCloneDsi(doc)
         
     if "setCloneIdrogeologico" in context.aq_parent and doc.getItem('vincolo_idrogeologico_opt') == '3':
@@ -460,7 +461,11 @@ fld_allegati = config["step"][step]['altri_allegati']
 #In questo caso la comunicazione va inviata ai soli interessati della pratica
 #La getElencoSoggettiPec restituisce una lista di etichette dei soggetti della pratica a cui inviare la comunicazione (es. richiedente, progettista etc.)
 if step == 'presentazione':
-    soggetti = ['richiedente']
+    if 'delegato' in db.resources.customscripts.getElencoSoggettiPec(parentDoc):
+        soggetti = ['delegato']
+    else:
+        soggetti = ['richiedente']
+        
 else:    
     soggetti = db.resources.customscripts.getElencoSoggettiPec(parentDoc)
 
@@ -538,10 +543,13 @@ if fld_allegati:
 #Protocollazione
 
 flusso = config["step"][step]["flusso"]
+test = config.get("protocollazione-test",0)
 #Se inserisco il terzo parametro 'testxml' non protocolla 
+#testxml = 0 protocollo
 #testxml = 1 restituisce XML
 #testxml = 2 protocolla con un random
-res = view.protocolla_comunicazione(flusso,data,2)
+
+res = view.protocolla_comunicazione(flusso,data,test)
 #Recupero il risultato
 
 res = json_loads(res)
@@ -622,7 +630,7 @@ setIolEvent(doc,evento='Rilascio Titolo')
 #Comunicazione Inizio Lavori
 #setIolEvent(doc,evento='Rilascio Titolo')
 #Invio PEC
-#context.sendMail(doc=doc,azione='titolo-ok')
+context.inviaComunicazione(doc=doc,azione='titolo-ok')
 ]]></resource>
       <resource id="SerializeTitolo" title="" type="Script (Python)"><![CDATA[## Script (Python) "SerializeTitolo"
 ##bind container=container
@@ -2370,7 +2378,10 @@ elif azione == 'rilascio_titolo':
     anno = DateToString(doc.getItem('data_protocollo_rilascio_titolo'),'%Y')
 elif azione == 'richiesta-parere-ok':
     protocollo = doc.getItem('protocollo_richiesta_parere',0)
-    anno = DateToString(doc.getItem('data_protocollo_richiesta_parere'),'%Y')    
+    anno = DateToString(doc.getItem('data_protocollo_richiesta_parere'),'%Y')  
+elif azione == "richiedi_pagamento":
+    protocollo = doc.getItem('protocollo_richiedi_pagamento',0)
+    anno = DateToString(doc.getItem('data_protocollo_richiedi_pagamento'),'%Y') 
 else:
     return -1
 
@@ -2409,7 +2420,7 @@ if res['success']==1:
 else:
     idCom = '-1'
     
-pec.append([idCom, protocollo, anno, data['oggetto'], mail_sent,'', ''])    
+pec.append([idCom, protocollo, anno, data['oggetto'], mail_sent,DateToString(Now(),'%d/%m/%Y %H:%M:%S'), ''])    
 parentDoc.setItem('pec_inviate',pec)    
 
 return idCom
@@ -2468,6 +2479,7 @@ for row in importi:
     rows.append(row)
 doc.setItem('elenco_importi_dg',rows)
 doc.setItem('elenco_importi_index',index)
+doc.setItem('pagopa_enabled',1)
 
 #### note
 if note:
